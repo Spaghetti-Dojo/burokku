@@ -10,11 +10,11 @@
     }
   ],
   "require": {
-    "php": "8.4",
-    "inpsyde/modularity": "^1.7",
-    "roots/wordpress-no-content": "6.9"
+    "php": ">=8.4",
+    "inpsyde/modularity": "^1.7"
   },
   "require-dev": {
+    "roots/wordpress-no-content": "6.9",
     "syde/phpcs": "^1.0",
     "inpsyde/wp-stubs-versions": "^1.0",
     "bnf/phpstan-psr-container": "^1.0"
