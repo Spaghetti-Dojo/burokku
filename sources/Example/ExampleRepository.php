@@ -49,13 +49,13 @@ final class ExampleRepository
     {
         // In a real implementation, this might do actual filtering
         // For now, it just demonstrates dependency usage
-        
+
         if (empty($content)) {
             return $content;
         }
 
         // Use the injected service
-        $prefix = $this->service->getPrefix();
+        $prefix = $this->service->prefix();
 
         // Return content unchanged (example only)
         return $content;

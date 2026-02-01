@@ -53,10 +53,10 @@ final class Module implements ServiceModule, ExecutableModule
     {
         return [
             // Example service with no dependencies
-            ExampleService::class => static fn(): ExampleService => ExampleService::new(),
+            ExampleService::class => static fn (): ExampleService => ExampleService::new(),
 
             // Example service with dependencies from container
-            ExampleRepository::class => static fn(
+            ExampleRepository::class => static fn (
                 ContainerInterface $container
             ): ExampleRepository => ExampleRepository::new(
                 $container->get(ExampleService::class)

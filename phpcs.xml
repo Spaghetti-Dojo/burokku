@@ -25,7 +25,7 @@
     </rule>
 
     <!-- PHP Version -->
-    <config name="testVersion" value="8.4-"/>
+    <config name="testVersion" value="8.1-"/>
 
     <!-- Additional rules -->
     <rule ref="PSR12"/>

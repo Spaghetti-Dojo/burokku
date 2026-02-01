@@ -71,7 +71,7 @@ final class ExampleService
      *
      * @return string The current prefix.
      */
-    public function getPrefix(): string
+    public function prefix(): string
     {
         return $this->prefix;
     }

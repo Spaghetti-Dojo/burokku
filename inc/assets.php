@@ -20,6 +20,7 @@ function enqueue_style(
     array $deps = [],
     ?string $media = 'all'
 ): void {
+
     $version = wp_get_theme()->get('Version');
     $uri = get_template_directory_uri() . '/' . ltrim($src, '/');
 
@@ -42,6 +43,7 @@ function enqueue_script(
     array $deps = [],
     bool $inFooter = true
 ): void {
+
     $version = wp_get_theme()->get('Version');
     $uri = get_template_directory_uri() . '/' . ltrim($src, '/');
 
@@ -64,6 +66,7 @@ function enqueue_block_editor_assets(
     string $scriptPath,
     array $scriptDeps = []
 ): void {
+
     if (!is_admin()) {
         return;
     }
@@ -101,8 +104,16 @@ function get_asset_metadata(string $assetFile): array
     // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
     $asset = require $assetPath;
 
-    return is_array($asset) ? $asset : [
-        'dependencies' => [],
-        'version' => wp_get_theme()->get('Version'),
+    if (!is_array($asset)) {
+        return [
+            'dependencies' => [],
+            'version' => wp_get_theme()->get('Version'),
+        ];
+    }
+
+    // Ensure the required keys exist with correct types
+    return [
+        'dependencies' => $asset['dependencies'] ?? [],
+        'version' => $asset['version'] ?? wp_get_theme()->get('Version'),
     ];
 }
