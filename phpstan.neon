@@ -1,0 +1,46 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 8
+    
+    paths:
+        - inc
+        - sources
+    
+    excludePaths:
+        - vendor
+        - node_modules
+        - assets
+    
+    # Bootstrap files for WordPress constants and functions
+    bootstrapFiles:
+        - .phpstorm.meta.php
+    
+    # Ignore specific errors that are acceptable in WordPress context
+    ignoreErrors:
+        # WordPress uses snake_case for function names
+        - '#Function [a-z_]+ is not PascalCase#'
+        # WordPress global scope
+        - '#Variable \$[a-z_]+ might not be defined#'
+    
+    # Check for missing return typehints
+    checkMissingReturnTypes: true
+    
+    # Check for missing parameter typehints
+    checkMissingParameterTypes: true
+    
+    # Treat PHP_CodeSniffer annotations (@phpstan-ignore-line) as errors
+    treatPhpDocTypesAsCertain: true
+    
+    # Report mixed types
+    checkExplicitMixed: true
+    
+    # Check for invalid PHPDoc types
+    checkInvalidPhpDocTagValueInTypes: true
+    
+    # Check for unused variables
+    checkUnusedVariables: true
+    
+    # Check for undefined variables
+    checkUndefinedVariables: true
