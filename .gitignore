@@ -42,6 +42,9 @@ logs/
 package-lock.json
 yarn.lock
 
+# Composer
+/vendor/
+
 # WordPress Environment
 /.wordpress-org/
 /.wp-env/

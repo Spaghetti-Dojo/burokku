@@ -1,0 +1,50 @@
+{
+  "name": "spaghetti-dojo/burokku",
+  "description": "Yet another WordPress Block Theme made by AI",
+  "type": "wordpress-theme",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Spaghetti Dojo",
+      "homepage": "https://github.com/Spaghetti-Dojo"
+    }
+  ],
+  "require": {
+    "php": ">=8.4",
+    "inpsyde/modularity": "^1.7"
+  },
+  "require-dev": {
+    "roots/wordpress-no-content": "6.9",
+    "syde/phpcs": "^1.0",
+    "inpsyde/wp-stubs-versions": "^1.0",
+    "bnf/phpstan-psr-container": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SpaghettiDojo\\Burokku\\": "sources/"
+    },
+    "files": [
+      "inc/package.php"
+    ]
+  },
+  "scripts": {
+    "cs": "phpcs",
+    "cs:fix": "phpcbf",
+    "analysis": "./vendor/bin/phpstan analyse",
+    "qa": [
+      "@cs",
+      "@analysis"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "classmap-authoritative": false,
+    "apcu-autoloader": false
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

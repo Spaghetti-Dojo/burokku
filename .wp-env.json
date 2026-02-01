@@ -1,5 +1,5 @@
 {
-	"core": null,
+	"core": "vendor/roots/wordpress-no-content",
 	"themes": [
 		"."
 	],

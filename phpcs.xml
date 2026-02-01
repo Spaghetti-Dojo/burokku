@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Burokku">
+	<description>PHP Coding Standards for Burokku Theme</description>
+
+	<file>./inc/</file>
+	<file>./sources/</file>
+	<file>./tests</file>
+
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="extensions" value="php"/>
+	<arg name="parallel" value="8"/>
+
+	<rule ref="Syde"/>
+</ruleset>
