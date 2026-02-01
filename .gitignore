@@ -42,6 +42,10 @@ logs/
 package-lock.json
 yarn.lock
 
+# WordPress Environment
+/.wordpress-org/
+/.wp-env/
+
 # Testing
 /coverage/
 /.phpunit.cache/

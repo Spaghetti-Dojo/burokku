@@ -1,0 +1,92 @@
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+max_line_length = 100
+tab_width = 4
+trim_trailing_whitespace = true
+ij_continuation_indent_size = 4
+ij_formatter_off_tag = @formatter:off
+ij_formatter_on_tag = @formatter:on
+ij_formatter_tags_enabled = true
+ij_smart_tabs = false
+ij_visual_guides = 80
+ij_wrap_on_typing = true
+
+[*.css]
+ij_css_align_closing_brace_with_properties = false
+ij_css_blank_lines_around_nested_selector = 1
+ij_css_blank_lines_between_blocks = 1
+ij_css_block_comment_add_space = false
+ij_css_brace_placement = end_of_line
+ij_css_enforce_quotes_on_format = false
+ij_css_hex_color_long_format = false
+ij_css_hex_color_lower_case = false
+ij_css_hex_color_short_format = false
+ij_css_hex_color_upper_case = false
+ij_css_keep_blank_lines_in_code = 2
+ij_css_keep_indents_on_empty_lines = false
+ij_css_keep_single_line_blocks = false
+ij_css_properties_order = alphabetic
+ij_css_space_after_colon = true
+ij_css_space_before_opening_brace = true
+ij_css_use_double_quotes = true
+ij_css_value_alignment = do_not_align
+
+[*.scss]
+ij_scss_align_closing_brace_with_properties = false
+ij_scss_blank_lines_around_nested_selector = 1
+ij_scss_blank_lines_between_blocks = 1
+ij_scss_block_comment_add_space = false
+ij_scss_brace_placement = 0
+ij_scss_enforce_quotes_on_format = false
+ij_scss_hex_color_long_format = false
+ij_scss_hex_color_lower_case = false
+ij_scss_hex_color_short_format = false
+ij_scss_hex_color_upper_case = false
+ij_scss_keep_blank_lines_in_code = 2
+ij_scss_keep_indents_on_empty_lines = false
+ij_scss_keep_single_line_blocks = false
+ij_scss_line_comment_add_space = false
+ij_scss_line_comment_at_first_column = false
+ij_scss_properties_order = alphabetic
+ij_scss_space_after_colon = true
+ij_scss_space_before_opening_brace = true
+ij_scss_use_double_quotes = true
+ij_scss_value_alignment = 0
+
+[*.{ats,cts,mts,ts}]
+ij_typescript_use_double_quotes = false
+ij_typescript_use_semicolon_after_statement = true
+ij_typescript_enforce_trailing_comma = whenmultiline
+
+[*.{cjs,js}]
+ij_smart_tabs = true
+ij_javascript_use_double_quotes = false
+ij_javascript_use_semicolon_after_statement = true
+ij_javascript_enforce_trailing_comma = whenmultiline
+
+[*.{ctp,hphp,inc,module,php,php4,php5,phtml}]
+indent_style = space
+ij_php_lower_case_keywords = true
+ij_php_class_brace_style = next_line
+ij_php_method_brace_style = next_line
+
+[*.{har,jsb2,jsb3,json,jsonc,.babelrc,.eslintrc,.prettierrc,.stylelintrc,.ws-context,bowerrc,composer.lock,jest.config}]
+ij_json_keep_blank_lines_in_code = 0
+ij_json_space_after_colon = true
+ij_json_space_before_colon = false
+
+[*.{markdown,md}]
+ij_markdown_force_one_space_after_blockquote_symbol = true
+ij_markdown_force_one_space_after_header_symbol = true
+ij_markdown_force_one_space_after_list_bullet = true
+ij_markdown_force_one_space_between_words = true
+ij_markdown_format_tables = true
+
+[*.{yaml,yml}]
+indent_style = space
+ij_yaml_keep_indents_on_empty_lines = false
+ij_yaml_keep_line_breaks = true

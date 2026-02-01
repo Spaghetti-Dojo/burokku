@@ -1,40 +1,33 @@
 # Burokku (ブロック)
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.4+-blue.svg)](https://wordpress.org/)
+[![WordPress](https://img.shields.io/badge/WordPress-6.9+-blue.svg)](https://wordpress.org/)
+[![PHP](https://img.shields.io/badge/PHP-8.4+-purple.svg)](https://www.php.net/)
 [![License](https://img.shields.io/badge/license-GPL--2.0+-red.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![GitHub Issues](https://img.shields.io/github/issues/Spaghetti-Dojo/burokku)](https://github.com/Spaghetti-Dojo/burokku/issues)
 
-> Yet another WordPress Block Theme made by AI - inspired by shadcn/ui design system
+> A modern WordPress Block Theme inspired by shadcn/ui design system - Currently in active development
 
-**Burokku** (Japanese for "block") is a modern, accessible WordPress Block Theme that brings the elegant design principles of [shadcn/ui](https://ui.shadcn.com/) to WordPress. Built with performance, accessibility, and developer experience in mind.
+**Burokku** (Japanese for "block") is a WordPress Block Theme bringing the elegant design principles of [shadcn/ui](https://ui.shadcn.com/) to WordPress. Built with performance, accessibility, and modern development practices in mind.
 
-## 🌟 Features
+## 🚧 Project Status
 
-- ✨ **shadcn/ui Inspired Design** - Beautiful, modern aesthetic with 7 color themes
-- ♿ **Accessibility First** - WCAG 2.1 AA compliant out of the box
-- 🎨 **Design Token System** - Comprehensive theme.json with design tokens
-- 🧩 **5 Custom Blocks** - Counter, Tabs, Alert, Badge, and Modal blocks
-- 📱 **Fully Responsive** - Mobile-first approach
-- ⚡ **Performance Optimized** - Lazy loading, efficient animations
-- 🎭 **Scroll Animations** - Smooth, accessible scroll-triggered animations
-- 🎯 **20+ Patterns** - Pre-built patterns for quick page building
-- 🌈 **7 Style Variations** - Slate, Zinc, Stone, Blue, Green, Violet, Rose
+**Phase 1: Foundation & Design System** - In Progress
+
+This project is in early development. See our [Project Board](https://github.com/orgs/Spaghetti-Dojo/projects/10) and [Milestones](https://github.com/Spaghetti-Dojo/burokku/milestones) for current progress.
 
 ## 📋 Requirements
 
-- WordPress 6.4 or higher
-- PHP 7.4 or higher
-- Node.js 18+ (for development)
-- npm or yarn (for development)
+### Production
+- WordPress 6.9 or higher
+- PHP 8.4 or higher
+- Modern browser (latest 2 versions of Chrome, Firefox, Safari, or Edge)
 
-## 🚀 Quick Start
+### Development
+- Node.js 20+ (for development)
+- npm or pnpm (for development)
+- TypeScript 5.6+
 
-### For Users
-
-1. Download the theme from the [releases page](https://github.com/Spaghetti-Dojo/burokku/releases)
-2. Upload to WordPress via Appearance → Themes → Add New → Upload Theme
-3. Activate the theme
-4. Customize via Appearance → Editor
+## 🚀 Getting Started
 
 ### For Developers
 
@@ -43,129 +36,44 @@
 git clone https://github.com/Spaghetti-Dojo/burokku.git
 cd burokku
 
-# Install dependencies
-npm install
-
-# Start development
-npm start
-
-# Build for production
-npm run build
+# Setup will be documented as we build
+# Follow along on the project board for updates
 ```
 
-## 🏗️ Project Structure
+## 🎯 Planned Features
 
-```
-burokku/
-├── .github/
-│   └── copilot-instructions.md    # Development guidelines
-├── sources/                        # Source code (monorepo)
-│   ├── Blocks/                    # Custom blocks
-│   ├── Animations/                # Animation system
-│   ├── Styles/                    # Shared styles
-│   ├── Utils/                     # Utilities
-│   └── Integrations/              # Third-party wrappers
-├── assets/                        # Compiled output
-├── templates/                     # Block templates
-├── parts/                         # Template parts
-├── patterns/                      # Block patterns
-├── styles/                        # Style variations
-├── style.css                      # Theme metadata
-├── theme.json                     # Design system
-└── functions.php                  # Theme setup
-```
+- ✨ **shadcn/ui Inspired Design** - Beautiful, modern aesthetic with 7 color themes
+- ♿ **Accessibility First** - WCAG 2.1 AA compliant
+- 🎨 **Design Token System** - Comprehensive theme.json with design tokens
+- 🧩 **Custom Blocks** - Counter, Tabs, Alert, Badge, and Modal blocks
+- 📱 **Fully Responsive** - Mobile-first approach
+- ⚡ **Performance Optimized** - Modern build tooling, ES2024+
+- 🎭 **Scroll Animations** - Smooth, accessible animations
+- 🎯 **Block Patterns** - Pre-built patterns for quick page building
+- 🌈 **Style Variations** - Slate, Zinc, Stone, Blue, Green, Violet, Rose
 
-## 🎨 Custom Blocks
-
-### Counter Block
-Animated number counter with CountUp.js integration. Perfect for stats sections.
-
-**Features:**
-- Configurable duration, prefix, suffix
-- Animates on scroll into view
-- Respects reduced motion preferences
-
-### Tabs Block
-Fully accessible tabs component with keyboard navigation.
-
-**Features:**
-- ARIA tabs pattern
-- Arrow key navigation
-- Multiple style variants
-
-### Alert Block
-Versatile alert/callout block with 6 variants.
-
-**Features:**
-- Info, warning, success, error, destructive styles
-- Optional icons and dismiss button
-- Smooth animations
-
-### Badge Block
-Lightweight inline labels and tags.
-
-**Features:**
-- 3 sizes, 4 style variants
-- Works inline with text
-- Minimal JavaScript
-
-### Modal Block
-Accessible modal/dialog with focus management.
-
-**Features:**
-- Proper focus trapping
-- Keyboard support (ESC to close)
-- Body scroll lock
-- 5 size variants
-
-## 🎭 Animation System
-
-Built-in scroll-triggered animation system with:
-- Intersection Observer API
-- Reduced motion support
-- 10+ animation presets (fade, slide, scale)
-- Optional AOS integration for advanced animations
-
-**Usage:**
-```html
-<div data-animate="fade-in" data-animate-delay="100">
-    Content fades in on scroll
-</div>
-```
-
-## 🌈 Style Variations
-
-Choose from 7 beautiful color themes:
-- **Slate** (default) - Cool gray tones
-- **Zinc** - Neutral gray tones
-- **Stone** - Warm gray tones
-- **Blue** - Primary blue accents
-- **Green** - Nature-inspired greens
-- **Violet** - Purple accents
-- **Rose** - Pink/red accents
-
-Switch themes via: Appearance → Editor → Styles
+See [open issues](https://github.com/Spaghetti-Dojo/burokku/issues) for detailed feature plans.
 
 ## 🛠️ Development
 
-### Build Commands
+### Current Setup
 
-```bash
-npm start           # Start development with watch
-npm run build       # Production build
-npm run lint:css    # Lint CSS
-npm run lint:js     # Lint JavaScript
-npm run format      # Format code
-```
+The project includes modern tooling configuration:
+- **TypeScript** - ES2024 target with strict mode
+- **ESLint** - WordPress coding standards
+- **Prettier** - Code formatting
+- **Stylelint** - CSS/SCSS linting
+- **Browserslist** - Latest 2 browser versions (2025+)
+- **wp-env** - Local WordPress environment
 
 ### Coding Standards
 
 - Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
-- Apply SOLID principles
+- Apply SOLID principles (see [copilot-instructions.md](.github/copilot-instructions.md))
 - Write accessible code (WCAG 2.1 AA)
-- Test in multiple browsers and devices
-
-See [.github/copilot-instructions.md](.github/copilot-instructions.md) for detailed guidelines.
+- Test in latest browsers (Chrome, Firefox, Safari, Edge)
+- Use ES2024+ JavaScript features
+- TypeScript strict mode enabled
 
 ## 📚 Documentation
 
@@ -176,46 +84,29 @@ See [.github/copilot-instructions.md](.github/copilot-instructions.md) for detai
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md).
+Contributions are welcome! Since we're in early development, please:
 
-### Development Workflow
-
-1. Check [open issues](https://github.com/Spaghetti-Dojo/burokku/issues)
-2. Fork and create a feature branch
-3. Follow coding standards and guidelines
-4. Submit a pull request
+1. Check [open issues](https://github.com/Spaghetti-Dojo/burokku/issues) and [milestones](https://github.com/Spaghetti-Dojo/burokku/milestones)
+2. Comment on an issue before starting work
+3. Follow coding standards in [copilot-instructions.md](.github/copilot-instructions.md)
+4. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
 
 ## 📄 License
 
 This theme is licensed under [GPL v2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
 
-## 🙏 Credits
+## 🙏 Acknowledgments
 
-### Design Inspiration
-- [shadcn/ui](https://ui.shadcn.com/) - Design system and component library
-
-### Third-Party Libraries
-- [CountUp.js](https://github.com/inorganik/CountUp.js) - Number animations (MIT License)
-- [AOS](https://github.com/michalsnik/aos) - Animate on Scroll (MIT License)
-
-### Built With
-- [WordPress Block Editor](https://developer.wordpress.org/block-editor/)
-- [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts)
+- **Design Inspiration:** [shadcn/ui](https://ui.shadcn.com/) by [@shadcn](https://twitter.com/shadcn)
+- **Built for:** [WordPress Block Editor](https://developer.wordpress.org/block-editor/)
 
 ## 🔗 Links
 
 - **Repository:** https://github.com/Spaghetti-Dojo/burokku
 - **Issues:** https://github.com/Spaghetti-Dojo/burokku/issues
 - **Project Board:** https://github.com/orgs/Spaghetti-Dojo/projects/10
-- **WordPress Theme Directory:** Coming soon
-
-## 📞 Support
-
-Having issues? Please:
-1. Check existing [issues](https://github.com/Spaghetti-Dojo/burokku/issues)
-2. Create a new issue with details
-3. Join discussions on the project board
+- **Milestones:** https://github.com/Spaghetti-Dojo/burokku/milestones
 
 ---
 
-Made with ❤️ by the Spaghetti Dojo team and AI
+Made with ❤️ by the Spaghetti Dojo team

@@ -1,0 +1,29 @@
+{
+	"core": null,
+	"themes": [
+		"."
+	],
+	"plugins": [
+		"https://downloads.wordpress.org/plugin/query-monitor.3.16.4.zip"
+	],
+	"env": {
+		"development": {
+			"phpVersion": "8.4",
+			"coreSource": "WordPress/WordPress#6.9",
+			"mappings": {
+				"wp-content/themes/burokku": "."
+			}
+		},
+		"tests": {
+			"phpVersion": "8.4",
+			"coreSource": "WordPress/WordPress#6.9"
+		}
+	},
+	"config": {
+		"WORDPRESS_DEBUG": true,
+		"WP_ENVIRONMENT_TYPE": "local",
+		"WP_DEBUG_LOG": true,
+		"WP_DEBUG_DISPLAY": true,
+		"WP_DISABLE_FATAL_ERROR_HANDLER": true
+	}
+}
