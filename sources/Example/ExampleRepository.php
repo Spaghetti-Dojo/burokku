@@ -54,8 +54,12 @@ final class ExampleRepository
             return $content;
         }
 
-        // Use the injected service
+        // Example: Use the injected service to demonstrate dependency
+        // In a real implementation, this could be used for filtering logic
+        // For example: checking if content starts with the prefix
         $prefix = $this->service->prefix();
+        // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
+        // $hasPrefix = str_starts_with($content, $prefix);
 
         // Return content unchanged (example only)
         return $content;

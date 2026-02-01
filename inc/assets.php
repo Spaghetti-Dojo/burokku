@@ -92,7 +92,26 @@ function enqueue_block_editor_assets(
  */
 function get_asset_metadata(string $assetFile): array
 {
-    $assetPath = get_template_directory() . '/' . ltrim($assetFile, '/');
+    $themeDirectory = get_template_directory();
+    $assetPath = $themeDirectory . '/' . ltrim($assetFile, '/');
+
+    // Validate that the asset path is within the theme directory (security check)
+    $realAssetPath = realpath($assetPath);
+    $realThemeDir = realpath($themeDirectory);
+
+    if (false === $realAssetPath || false === $realThemeDir) {
+        return [
+            'dependencies' => [],
+            'version' => wp_get_theme()->get('Version'),
+        ];
+    }
+
+    if (!str_starts_with($realAssetPath, $realThemeDir)) {
+        return [
+            'dependencies' => [],
+            'version' => wp_get_theme()->get('Version'),
+        ];
+    }
 
     if (!file_exists($assetPath)) {
         return [
@@ -101,6 +120,7 @@ function get_asset_metadata(string $assetFile): array
         ];
     }
 
+    // Safe to require as we've validated the path is within theme directory
     // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
     $asset = require $assetPath;
 
