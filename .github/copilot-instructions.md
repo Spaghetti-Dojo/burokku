@@ -193,9 +193,7 @@ add_action( 'wp_enqueue_scripts', 'burokku_enqueue_assets' );
 // Bad - Don't hardcode script/style tags in templates
 ```
 
-## PHP Architecture (Konomi-Inspired)
-
-**Reference Project:** [Konomi](https://github.com/Spaghetti-Dojo/konomi) - Study this project for real-world examples of the patterns below.
+## PHP Architecture
 
 ### PSR-4 Autoloading
 
@@ -673,7 +671,6 @@ When writing PHP code for Burokku:
 - [ ] Put WordPress hooks ONLY in `ExecutableModule::run()`
 - [ ] Define services in `ServiceModule::services()`
 - [ ] Use `register_block_type_from_metadata()` for blocks
-- [ ] Study [Konomi](https://github.com/Spaghetti-Dojo/konomi) for examples
 
 ## Block Development Guidelines
 
