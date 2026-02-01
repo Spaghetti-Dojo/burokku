@@ -1,4 +1,4 @@
-# Burokku (ブロック)
+# Burokku
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.9+-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.4+-purple.svg)](https://www.php.net/)
