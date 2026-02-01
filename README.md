@@ -36,8 +36,19 @@ This project is in early development. See our [Project Board](https://github.com
 git clone https://github.com/Spaghetti-Dojo/burokku.git
 cd burokku
 
-# Setup will be documented as we build
-# Follow along on the project board for updates
+# Install dependencies
+npm install
+
+# Start development with watch mode
+npm run start
+
+# Build for production
+npm run build
+
+# Lint and format code
+npm run lint:css  # Lint CSS/SCSS
+npm run lint:js   # Lint JavaScript/TypeScript
+npm run format    # Format all code
 ```
 
 ## 🎯 Planned Features
