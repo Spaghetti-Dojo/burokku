@@ -1,6 +1,6 @@
 {
   "name": "spaghetti-dojo/burokku",
-  "description": "A modern WordPress Block Theme inspired by shadcn/ui design system",
+  "description": "Yet another WordPress Block Theme made by AI",
   "type": "wordpress-theme",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -10,13 +10,13 @@
     }
   ],
   "require": {
-    "php": ">=8.1",
+    "php": "8.4",
     "inpsyde/modularity": "^1.7",
     "roots/wordpress-no-content": "6.9"
   },
   "require-dev": {
     "syde/phpcs": "^1.0",
-    "inpsyde/wp-stubs": "dev-main",
+    "inpsyde/wp-stubs-versions": "^1.0",
     "bnf/phpstan-psr-container": "^1.0"
   },
   "autoload": {
@@ -38,8 +38,7 @@
   },
   "config": {
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true,
-      "roots/wordpress-core-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true
     },
     "sort-packages": true,
     "optimize-autoloader": true,
