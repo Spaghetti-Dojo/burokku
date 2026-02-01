@@ -1,0 +1,18 @@
+/**
+ * Test Block Styles
+ */
+
+.wp-block-burokku-test-block {
+	padding: 1rem;
+	background-color: #f0f0f0;
+	border: 2px solid #333;
+	border-radius: 0.5rem;
+
+	p {
+		margin: 0.5rem 0;
+
+		&:first-child {
+			font-weight: 600;
+		}
+	}
+}

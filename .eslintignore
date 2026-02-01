@@ -2,3 +2,7 @@
 /vendor
 /node_modules
 /assets
+*.config.js
+babel.config.js
+webpack.config.js
+.prettierrc.js
