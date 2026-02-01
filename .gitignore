@@ -44,7 +44,6 @@ yarn.lock
 
 # Composer
 /vendor/
-composer.lock
 
 # WordPress Environment
 /.wordpress-org/

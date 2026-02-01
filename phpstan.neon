@@ -1,31 +1,9 @@
-includes:
-    # Temporarily disabled until full Composer setup is complete
-    # - vendor/szepeviktor/phpstan-wordpress/extension.neon
-
 parameters:
-    level: 8
-    
-    paths:
-        - inc
-        - sources
-    
-    excludePaths:
-        - vendor
-        - node_modules
-        - assets
-    
-    # Ignore specific errors that are acceptable in WordPress context
-    ignoreErrors:
-        # WordPress core functions (until WordPress stubs can be properly loaded)
-        - '#Function .+ not found#'
-        - '#Call to static method get_instance\(\) on an unknown class WP_#'
-        - '#has invalid return type WP_#'
-        # Container type inference
-        - '#Cannot call method .+ on mixed#'
-        - '#Parameter .+ expects .+, mixed given#'
-    
-    # Treat PHP_CodeSniffer annotations (@phpstan-ignore-line) as errors
-    treatPhpDocTypesAsCertain: true
-    
-    # Report mixed types
-    checkExplicitMixed: true
+	level: 9
+	paths:
+		- sources
+	scanFiles:
+		- vendor/inpsyde/wp-stubs/wordpress-stubs.php
+	treatPhpDocTypesAsCertain: false
+includes:
+	- vendor/bnf/phpstan-psr-container/extension.neon

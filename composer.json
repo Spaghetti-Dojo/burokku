@@ -11,19 +11,20 @@
   ],
   "require": {
     "php": ">=8.1",
-    "inpsyde/modularity": "^1.7"
+    "inpsyde/modularity": "^1.7",
+    "roots/wordpress-no-content": "6.9"
   },
   "require-dev": {
-    "inpsyde/php-coding-standards": "^2.0"
+    "syde/phpcs": "^1.0",
+    "inpsyde/wp-stubs": "dev-main",
+    "bnf/phpstan-psr-container": "^1.0"
   },
   "autoload": {
     "psr-4": {
       "SpaghettiDojo\\Burokku\\": "sources/"
     },
     "files": [
-      "inc/template.php",
-      "inc/blocks.php",
-      "inc/assets.php"
+      "inc/package.php"
     ]
   },
   "scripts": {
@@ -37,16 +38,14 @@
   },
   "config": {
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "roots/wordpress-core-installer": true
     },
     "sort-packages": true,
     "optimize-autoloader": true,
     "classmap-authoritative": false,
-    "apcu-autoloader": false,
-    "secure-http": false,
-    "preferred-install": "source",
-    "github-protocols": ["https"]
+    "apcu-autoloader": false
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true
 }
