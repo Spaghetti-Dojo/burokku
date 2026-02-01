@@ -179,7 +179,7 @@ function burokku_enqueue_assets() {
         array(),
         wp_get_theme()->get( 'Version' )
     );
-    
+
     wp_enqueue_script(
         'burokku-script',
         get_template_directory_uri() . '/assets/js/main.js',
@@ -192,6 +192,488 @@ add_action( 'wp_enqueue_scripts', 'burokku_enqueue_assets' );
 
 // Bad - Don't hardcode script/style tags in templates
 ```
+
+## PHP Architecture (Konomi-Inspired)
+
+**Reference Project:** [Konomi](https://github.com/Spaghetti-Dojo/konomi) - Study this project for real-world examples of the patterns below.
+
+### PSR-4 Autoloading
+
+- **Namespace:** `SpaghettiDojo\Burokku\`
+- **Base Path:** `sources/`
+- **Example:** `SpaghettiDojo\Burokku\Blocks\Module` → `sources/Blocks/Module.php`
+
+```json
+// composer.json
+{
+    "autoload": {
+        "psr-4": {
+            "SpaghettiDojo\\Burokku\\": "sources/"
+        },
+        "files": [
+            "inc/template.php",
+            "inc/blocks.php"
+        ]
+    }
+}
+```
+
+### Class Design Patterns
+
+#### 1. Readonly Classes with Property Promotion
+
+**ALWAYS use `readonly` for class properties when immutability is desired:**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\Blocks;
+
+final class BlockRegistrar
+{
+    final private function __construct(
+        private readonly string $blocksDirectory,
+        private readonly string $blocksManifestPath
+    ) {
+        // Validation in constructor body
+        $this->blocksDirectory or throw new \InvalidArgumentException(
+            'Blocks directory must be a non-empty string'
+        );
+    }
+}
+```
+
+**Benefits:**
+- Immutability by default
+- Less boilerplate code
+- Clear intent in constructor
+- Type safety enforced by PHP
+
+#### 2. Static Factory Pattern (::new())
+
+**ALL classes MUST use static factory methods instead of public constructors:**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\User;
+
+class UserFactory
+{
+    // Public static factory method - ALWAYS use this pattern
+    public static function new(Repository $repository): self
+    {
+        return new self($repository);
+    }
+
+    // Constructor MUST be private and final
+    final private function __construct(
+        private readonly Repository $repository
+    ) {}
+
+    public function create(): User
+    {
+        return CurrentUser::new($this->repository);
+    }
+}
+```
+
+**Why this pattern:**
+- ✅ Prevents inheritance issues
+- ✅ Enforces immutability
+- ✅ Clear instantiation point
+- ✅ Allows for future factory logic without breaking API
+- ✅ Consistent pattern across codebase
+
+**Rules:**
+1. Static factory MUST be named `new()`
+2. Constructor MUST be `final private function __construct()`
+3. Factory returns `self` (not `static`)
+4. Dependencies passed to factory, then to constructor
+
+#### 3. Type Safety (Strict)
+
+**ALL functions and methods MUST have explicit types:**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\Blocks;
+
+class TemplateRender
+{
+    // ✅ Good - All types declared
+    public function render(string $template, array $context): string
+    {
+        return $this->loadTemplate($template, $context);
+    }
+
+    // ✅ Good - Use PHPDoc for complex array types
+    /**
+     * @param array<string, mixed> $context
+     * @return array<string, string>
+     */
+    private function prepareContext(array $context): array
+    {
+        return array_map('esc_html', $context);
+    }
+
+    // ❌ Bad - Missing return type
+    private function loadTemplate(string $path, array $data)
+    {
+        return file_get_contents($path);
+    }
+}
+```
+
+**Type Declaration Rules:**
+- Function parameters: REQUIRED
+- Return types: REQUIRED (including `void`)
+- PHPDoc: Use for complex types (arrays, unions, generics)
+- `declare(strict_types=1)` in EVERY PHP file
+
+### Inpsyde Modularity Pattern
+
+**ALL WordPress integration happens through Modules.**
+
+#### ServiceModule - For Dependency Injection
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\User;
+
+use Inpsyde\Modularity\Module\{ServiceModule, ModuleClassNameIdTrait};
+use Psr\Container\ContainerInterface;
+
+class Module implements ServiceModule
+{
+    use ModuleClassNameIdTrait;
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
+    final private function __construct() {}
+
+    /**
+     * Define services that will be available in the PSR container
+     */
+    public function services(): array
+    {
+        return [
+            // Simple service - no dependencies
+            Storage::class => static fn() => Storage::new(),
+
+            // Service with dependencies resolved from container
+            UserFactory::class => static fn(ContainerInterface $container) => 
+                UserFactory::new(
+                    $container->get(Repository::class)
+                ),
+
+            // Service with constructor parameters
+            StorageKey::class => static fn() => StorageKey::new('_burokku_items'),
+        ];
+    }
+}
+```
+
+#### ExecutableModule - For WordPress Hooks
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\Blocks;
+
+use Inpsyde\Modularity\Module\{ExecutableModule, ServiceModule, ModuleClassNameIdTrait};
+use Psr\Container\ContainerInterface;
+
+class Module implements ServiceModule, ExecutableModule
+{
+    use ModuleClassNameIdTrait;
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
+    final private function __construct() {}
+
+    public function services(): array
+    {
+        return [
+            BlockRegistrar::class => static fn() => BlockRegistrar::new(
+                get_template_directory() . '/sources/Blocks',
+                get_template_directory() . '/sources/Blocks/blocks-manifest.php'
+            ),
+        ];
+    }
+
+    /**
+     * This is where WordPress integration happens
+     * Register hooks, filters, REST routes, etc.
+     */
+    public function run(ContainerInterface $container): bool
+    {
+        // Register blocks on init
+        add_action('init', function() use ($container) {
+            $registrar = $container->get(BlockRegistrar::class);
+            $registrar->registerBlockTypes();
+        });
+
+        // Add filters for block rendering
+        add_filter('render_block', function($content, $block) use ($container) {
+            // Block modification logic
+            return $content;
+        }, 10, 2);
+
+        return true;
+    }
+}
+```
+
+**Key Principles:**
+1. **Modules are the ONLY place** where `add_action()`, `add_filter()`, etc. are called
+2. Classes contain business logic, Modules wire them to WordPress
+3. Dependencies are injected via container, not directly instantiated
+4. `run()` method returns `bool` - `true` for success
+
+### Functions Organization
+
+#### Global Functions (inc/ directory)
+
+Place generic helper functions in `inc/` at project root:
+
+```php
+<?php
+// inc/template.php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku;
+
+/**
+ * Render a template part with context
+ *
+ * @param string $slug Template slug
+ * @param array<string, mixed> $context Variables to extract
+ */
+function render_template_part(string $slug, array $context = []): void
+{
+    extract($context, EXTR_SKIP);
+    get_template_part($slug);
+}
+```
+
+**Autoload in composer.json:**
+```json
+{
+    "autoload": {
+        "files": [
+            "inc/template.php",
+            "inc/blocks.php",
+            "inc/assets.php"
+        ]
+    }
+}
+```
+
+#### Package-Specific Functions (sources/{Package}/api.php)
+
+For functions specific to a package, place them in `api.php` within that package:
+
+```php
+<?php
+// sources/Blocks/api.php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\Blocks;
+
+use function SpaghettiDojo\Burokku\package;
+
+/**
+ * Get block context from container
+ */
+function context(string $contextName): Context
+{
+    $service = package()->container()->get($contextName);
+    
+    if (!$service instanceof Context) {
+        throw new \InvalidArgumentException(
+            "Service '{$contextName}' is not a valid context."
+        );
+    }
+
+    return $service;
+}
+
+/**
+ * Get template renderer
+ */
+function renderer(): TemplateRender
+{
+    return package()->container()->get(TemplateRender::class);
+}
+```
+
+**General Rule:** Prefer classes over functions. Use functions only for:
+- Simple utility operations
+- Convenience wrappers around container services
+- WordPress template compatibility
+
+### Block Registration Pattern
+
+**DO NOT use `register_block_type()` directly.**
+
+#### Use BlockRegistrar with Metadata
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku\Blocks;
+
+class BlockRegistrar
+{
+    public static function new(
+        string $blocksDirectory,
+        string $blocksManifestPath
+    ): self {
+        return new self($blocksDirectory, $blocksManifestPath);
+    }
+
+    final private function __construct(
+        private readonly string $blocksDirectory,
+        private readonly string $blocksManifestPath
+    ) {}
+
+    public function registerBlockTypes(): void
+    {
+        $blocksDirectory = untrailingslashit($this->blocksDirectory);
+
+        // Register metadata collection for performance
+        wp_register_block_metadata_collection(
+            $blocksDirectory,
+            $this->blocksManifestPath
+        );
+
+        // Iterate through block directories
+        $blockPaths = new \DirectoryIterator($blocksDirectory);
+
+        foreach ($blockPaths as $blockPath) {
+            if ($blockPath->isDot() || $blockPath->isFile()) {
+                continue;
+            }
+
+            $blockJson = $blockPath->getPathname() . '/block.json';
+            
+            if (!file_exists($blockJson)) {
+                continue;
+            }
+
+            // Use metadata-based registration
+            register_block_type_from_metadata($blockPath->getPathname());
+        }
+    }
+}
+```
+
+**Benefits:**
+- Uses `blocks-manifest.php` generated by `@wordpress/scripts` for performance
+- Registers all blocks automatically from directory structure
+- Metadata in `block.json` (single source of truth)
+- No manual maintenance of block list
+
+**Integration in Module:**
+```php
+public function run(ContainerInterface $container): bool
+{
+    add_action('init', function() use ($container) {
+        $container->get(BlockRegistrar::class)->registerBlockTypes();
+    });
+    
+    return true;
+}
+```
+
+### Package Bootstrap Pattern
+
+Create a `sources/package.php` file to initialize the theme package:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku;
+
+use Inpsyde\Modularity;
+
+/**
+ * Get or initialize the theme package
+ */
+function package(): Modularity\Package
+{
+    static $package = null;
+
+    if (!$package) {
+        $themeFilePath = get_template_directory() . '/style.css';
+        $properties = Modularity\Properties\ThemeProperties::new($themeFilePath);
+        $package = Modularity\Package::new($properties);
+    }
+
+    return $package;
+}
+```
+
+**Usage in functions.php or theme entry point:**
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace SpaghettiDojo\Burokku;
+
+add_action('after_setup_theme', static function() {
+    $package = package();
+
+    $package
+        ->addModule(Blocks\Module::new())
+        ->addModule(Animations\Module::new())
+        ->addModule(User\Module::new())
+        ->boot();
+});
+```
+
+### Summary Checklist
+
+When writing PHP code for Burokku:
+
+- [ ] Use `declare(strict_types=1)` at the top of every file
+- [ ] Use PSR-4 namespace: `SpaghettiDojo\Burokku\{Package}\`
+- [ ] Use static factory `::new()` for all classes
+- [ ] Make constructor `final private function __construct()`
+- [ ] Use `readonly` for immutable properties
+- [ ] Use property promotion in constructors
+- [ ] Declare ALL parameter and return types
+- [ ] Use PHPDoc for complex types (arrays, unions)
+- [ ] Put WordPress hooks ONLY in `ExecutableModule::run()`
+- [ ] Define services in `ServiceModule::services()`
+- [ ] Use `register_block_type_from_metadata()` for blocks
+- [ ] Study [Konomi](https://github.com/Spaghetti-Dojo/konomi) for examples
 
 ## Block Development Guidelines
 
@@ -216,7 +698,7 @@ class Block {
             )
         );
     }
-    
+
     /**
      * Render callback for server-side rendering
      */
@@ -285,7 +767,7 @@ import { __ } from '@wordpress/i18n';
 registerBlockType('burokku/counter', {
     edit: ({ attributes, setAttributes }) => {
         const blockProps = useBlockProps();
-        
+
         return (
             <>
                 <InspectorControls>
@@ -299,19 +781,19 @@ registerBlockType('burokku/counter', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                
+
                 <div {...blockProps}>
                     {/* Block content */}
                 </div>
             </>
         );
     },
-    
+
     save: ({ attributes }) => {
         const blockProps = useBlockProps.save();
-        
+
         return (
-            <div 
+            <div
                 {...blockProps}
                 data-end-value={attributes.endValue}
             >
@@ -332,12 +814,12 @@ class CounterBlock {
         this.endValue = Number(element.dataset.endValue);
         this.init();
     }
-    
+
     init() {
         // Initialization logic
         this.observe();
     }
-    
+
     observe() {
         const observer = new IntersectionObserver(
             (entries) => this.handleIntersection(entries),
@@ -345,7 +827,7 @@ class CounterBlock {
         );
         observer.observe(this.element);
     }
-    
+
     handleIntersection(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -353,7 +835,7 @@ class CounterBlock {
             }
         });
     }
-    
+
     animate() {
         // Animation logic using CountUp.js
     }
@@ -436,29 +918,29 @@ class TabsComponent {
         this.tabList = element.querySelector('[role="tablist"]');
         this.tabs = element.querySelectorAll('[role="tab"]');
         this.panels = element.querySelectorAll('[role="tabpanel"]');
-        
+
         this.tabs.forEach((tab, index) => {
             tab.addEventListener('click', () => this.selectTab(index));
             tab.addEventListener('keydown', (e) => this.handleKeyDown(e, index));
         });
     }
-    
+
     selectTab(index) {
         this.tabs.forEach((tab, i) => {
             const isSelected = i === index;
             tab.setAttribute('aria-selected', isSelected);
             tab.setAttribute('tabindex', isSelected ? '0' : '-1');
         });
-        
+
         this.panels.forEach((panel, i) => {
             panel.hidden = i !== index;
         });
     }
-    
+
     handleKeyDown(event, currentIndex) {
         const { key } = event;
         let newIndex = currentIndex;
-        
+
         switch(key) {
             case 'ArrowRight':
                 newIndex = (currentIndex + 1) % this.tabs.length;
@@ -475,7 +957,7 @@ class TabsComponent {
             default:
                 return;
         }
-        
+
         event.preventDefault();
         this.selectTab(newIndex);
         this.tabs[newIndex].focus();
@@ -501,7 +983,7 @@ Always respect `prefers-reduced-motion`:
 .animate-fade-in {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
-  
+
   &.is-visible {
     opacity: 1;
   }
@@ -567,7 +1049,7 @@ import { CountUp } from 'countup.js';  // Only if used immediately
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 300ms, transform 300ms;
-  
+
   &.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -685,12 +1167,12 @@ class MyEndpoint {
             'permission_callback' => array( __CLASS__, 'permissions' ),
         ) );
     }
-    
+
     public static function handle( $request ) {
         // Handle request
         return rest_ensure_response( $data );
     }
-    
+
     public static function permissions( $request ) {
         return current_user_can( 'edit_posts' );
     }
