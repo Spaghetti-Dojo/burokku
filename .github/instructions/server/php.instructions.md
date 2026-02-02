@@ -43,3 +43,31 @@ Apply SOLID principles within WordPress conventions:
 - **DRY (Don't Repeat Yourself)**: Extract reusable code into utilities
 - **YAGNI (You Aren't Gonna Need It)**: Implement only what's currently needed
 - **Composition over Inheritance**: Favor composition and traits over deep inheritance hierarchies
+
+## WordPress Hooks Naming Convention
+
+When creating custom WordPress actions and filters, follow this naming pattern:
+
+**Pattern:** `{project-name}.{package}.{event-name}`
+
+- **project-name**: The project identifier (e.g., `burokku`)
+- **package**: The package/module name (optional when code is at root level)
+- **event-name**: Descriptive name of the event/action
+- Use **dashes** (`-`) to separate words within each component
+
+**Examples:**
+```php
+// Root-level hook (no package component)
+do_action('burokku.boot-failed', $exception);
+
+// Package-level hook
+do_action('burokku.theme-setup.assets-loaded', $assets);
+
+// Another package example
+apply_filters('burokku.blocks.custom-block-registered', $block);
+```
+
+**Guidelines:**
+- Keep hook names descriptive and self-documenting
+- Use present or past tense for event names (e.g., `loaded`, `failed`, `registered`)
+- Avoid underscores - use dashes consistently
