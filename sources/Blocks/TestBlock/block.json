@@ -17,6 +17,6 @@
 			"default": "Hello from Test Block!"
 		}
 	},
-	"editorScript": "file:./index.js",
+	"editorScript": "file:./edit.tsx",
 	"style": "file:./style.css"
 }

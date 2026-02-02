@@ -5,15 +5,23 @@
  * to support the monorepo structure under /sources/.
  */
 
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
 const fs = require( 'fs' );
 
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
+
+/**
+ * @typedef {Object.<string, string>} Entries
+ */
+
 /**
  * Automatically discover block entry points from /sources/Blocks/
- * Each block directory with an index.js or edit.js gets an entry point
+ * Each block directory with an edit.ts or view.ts gets an entry point
+ *
+ * @return {Entries} Object mapping entry names to file paths
  */
-function getBlockEntries() {
+function blockEntries() {
+	/** @type {Entries} */
 	const entries = {};
 	const blocksDir = path.resolve( __dirname, 'sources/Blocks' );
 
@@ -31,16 +39,19 @@ function getBlockEntries() {
 	blockDirs.forEach( ( blockName ) => {
 		const blockDir = path.join( blocksDir, blockName );
 
-		// Look for index.js, edit.js, or view.js as entry points
-		const possibleEntries = [ 'index.js', 'edit.js', 'view.js' ];
+		// Look for edit.ts/tsx or view.ts/tsx as entry points
+		const possibleEntries = [
+			'edit.ts',
+			'edit.tsx',
+			'view.ts',
+			'view.tsx',
+		];
 
 		possibleEntries.forEach( ( entryFile ) => {
 			const entryPath = path.join( blockDir, entryFile );
 			if ( fs.existsSync( entryPath ) ) {
-				const entryName = `blocks/${ blockName }/${ entryFile.replace(
-					'.js',
-					''
-				) }`;
+				const fileBase = entryFile.replace( /\.(ts|tsx)$/, '' );
+				const entryName = `@burokku/${ blockName }-${ fileBase }`;
 				entries[ entryName ] = entryPath;
 			}
 		} );
@@ -49,56 +60,15 @@ function getBlockEntries() {
 	return entries;
 }
 
-/**
- * Get entries for other source directories (Animations, Integrations, etc.)
- */
-function getSourceEntries() {
-	const entries = {};
-	const sourcesDir = path.resolve( __dirname, 'sources' );
+// Get custom entries
+const customEntries = blockEntries();
 
-	if ( ! fs.existsSync( sourcesDir ) ) {
-		return entries;
-	}
-
-	// Define directories to scan for index.js files
-	const sourceDirs = [ 'Animations', 'Integrations', 'Utils' ];
-
-	sourceDirs.forEach( ( dirName ) => {
-		const dirPath = path.join( sourcesDir, dirName );
-		if ( ! fs.existsSync( dirPath ) ) {
-			return;
-		}
-
-		// Look for index.js in the directory
-		const indexPath = path.join( dirPath, 'index.js' );
-		if ( fs.existsSync( indexPath ) ) {
-			entries[ dirName.toLowerCase() ] = indexPath;
-		}
-	} );
-
-	return entries;
-}
-
-// Merge all entries
-const customEntries = {
-	...getBlockEntries(),
-	...getSourceEntries(),
+// Export config with custom entries and output path
+module.exports = {
+	...defaultConfig,
+	entry: customEntries,
+	output: {
+		...( defaultConfig.output || {} ),
+		path: path.resolve( __dirname, 'dist' ),
+	},
 };
-
-// If there are no custom entries, use the default config as-is
-if ( Object.keys( customEntries ).length === 0 ) {
-	module.exports = defaultConfig;
-} else {
-	// Extend the default config with custom entries
-	module.exports = {
-		...defaultConfig,
-		entry: {
-			...( defaultConfig.entry || {} ),
-			...customEntries,
-		},
-		output: {
-			...( defaultConfig.output || {} ),
-			path: path.resolve( __dirname, 'assets' ),
-		},
-	};
-}

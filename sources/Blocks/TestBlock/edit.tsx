@@ -1,5 +1,5 @@
 /**
- * Test Block - Editor and Frontend
+ * Test Block - Editor Component
  *
  * This is a simple test block to verify the build system is working.
  */
@@ -7,18 +7,25 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import type { BlockEditProps } from '@wordpress/blocks';
 
 // Import block styles
 import './style.scss';
 
+interface BlockAttributes {
+	content: string;
+}
+
 /**
  * Edit component for the test block
  *
- * @param {Object} props            - Component props
- * @param {Object} props.attributes - Block attributes
- * @return {Element} Element to render
+ * @param {Object} root0            - Component props
+ * @param {Object} root0.attributes - Block attributes
+ * @return {JSX.Element} Block edit component
  */
-function Edit( { attributes } ) {
+function Edit( {
+	attributes,
+}: BlockEditProps< BlockAttributes > ): JSX.Element {
 	const blockProps = useBlockProps();
 
 	return (
@@ -34,11 +41,13 @@ function Edit( { attributes } ) {
 /**
  * Save component for the test block
  *
- * @param {Object} props            - Component props
- * @param {Object} props.attributes - Block attributes
- * @return {Element} Element to render
+ * @param {Object} root0            - Component props
+ * @param {Object} root0.attributes - Block attributes
+ * @return {JSX.Element} Block save component
  */
-function Save( { attributes } ) {
+function Save( {
+	attributes,
+}: BlockEditProps< BlockAttributes > ): JSX.Element {
 	const blockProps = useBlockProps.save();
 
 	return (
@@ -51,7 +60,7 @@ function Save( { attributes } ) {
 /**
  * Register the test block
  */
-registerBlockType( 'burokku/test-block', {
+registerBlockType< BlockAttributes >( 'burokku/test-block', {
 	edit: Edit,
 	save: Save,
 } );
