@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"target": "ES2024",
-		"lib": [ "ES2024", "DOM", "DOM.Iterable" ],
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"checkJs": false,
@@ -27,5 +26,5 @@
 		"rootDir": "./"
 	},
 	"include": [ "./sources" ],
-	"exclude": [ "**/assets/", "node_modules", "**/tests/" ]
+	"exclude": [ "node_modules" ]
 }

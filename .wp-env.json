@@ -1,20 +1,17 @@
 {
-	"core": null,
-	"themes": [ "." ],
+	"core": "./vendor/roots/wordpress-no-content",
+	"themes": [
+		"."
+	],
 	"plugins": [
 		"https://downloads.wordpress.org/plugin/query-monitor.3.16.4.zip"
 	],
 	"env": {
 		"development": {
 			"phpVersion": "8.4",
-			"coreSource": "WordPress/WordPress#6.9",
 			"mappings": {
 				"wp-content/themes/burokku": "."
 			}
-		},
-		"tests": {
-			"phpVersion": "8.4",
-			"coreSource": "WordPress/WordPress#6.9"
 		}
 	},
 	"config": {
