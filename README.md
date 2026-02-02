@@ -17,9 +17,9 @@
 - Modern browser (latest 2 versions of Chrome, Firefox, Safari, or Edge)
 
 ### Development
-- Node.js 20+ (for development)
-- npm or pnpm (for development)
-- TypeScript 5.6+
+- Node.js 24+ (for development)
+- pnpm (for development)
+- TypeScript 5.9+
 
 ## 📄 License
 
