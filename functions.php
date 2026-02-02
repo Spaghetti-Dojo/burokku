@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace SpaghettiDojo\Burokku;
 
-use Inpsyde\Modularity;
-
 /**
  * Boot the Burokku theme package.
  *
