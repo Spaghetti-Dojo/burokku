@@ -69,5 +69,6 @@ apply_filters('burokku.blocks.custom-block-registered', $block);
 
 **Guidelines:**
 - Keep hook names descriptive and self-documenting
-- Use present or past tense for event names (e.g., `loaded`, `failed`, `registered`)
+- Use past tense for completed actions (e.g., `loaded`, `failed`, `registered`)
+- Use present tense for state changes or ongoing events (e.g., `loading`, `processing`)
 - Avoid underscores - use dashes consistently
