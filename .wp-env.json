@@ -1,5 +1,5 @@
 {
-	"core": "vendor/roots/wordpress-no-content",
+	"core": "./vendor/roots/wordpress-no-content",
 	"themes": [
 		"."
 	],
@@ -9,14 +9,9 @@
 	"env": {
 		"development": {
 			"phpVersion": "8.4",
-			"coreSource": "WordPress/WordPress#6.9",
 			"mappings": {
 				"wp-content/themes/burokku": "."
 			}
-		},
-		"tests": {
-			"phpVersion": "8.4",
-			"coreSource": "WordPress/WordPress#6.9"
 		}
 	},
 	"config": {
