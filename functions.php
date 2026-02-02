@@ -15,6 +15,8 @@ namespace SpaghettiDojo\Burokku;
 function boot(): void
 {
     try {
+        // package() is autoloaded from inc/package.php via Composer
+        // Returns Inpsyde\Modularity\Package instance
         $package = package();
         
         if (!$package->boot()) {
