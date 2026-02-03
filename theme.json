@@ -81,7 +81,6 @@
 			]
 		},
 		"typography": {
-			"custom": true,
 			"customFontSize": true,
 			"fontSizes": [],
 			"fontFamilies": []
@@ -107,6 +106,5 @@
 		"spacing": {
 			"blockGap": "1.5rem"
 		}
-	},
-	"customProperties": {}
+	}
 }
