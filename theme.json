@@ -15,42 +15,42 @@
 			"palette": [
 				{
 					"slug": "background",
-					"color": "hsl(222.2, 84%, 4.9%)",
+					"color": "hsl(0, 0%, 3.9%)",
 					"name": "Background"
 				},
 				{
 					"slug": "foreground",
-					"color": "hsl(210, 40%, 98%)",
+					"color": "hsl(0, 0%, 98%)",
 					"name": "Foreground"
 				},
 				{
 					"slug": "primary",
-					"color": "hsl(222.2, 47.4%, 11.2%)",
+					"color": "hsl(0, 0%, 98%)",
 					"name": "Primary"
 				},
 				{
 					"slug": "primary-foreground",
-					"color": "hsl(210, 40%, 98%)",
+					"color": "hsl(0, 0%, 9%)",
 					"name": "Primary Foreground"
 				},
 				{
 					"slug": "muted",
-					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"color": "hsl(0, 0%, 14.9%)",
 					"name": "Muted"
 				},
 				{
 					"slug": "muted-foreground",
-					"color": "hsl(215, 20.2%, 65.1%)",
+					"color": "hsl(0, 0%, 63.9%)",
 					"name": "Muted Foreground"
 				},
 				{
 					"slug": "accent",
-					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"color": "hsl(0, 0%, 14.9%)",
 					"name": "Accent"
 				},
 				{
 					"slug": "accent-foreground",
-					"color": "hsl(210, 40%, 98%)",
+					"color": "hsl(0, 0%, 98%)",
 					"name": "Accent Foreground"
 				},
 				{
@@ -60,22 +60,22 @@
 				},
 				{
 					"slug": "destructive-foreground",
-					"color": "hsl(210, 40%, 98%)",
+					"color": "hsl(0, 0%, 98%)",
 					"name": "Destructive Foreground"
 				},
 				{
 					"slug": "border",
-					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"color": "hsl(0, 0%, 14.9%)",
 					"name": "Border"
 				},
 				{
 					"slug": "input",
-					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"color": "hsl(0, 0%, 14.9%)",
 					"name": "Input"
 				},
 				{
 					"slug": "ring",
-					"color": "hsl(212.7, 26.8%, 83.9%)",
+					"color": "hsl(0, 0%, 83.1%)",
 					"name": "Ring"
 				}
 			]
