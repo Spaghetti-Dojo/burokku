@@ -13,3 +13,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: burokku
 Tags: block-patterns, full-site-editing, custom-colors, template-editing
 */
+
+/*
+h2:not(.has-border) {
+	border-bottom: 1px solid var(--wp--preset--color--gray-800);
+}
+*/

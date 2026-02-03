@@ -10,80 +10,199 @@
 			"custom": true,
 			"customDuotone": true,
 			"customGradient": true,
-			"defaultGradients": true,
-			"defaultPalette": true,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"defaultDuotone": false,
 			"palette": [
 				{
-					"slug": "background",
-					"color": "hsl(0, 0%, 3.9%)",
-					"name": "Background"
+					"slug": "black",
+					"color": "hsl(0 0% 3.9%)",
+					"name": "Black"
 				},
 				{
-					"slug": "foreground",
-					"color": "hsl(0, 0%, 98%)",
-					"name": "Foreground"
+					"slug": "gray-800",
+					"color": "hsl(0 0% 14.9%)",
+					"name": "Gray 800"
 				},
 				{
-					"slug": "primary",
-					"color": "hsl(0, 0%, 98%)",
-					"name": "Primary"
+					"slug": "gray-600",
+					"color": "hsl(0 0% 32.2%)",
+					"name": "Gray 600"
 				},
 				{
-					"slug": "primary-foreground",
-					"color": "hsl(0, 0%, 9%)",
-					"name": "Primary Foreground"
+					"slug": "gray-400",
+					"color": "hsl(0 0% 63.9%)",
+					"name": "Gray 400"
 				},
 				{
-					"slug": "muted",
-					"color": "hsl(0, 0%, 14.9%)",
-					"name": "Muted"
+					"slug": "gray-200",
+					"color": "hsl(0 0% 89.8%)",
+					"name": "Gray 200"
 				},
 				{
-					"slug": "muted-foreground",
-					"color": "hsl(0, 0%, 63.9%)",
-					"name": "Muted Foreground"
+					"slug": "white",
+					"color": "hsl(0 0% 98%)",
+					"name": "White"
 				},
 				{
-					"slug": "accent",
-					"color": "hsl(0, 0%, 14.9%)",
-					"name": "Accent"
+					"slug": "green-700",
+					"color": "hsl(142.4 71.8% 29.2%)",
+					"name": "Green 700"
 				},
 				{
-					"slug": "accent-foreground",
-					"color": "hsl(0, 0%, 98%)",
-					"name": "Accent Foreground"
+					"slug": "green-500",
+					"color": "hsl(142.1 70.6% 45.3%)",
+					"name": "Green 500"
 				},
 				{
-					"slug": "destructive",
-					"color": "hsl(0, 62.8%, 30.6%)",
-					"name": "Destructive"
+					"slug": "green-300",
+					"color": "hsl(141.7 76.6% 73.1%)",
+					"name": "Green 300"
 				},
 				{
-					"slug": "destructive-foreground",
-					"color": "hsl(0, 0%, 98%)",
-					"name": "Destructive Foreground"
+					"slug": "blue-700",
+					"color": "hsl(192.9 82.3% 31%)",
+					"name": "Blue 700"
 				},
 				{
-					"slug": "border",
-					"color": "hsl(0, 0%, 14.9%)",
-					"name": "Border"
+					"slug": "blue-500",
+					"color": "hsl(198.6 88.7% 48.4%)",
+					"name": "Blue 500"
 				},
 				{
-					"slug": "input",
-					"color": "hsl(0, 0%, 14.9%)",
-					"name": "Input"
+					"slug": "blue-300",
+					"color": "hsl(187 92.4% 69%)",
+					"name": "Blue 300"
 				},
 				{
-					"slug": "ring",
-					"color": "hsl(0, 0%, 83.1%)",
-					"name": "Ring"
+					"slug": "yellow-700",
+					"color": "hsl(35.5 91.7% 32.9%)",
+					"name": "Yellow 700"
+				},
+				{
+					"slug": "yellow-500",
+					"color": "hsl(45.4 93.4% 47.5%)",
+					"name": "Yellow 500"
+				},
+				{
+					"slug": "yellow-300",
+					"color": "hsl(50.4 97.8% 63.5%)",
+					"name": "Yellow 300"
+				},
+				{
+					"slug": "orange-700",
+					"color": "hsl(17.5 88.3% 40.4%)",
+					"name": "Orange 700"
+				},
+				{
+					"slug": "orange-500",
+					"color": "hsl(24.6 95% 53.1%)",
+					"name": "Orange 500"
+				},
+				{
+					"slug": "orange-300",
+					"color": "hsl(30.7 97.2% 72.4%)",
+					"name": "Orange 300"
+				},
+				{
+					"slug": "red-700",
+					"color": "hsl(0 73.7% 41.8%)",
+					"name": "Red 700"
+				},
+				{
+					"slug": "red-500",
+					"color": "hsl(0 84.2% 60.2%)",
+					"name": "Red 500"
+				},
+				{
+					"slug": "red-300",
+					"color": "hsl(0 93.5% 81.8%)",
+					"name": "Red 300"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "gray",
+					"gradient": "linear-gradient(90deg, hsl(0 0% 25.1%) 0%, hsl(0 0% 89.8%) 100%)",
+					"name": "Gray"
+				},
+				{
+					"slug": "green",
+					"gradient": "linear-gradient(90deg, hsl(142.4 71.8% 29.2%) 0%, hsl(141 78.9% 85.1%) 100%)",
+					"name": "Green"
+				},
+				{
+					"slug": "blue",
+					"gradient": "linear-gradient(90deg, hsl(224.3 76.3% 48%) 0%, hsl(213.3 96.9% 87.3%) 100%)",
+					"name": "Blue"
+				},
+				{
+					"slug": "yellow",
+					"gradient": "linear-gradient(90deg, hsl(35.5 91.7% 32.9%) 0%, hsl(52.8 98.3% 76.9%) 100%)",
+					"name": "Yellow"
+				},
+				{
+					"slug": "orange",
+					"gradient": "linear-gradient(90deg, hsl(17.5 88.3% 40.4%) 0%, hsl(32.1 97.7% 83.1%) 100%)",
+					"name": "Orange"
+				},
+				{
+					"slug": "red",
+					"gradient": "linear-gradient(90deg, hsl(0 73.7% 41.8%) 0%, hsl(0 96.3% 89.4%) 100%)",
+					"name": "Red"
+				},
+				{
+					"slug": "gray-500-50",
+					"gradient": "linear-gradient(90deg, hsl(0 0% 45.1%) 0%, hsl(0 0% 98%) 100%)",
+					"name": "Gray 500-50"
+				},
+				{
+					"slug": "green-500-50",
+					"gradient": "linear-gradient(90deg, hsl(142.1 70.6% 45.3%) 0%, hsl(138.5 76.5% 96.7%) 100%)",
+					"name": "Green 500-50"
+				},
+				{
+					"slug": "blue-500-50",
+					"gradient": "linear-gradient(90deg, hsl(217.2 91.2% 59.8%) 0%, hsl(213.8 100% 96.9%) 100%)",
+					"name": "Blue 500-50"
+				},
+				{
+					"slug": "yellow-500-50",
+					"gradient": "linear-gradient(90deg, hsl(47.9 95.8% 53.1%) 0%, hsl(54.5 91.7% 95.3%) 100%)",
+					"name": "Yellow 500-50"
+				},
+				{
+					"slug": "orange-500-50",
+					"gradient": "linear-gradient(90deg, hsl(24.6 95% 53.1%) 0%, hsl(33.3 100% 96.5%) 100%)",
+					"name": "Orange 500-50"
+				},
+				{
+					"slug": "red-500-50",
+					"gradient": "linear-gradient(90deg, hsl(0 84.2% 60.2%) 0%, hsl(0 85.7% 97.3%) 100%)",
+					"name": "Red 500-50"
 				}
 			]
 		},
 		"typography": {
 			"customFontSize": true,
-			"fontSizes": [],
-			"fontFamilies": []
+			"fontSizes": [
+			],
+			"fontFamilies": [
+				{
+					"name": "Primary",
+					"slug": "primary",
+					"fontFamily": "Geist, ystem-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Geist",
+							"fontWeight": "300 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/geist-variable.woff2" ]
+						}
+					]
+				}
+			]
 		},
 		"spacing": {
 			"units": [
@@ -96,15 +215,119 @@
 			],
 			"padding": true,
 			"margin": true
+		},
+		"custom": {
+			"color": {
+				"gray-900": "hsl(0 0% 9%)",
+				"gray-700": "hsl(0 0% 25.1%)",
+				"gray-500": "hsl(0 0% 45.1%)",
+				"gray-300": "hsl(0 0% 83.1%)",
+				"gray-100": "hsl(0 0% 96.1%)"
+			}
 		}
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--background)",
-			"text": "var(--wp--preset--color--foreground)"
+			"background": "var(--wp--custom--color--gray-900)",
+			"text": "var(--wp--preset--color--white)"
 		},
 		"spacing": {
 			"blockGap": "1.5rem"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--primary)",
+			"fontWeight": "400",
+			"fontSize": "16px",
+			"lineHeight": "28px"
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--white)"
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--gray-300)"
+					}
+				}
+			},
+			"button": {
+				"color": {
+					"text": "var(--wp--custom--color--gray-900)",
+					"background": "var(--wp--preset--color--white)"
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--white)",
+						"background": "var(--wp--custom--color--gray-500)"
+					}
+				}
+			},
+			"heading": {
+				"color": {
+					"text": "var(--wp--preset--color--white)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--primary)",
+					"fontWeight": "400"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "48px",
+					"lineHeight": "48px",
+					"fontWeight": "800"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "30px",
+					"lineHeight": "36px",
+					"fontWeight": "600"
+				},
+				"spacing": {
+					"padding": {
+						"bottom": "8px"
+					}
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "24px",
+					"lineHeight": "32px",
+					"fontWeight": "600"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontSize": "20px",
+					"lineHeight": "28px",
+					"fontWeight": "600"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontSize": "18px",
+					"lineHeight": "26px",
+					"fontWeight": "600"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontSize": "16px",
+					"lineHeight": "24px",
+					"fontWeight": "600"
+				}
+			},
+			"caption": {
+				"color": {
+					"text": "var(--wp--preset--color--white)"
+				},
+				"typography": {
+					"fontSize": "14px",
+					"lineHeight": "18px"
+				}
+			}
 		}
 	}
 }
