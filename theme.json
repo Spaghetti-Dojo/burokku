@@ -12,7 +12,73 @@
 			"customGradient": true,
 			"defaultGradients": true,
 			"defaultPalette": true,
-			"palette": []
+			"palette": [
+				{
+					"slug": "background",
+					"color": "hsl(222.2, 84%, 4.9%)",
+					"name": "Background"
+				},
+				{
+					"slug": "foreground",
+					"color": "hsl(210, 40%, 98%)",
+					"name": "Foreground"
+				},
+				{
+					"slug": "primary",
+					"color": "hsl(222.2, 47.4%, 11.2%)",
+					"name": "Primary"
+				},
+				{
+					"slug": "primary-foreground",
+					"color": "hsl(210, 40%, 98%)",
+					"name": "Primary Foreground"
+				},
+				{
+					"slug": "muted",
+					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"name": "Muted"
+				},
+				{
+					"slug": "muted-foreground",
+					"color": "hsl(215, 20.2%, 65.1%)",
+					"name": "Muted Foreground"
+				},
+				{
+					"slug": "accent",
+					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"name": "Accent"
+				},
+				{
+					"slug": "accent-foreground",
+					"color": "hsl(210, 40%, 98%)",
+					"name": "Accent Foreground"
+				},
+				{
+					"slug": "destructive",
+					"color": "hsl(0, 62.8%, 30.6%)",
+					"name": "Destructive"
+				},
+				{
+					"slug": "destructive-foreground",
+					"color": "hsl(210, 40%, 98%)",
+					"name": "Destructive Foreground"
+				},
+				{
+					"slug": "border",
+					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"name": "Border"
+				},
+				{
+					"slug": "input",
+					"color": "hsl(217.2, 32.6%, 17.5%)",
+					"name": "Input"
+				},
+				{
+					"slug": "ring",
+					"color": "hsl(212.7, 26.8%, 83.9%)",
+					"name": "Ring"
+				}
+			]
 		},
 		"typography": {
 			"custom": true,
@@ -34,6 +100,10 @@
 		}
 	},
 	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--background)",
+			"text": "var(--wp--preset--color--foreground)"
+		},
 		"spacing": {
 			"blockGap": "1.5rem"
 		}
