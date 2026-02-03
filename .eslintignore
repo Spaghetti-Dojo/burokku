@@ -3,6 +3,5 @@
 /node_modules
 /dist/
 *.config.js
-babel.config.js
-webpack.config.js
+*.config.ts
 .prettierrc.js

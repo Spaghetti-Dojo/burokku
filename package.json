@@ -43,8 +43,10 @@
 		"@types/node": "^24.0.0",
 		"@types/react": "^19.0.0",
 		"@types/react-dom": "^19.0.0",
+		"@types/webpack": "^5.28.5",
 		"@wordpress/scripts": "^31.4.0",
 		"sass": "^1.83.0",
+		"ts-node": "^10.9.2",
 		"typescript": "~5.9.0"
 	}
 }

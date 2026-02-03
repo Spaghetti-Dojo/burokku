@@ -5,24 +5,24 @@
  * to support the monorepo structure under /sources/.
  */
 
-const path = require( 'path' );
-const fs = require( 'fs' );
+import path from 'path';
+import fs from 'fs';
+import type { Configuration } from 'webpack';
 
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config' ) as Configuration;
 
-/**
- * @typedef {Object.<string, string>} Entries
- */
+interface Entries {
+	[ key: string ]: string;
+}
 
 /**
  * Automatically discover block entry points from /sources/Blocks/
  * Each block directory with an edit.ts or view.ts gets an entry point
  *
- * @return {Entries} Object mapping entry names to file paths
+ * @return Object mapping entry names to file paths
  */
-function blockEntries() {
-	/** @type {Entries} */
-	const entries = {};
+function blockEntries(): Entries {
+	const entries: Entries = {};
 	const blocksDir = path.resolve( __dirname, 'sources/Blocks' );
 
 	// Check if Blocks directory exists
@@ -64,7 +64,7 @@ function blockEntries() {
 const customEntries = blockEntries();
 
 // Export config with custom entries and output path
-module.exports = {
+const config: Configuration = {
 	...defaultConfig,
 	entry: customEntries,
 	output: {
@@ -72,3 +72,5 @@ module.exports = {
 		path: path.resolve( __dirname, 'dist' ),
 	},
 };
+
+export default config;
