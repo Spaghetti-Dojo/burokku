@@ -44,6 +44,11 @@ Apply SOLID principles within WordPress conventions:
 - **YAGNI (You Aren't Gonna Need It)**: Implement only what's currently needed
 - **Composition over Inheritance**: Favor composition and traits over deep inheritance hierarchies
 
+## Code Comments
+- Avoid redundant comments that state the obvious
+- Focus comments on explaining the "why" and "how" rather than the "what"
+- Don't use docblocks for fuctions and methods where parameters types and return types are already clear from type hints
+
 ## WordPress Hooks Naming Convention
 
 When creating custom WordPress actions and filters, follow this naming pattern:
