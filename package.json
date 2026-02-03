@@ -24,6 +24,7 @@
 		"pnpm": ">=10.0.0"
 	},
 	"scripts": {
+		"env": "wp-env",
 		"start": "wp-scripts start",
 		"build": "wp-scripts build",
 		"lint:css": "wp-scripts lint-style",
@@ -44,6 +45,7 @@
 		"@types/react": "^19.0.0",
 		"@types/react-dom": "^19.0.0",
 		"@types/webpack": "^5.28.5",
+		"@wordpress/env": "^10.39.0",
 		"@wordpress/scripts": "^31.4.0",
 		"sass": "^1.83.0",
 		"ts-node": "^10.9.2",

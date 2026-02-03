@@ -10,10 +10,13 @@ namespace SpaghettiDojo\Burokku;
  * This function initializes the theme package and handles any boot errors
  * by displaying an admin notice and firing an action for logging purposes.
  *
- * @return void
+ * @private
+ * @internal
  */
 function boot(): void
 {
+    autoload();
+
     try {
         $package = package();
         $package->boot();
@@ -23,15 +26,38 @@ function boot(): void
 }
 
 /**
+ * Load the Composer autoloader and ensure the package function is available.
+ * This function is called during the boot process to set up autoloading for the theme.
+ *
+ * @private
+ * @internal
+ * @throws \RuntimeException if the autoload file is missing or the package function is not found after including it.
+ */
+function autoload(): void {
+    $autoloadFile = __DIR__ . '/vendor/autoload.php';
+    if (!file_exists($autoloadFile)) {
+        throw new \RuntimeException('Autoload file not found. Please run "composer install" to set up dependencies.');
+    }
+
+    if (!function_exists('\\SpaghettiDojo\\Burokku\\package')) {
+        require_once $autoloadFile;
+    }
+    if (!function_exists('\\SpaghettiDojo\\Burokku\\package')) {
+        throw new \RuntimeException('Package function not found after including autoload. Please check your setup.');
+    }
+}
+
+/**
  * Handle boot failure by displaying an admin notice and firing an action.
  *
+ * @private
+ * @internal
  * @param \Throwable $exception The exception that occurred during boot.
- * @return void
  */
 function handleBootFailure(\Throwable $exception): void
 {
     do_action('burokku.boot-failed', $exception);
-    
+
     // Display admin notice
     add_action(
         'admin_notices',
@@ -50,7 +76,8 @@ function handleBootFailure(\Throwable $exception): void
  *
  * Configures theme supports and editor styles.
  *
- * @return void
+ * @private
+ * @internal
  */
 function themeSetup(): void
 {
@@ -58,7 +85,7 @@ function themeSetup(): void
     add_theme_support('editor-styles');
     add_theme_support('wp-block-styles');
     add_theme_support('responsive-embeds');
-    
+
     // Enqueue editor styles
     add_editor_style('style.css');
 }
