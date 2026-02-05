@@ -2,6 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"settings": {
+		"useRootPaddingAwareAlignments": true,
 		"layout": {
 			"contentSize": "1200px",
 			"wideSize": "1680px"
@@ -183,15 +184,21 @@
 				}
 			]
 		},
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
 		"typography": {
 			"customFontSize": true,
 			"fontSizes": [
 			],
 			"fontFamilies": [
 				{
-					"name": "Primary",
-					"slug": "primary",
-					"fontFamily": "Geist, ystem-ui, sans-serif",
+					"name": "Geist",
+					"slug": "geist",
+					"fontFamily": "Geist, system-ui, sans-serif",
 					"fontFace": [
 						{
 							"fontFamily": "Geist",
@@ -205,6 +212,7 @@
 			]
 		},
 		"spacing": {
+			"blockGap": true,
 			"units": [
 				"px",
 				"em",
@@ -223,6 +231,11 @@
 				"gray-500": "hsl(0 0% 45.1%)",
 				"gray-300": "hsl(0 0% 83.1%)",
 				"gray-100": "hsl(0 0% 96.1%)"
+			},
+			"border": {
+				"radius": {
+					"6": "6px"
+				}
 			}
 		}
 	},
@@ -232,13 +245,17 @@
 			"text": "var(--wp--preset--color--white)"
 		},
 		"spacing": {
-			"blockGap": "1.5rem"
+			"blockGap": "1.5rem",
+			"padding": {
+				"right": "1.5rem",
+				"left": "1.5rem"
+			}
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--primary)",
+			"fontFamily": "var(--wp--preset--font-family--geist)",
 			"fontWeight": "400",
-			"fontSize": "16px",
-			"lineHeight": "28px"
+			"fontSize": "18px",
+			"lineHeight": "32px"
 		},
 		"elements": {
 			"link": {
@@ -258,9 +275,12 @@
 				},
 				":hover": {
 					"color": {
-						"text": "var(--wp--preset--color--white)",
-						"background": "var(--wp--custom--color--gray-500)"
+						"text": "var(--wp--custom--color--gray-900)",
+						"background": "var(--wp--preset--color--gray-200)"
 					}
+				},
+				"border": {
+					"radius": "var(--wp--custom--border--radius--6)"
 				}
 			},
 			"heading": {
@@ -268,7 +288,7 @@
 					"text": "var(--wp--preset--color--white)"
 				},
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--primary)",
+					"fontFamily": "var(--wp--preset--font-family--geist)",
 					"fontWeight": "400"
 				}
 			},
@@ -288,6 +308,13 @@
 				"spacing": {
 					"padding": {
 						"bottom": "8px"
+					}
+				},
+				"border": {
+					"bottom": {
+						"width": "1px",
+						"color": "var(--wp--preset--color--gray-800)",
+						"style": "solid"
 					}
 				}
 			},
@@ -328,6 +355,8 @@
 					"lineHeight": "18px"
 				}
 			}
+		},
+		"blocks": {
 		}
 	}
 }
