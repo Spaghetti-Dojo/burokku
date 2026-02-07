@@ -1,0 +1,8 @@
+a {
+	color: currentColor;
+	text-underline-offset: 4px;
+
+	&:hover {
+		text-underline-offset: 6px;
+	}
+}
