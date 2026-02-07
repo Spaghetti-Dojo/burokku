@@ -19,18 +19,3 @@ h2:not(.has-border) {
 	border-bottom: 1px solid var(--wp--preset--color--gray-800);
 }
 */
-
-/* TODO Move in the right style file */
-.wp-block-button.is-style-outline .wp-block-button__link {
-	border: 1px solid var(--wp--preset--color--gray-800);
-	background-color: transparent;
-	color: var(--wp--preset--color--white);
-	padding-block-start: 8px;
-	padding-block-end: 8px;
-	padding-inline-end: 16px;
-	padding-inline-start: 16px;
-
-	&:hover {
-		background-color: var(--wp--preset--color--gray-800);
-	}
-}

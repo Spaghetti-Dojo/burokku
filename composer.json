@@ -24,7 +24,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"SpaghettiDojo\\Burokku\\": "sources/"
+			"SpaghettiDojo\\Burokku\\": "sources/server/"
 		},
 		"files": [
 			"inc/package.php"

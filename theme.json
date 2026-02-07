@@ -255,7 +255,7 @@
 			"fontFamily": "var(--wp--preset--font-family--geist)",
 			"fontWeight": "400",
 			"fontSize": "18px",
-			"lineHeight": "32px"
+			"lineHeight": "28px"
 		},
 		"elements": {
 			"link": {

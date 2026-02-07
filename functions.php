@@ -95,23 +95,3 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\themeSetup');
 
 // Boot the package
 add_action('after_setup_theme', __NAMESPACE__ . '\\boot');
-
-// TODO To remove once we have the Assets.
-add_action(
-    'wp_enqueue_scripts',
-    static function (): void {
-        wp_enqueue_style(
-            'burokku-style',
-            get_template_directory_uri() . '/style.css',
-            [],
-            filemtime(get_template_directory() . '/style.css')
-        );
-    }
-);
-
-// TODO Move in a Services Provider once we have one.
-add_action( 'init', function (): void {
-	add_filter( 'wp_theme_json_data_default', static function (): \WP_Theme_JSON_Data {
-		return new \WP_Theme_JSON_Data( [], 'default' );
-	} );
-}, 9999 );
