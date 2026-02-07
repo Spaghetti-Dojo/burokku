@@ -55,7 +55,8 @@ const config = {
 		new CleanWebpackPlugin({
 			cleanAfterEveryBuildPatterns: [
 				'@block-styles/*.js',
-				'@block-styles/*.js.map'
+				'@block-styles/*.js.map',
+				'@block-styles/*.css.map'
 			],
 			protectWebpackAssets: false
 		})

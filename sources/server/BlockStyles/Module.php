@@ -26,6 +26,7 @@ class Module implements ExecutableModule
         Button::new([
             ['burokku-outline', __('Outline', 'burokku')],
             ['burokku-secondary', __('Secondary', 'burokku')],
+            ['burokku-ghost', __('Ghost', 'burokku')],
         ])->init();
 
         return true;

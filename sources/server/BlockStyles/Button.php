@@ -33,7 +33,7 @@ final readonly class Button
     {
         add_action('init', $this->register_block_styles(...));
         add_filter('register_block_type_args', $this->unregister_default_button_styles(...), 10, 2);
-        add_action('wp_enqueue_scripts', $this->enqueue_block_styles(...), PHP_INT_MAX);
+        add_action('enqueue_block_assets', $this->enqueue_block_styles(...));
         add_action('enqueue_block_assets', $this->set_block_style_as_dependency(...), PHP_INT_MAX);
     }
 
@@ -59,6 +59,7 @@ final readonly class Button
                 [
                     'name' => $name,
                     'label' => $label,
+                    'style_handle' => self::BLOCK_STYLES_HANDLE
                 ]
             );
         }
@@ -70,15 +71,24 @@ final readonly class Button
             return;
         }
 
-        $is_local_env = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'local';
+        $is_prod_env = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'production';
         wp_register_style(
             self::BLOCK_STYLES_HANDLE,
             get_theme_file_uri('/dist/@block-styles/button.css'),
             [],
-            $is_local_env ? null : wp_get_theme()->get('Version')
+            $is_prod_env ? wp_get_theme()->get('Version') : null
         );
     }
 
+    /**
+     * Enqueue the block styles as dependencies of the button block to be sure the styles
+     * are loaded. This is something WordPress would address, but due to a bug with the
+     * `enqueue_block_styles_assets` executed after the `render_block` hook has been dispatched, the
+     * block styles registered with a `style_handle` are not correctly enqueued.
+     *
+     * @link https://core.trac.wordpress.org/ticket/55184
+     * @link https://github.com/WordPress/wordpress-develop/pull/6628
+     */
     private function set_block_style_as_dependency(): void
     {
         $wp_styles = wp_styles();
