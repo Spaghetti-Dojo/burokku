@@ -1,0 +1,8 @@
+.wp-block-button.is-style-burokku-ghost .wp-block-button__link {
+	background-color: transparent;
+	color: var(--wp--preset--color--white);
+
+	&:hover {
+		background-color: var(--wp--preset--color--gray-800);
+	}
+}

@@ -2,6 +2,7 @@
 /vendor
 /node_modules
 /dist/
+/.github/
 *.config.js
 *.config.ts
 .prettierrc.js

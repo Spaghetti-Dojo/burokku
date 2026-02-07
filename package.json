@@ -23,15 +23,6 @@
 		"node": ">=24.0.0",
 		"pnpm": ">=10.0.0"
 	},
-	"scripts": {
-		"env": "wp-env",
-		"start": "wp-scripts start",
-		"build": "wp-scripts build",
-		"lint:css": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
-		"lint:js:fix": "wp-scripts lint-js --fix",
-		"format": "wp-scripts format"
-	},
 	"dependencies": {
 		"@wordpress/block-editor": "^15.12.0",
 		"@wordpress/blocks": "^15.12.0",
@@ -46,9 +37,22 @@
 		"@types/react-dom": "^19.0.0",
 		"@types/webpack": "^5.28.5",
 		"@wordpress/env": "^10.39.0",
+		"@wordpress/prettier-config": "^4.39.0",
 		"@wordpress/scripts": "^31.4.0",
+		"clean-webpack-plugin": "^4.0.0",
 		"sass": "^1.83.0",
 		"ts-node": "^10.9.2",
 		"typescript": "~5.9.0"
+	},
+	"scripts": {
+		"env": "wp-env",
+		"start": "wp-scripts start",
+		"build": "wp-scripts build",
+		"build:dev": "wp-scripts start",
+		"lint:css": "wp-scripts lint-style",
+		"lint:css:fix": "wp-scripts lint-style --fix",
+		"lint:js": "wp-scripts lint-js",
+		"lint:js:fix": "wp-scripts lint-js --fix",
+		"format": "wp-scripts format"
 	}
 }

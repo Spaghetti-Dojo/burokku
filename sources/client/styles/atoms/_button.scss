@@ -1,0 +1,6 @@
+@use '@burokku/mixins';
+
+button,
+.wp-block-button__link {
+	@include mixins.transition-colors();
+}
