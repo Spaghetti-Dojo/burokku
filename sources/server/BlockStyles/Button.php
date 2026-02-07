@@ -12,7 +12,7 @@ namespace SpaghettiDojo\Burokku\BlockStyles;
  */
 final readonly class Button
 {
-    private const string BLOCK_STYLES_HANDLE = '@block-styles/button';
+    private const string BLOCK_STYLES_HANDLE = '@burokku/block-styles-button';
 
     /**
      * @param Styles $styles
@@ -74,7 +74,7 @@ final readonly class Button
         $is_prod_env = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'production';
         wp_register_style(
             self::BLOCK_STYLES_HANDLE,
-            get_theme_file_uri('/dist/@block-styles/button.css'),
+            get_theme_file_uri('/dist/styles/@block-styles/button.css'),
             [],
             $is_prod_env ? wp_get_theme()->get('Version') : null
         );

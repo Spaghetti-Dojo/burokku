@@ -20,19 +20,21 @@ function stylesEntries() {
 		const items = fs.readdirSync(dir, { withFileTypes: true });
 
 		items.forEach((item) => {
-			if (item.isDirectory()) {
-				const fullPath = path.join(dir, item.name);
-				const newPrefix = prefix ? `${prefix}/${item.name}` : `@${item.name}`;
-
-				// Check for index.scss in this directory
-				const indexScss = path.join(fullPath, 'index.scss');
-				if (fs.existsSync(indexScss)) {
-					entries[newPrefix] = indexScss;
-				}
-
-				// Recursively scan subdirectories
-				scanDirectory(fullPath, newPrefix);
+			if (!item.isDirectory() || item.name.includes('mixins')) {
+				return;
 			}
+
+			const fullPath = path.join(dir, item.name);
+			const indexScss = path.join(fullPath, 'index.scss');
+
+			if (fs.existsSync(indexScss)) {
+				const entryKey = prefix ? `${prefix}/${item.name}` : item.name;
+				entries[entryKey] = indexScss;
+				return; // Do not descend when this directory already provides an entry
+			}
+
+			const newPrefix = prefix ? `${prefix}/${item.name}` : `@${item.name}`;
+			scanDirectory(fullPath, newPrefix);
 		});
 	}
 
@@ -42,25 +44,31 @@ function stylesEntries() {
 
 // Export config with custom entries and output path
 /** @type {import('webpack').Configuration} */
-const config = {
+const styles = {
 	...defaultConfig,
 	entry: stylesEntries(),
+	resolve: {
+		...(defaultConfig.resolve || {}),
+		alias: {
+			'@burokku/mixins': path.resolve(__dirname, 'sources/client/styles/mixins'),
+		},
+	},
 	output: {
 		...(defaultConfig.output || {}),
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist/styles'),
 		clean: true
 	},
 	plugins: [
-		...(defaultConfig.plugins || []),
+		...(defaultConfig.plugins || []).filter(plugin => plugin.constructor.name !== 'RtlCssPlugin'),
 		new CleanWebpackPlugin({
 			cleanAfterEveryBuildPatterns: [
-				'@block-styles/*.js',
-				'@block-styles/*.js.map',
-				'@block-styles/*.css.map'
+				'**/*.js',
+				'**/*.js.map',
+				'**/*.css.map'
 			],
 			protectWebpackAssets: false
 		})
 	]
 };
 
-module.exports = config;
+module.exports = styles;

@@ -1,8 +1,10 @@
+@use "@burokku/mixins";
+
 .wp-block-button.is-style-burokku-secondary .wp-block-button__link {
 	background-color: var(--wp--preset--color--gray-800);
 	color: var(--wp--preset--color--white);
 
 	&:hover {
-		background-color: var(--wp--preset--color--gray-800);
+		background-color: mixins.darken(var(--wp--preset--color--gray-800));
 	}
 }
