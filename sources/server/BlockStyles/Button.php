@@ -34,7 +34,7 @@ final readonly class Button
         add_action('init', $this->register_block_styles(...));
         add_filter('register_block_type_args', $this->unregister_default_button_styles(...), 10, 2);
         add_action('enqueue_block_assets', $this->enqueue_block_styles(...));
-        add_action('enqueue_block_assets', $this->set_block_style_as_dependency(...), PHP_INT_MAX);
+        add_action('enqueue_block_assets', $this->set_block_style_as_dependency(...));
     }
 
     /**
