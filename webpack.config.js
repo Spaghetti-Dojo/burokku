@@ -7,6 +7,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
@@ -22,7 +23,7 @@ function stylesEntries() {
 			if (item.isDirectory()) {
 				const fullPath = path.join(dir, item.name);
 				const newPrefix = prefix ? `${prefix}/${item.name}` : `@${item.name}`;
-				
+
 				// Check for index.scss in this directory
 				const indexScss = path.join(fullPath, 'index.scss');
 				if (fs.existsSync(indexScss)) {
@@ -49,6 +50,16 @@ const config = {
 		path: path.resolve(__dirname, 'dist'),
 		clean: true
 	},
+	plugins: [
+		...(defaultConfig.plugins || []),
+		new CleanWebpackPlugin({
+			cleanAfterEveryBuildPatterns: [
+				'@block-styles/*.js',
+				'@block-styles/*.js.map'
+			],
+			protectWebpackAssets: false
+		})
+	]
 };
 
 module.exports = config;

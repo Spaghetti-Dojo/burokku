@@ -39,6 +39,7 @@
 		"@wordpress/env": "^10.39.0",
 		"@wordpress/prettier-config": "^4.39.0",
 		"@wordpress/scripts": "^31.4.0",
+		"clean-webpack-plugin": "^4.0.0",
 		"sass": "^1.83.0",
 		"ts-node": "^10.9.2",
 		"typescript": "~5.9.0"
