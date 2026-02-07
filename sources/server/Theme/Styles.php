@@ -13,7 +13,7 @@ final readonly class Styles
 
     final private function __construct()
     {
-        add_action('wp_enqueue_scripts', $this->register_styles(...));
+        add_action('enqueue_block_assets', $this->register_styles(...));
     }
 
     public function init(): void
