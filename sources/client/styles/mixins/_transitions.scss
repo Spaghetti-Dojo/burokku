@@ -13,7 +13,7 @@
  * @param {String} $property The CSS property to apply the transition to.
  */
 @mixin property-transition($property) {
-	transition-property: $property;
+	transition-property: #{$property};
 	transition-timing-function: var(--wp--custom--transition--timing-function);
 	transition-duration: var(--wp--custom--transition--duration);
 }

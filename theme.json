@@ -195,19 +195,29 @@
 			"width": true,
 			"radiusSizes": [
 				{
-					"name": "xxxs",
+					"name": "3x Small",
 					"slug": "xxxs",
-					"size": "6px"
+					"size": "0.3rem"
 				},
 				{
-					"name": "base",
+					"name": "Extra Small",
+					"slug": "xxs",
+					"size": "0.5rem"
+				},
+				{
+					"name": "Small",
+					"slug": "sm",
+					"size": "0.75rem"
+				},
+				{
+					"name": "Base",
 					"slug": "base",
-					"size": "16px"
+					"size": "1rem"
 				},
 				{
-					"name": "large",
+					"name": "Large",
 					"slug": "lg",
-					"size": "32px"
+					"size": "2rem"
 				}
 			]
 		},
@@ -354,7 +364,7 @@
 					}
 				},
 				"border": {
-					"radius": "var(--wp--preset--border-radius--xxxs)"
+					"radius": "var(--wp--preset--border-radius--xxs)"
 				},
 				"spacing": {
 					"padding": {
