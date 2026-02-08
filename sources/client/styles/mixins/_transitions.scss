@@ -2,7 +2,18 @@
  * Main Theme Transitions for Colors
  */
 @mixin transition-colors() {
-	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-	transition-duration: .15s;
+	@include property-transition('color, background-color, border-color, text-decoration-color, fill, stroke');
+}
+
+/*
+ * Theme Property Transition
+ *
+ * Perform a property transition using the theme's default transition timing function and duration.
+ *
+ * @param {String} $property The CSS property to apply the transition to.
+ */
+@mixin property-transition($property) {
+	transition-property: $property;
+	transition-timing-function: var(--wp--custom--transition--timing-function);
+	transition-duration: var(--wp--custom--transition--duration);
 }

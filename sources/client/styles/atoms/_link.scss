@@ -1,4 +1,8 @@
+@use '@burokku/mixins';
+
 a {
+	@include mixins.transition-colors();
+	@include mixins.property-transition('text-underline-offset');
 	color: currentColor;
 	text-underline-offset: 4px;
 
