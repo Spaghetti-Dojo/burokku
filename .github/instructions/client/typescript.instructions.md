@@ -1,3 +1,7 @@
+---
+applyTo: "sources/**/*.tsx, sources/**/*.ts"
+---
+
 # TypeScript Instructions
 
 ## Naming Conventions
@@ -31,13 +35,6 @@ class Block {
     }
 }
 ```
-
-### Rationale
-
-- Cleaner, more concise code
-- Follows modern TypeScript/JavaScript conventions
-- Reduces verbosity without sacrificing clarity
-- Aligns with functional programming paradigms
 
 ### Exceptions
 

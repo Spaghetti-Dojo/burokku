@@ -1,3 +1,7 @@
+---
+applyTo: "sources/**/*.php"
+---
+
 # PHP Server Instructions
 
 The following instructions are applicable to all php files in this repository.
@@ -47,34 +51,4 @@ Apply SOLID principles within WordPress conventions:
 ## Code Comments
 - Avoid redundant comments that state the obvious
 - Focus comments on explaining the "why" and "how" rather than the "what"
-- Don't use docblocks for fuctions and methods where parameters types and return types are already clear from type hints
-
-## WordPress Hooks Naming Convention
-
-When creating custom WordPress actions and filters, follow this naming pattern:
-
-**Pattern:** `{project-name}.{package}.{event-name}`
-
-- **project-name**: The project identifier (e.g., `burokku`)
-- **package**: The package/module name (optional when code is at root level)
-- **event-name**: Descriptive name of the event/action
-- Use **dashes** (`-`) to separate words within each component
-
-**Examples:**
-```php
-// Root-level hook (no package component)
-do_action('burokku.boot-failed', $exception);
-
-// Package-level hook
-do_action('burokku.theme-setup.assets-loaded', $assets);
-
-// Another package example
-apply_filters('burokku.blocks.custom-block-registered', $block);
-```
-
-**Guidelines:**
-- Keep hook names descriptive and self-documenting
-- Use past tense when the hook fires **after** an operation completes (e.g., `loaded`, `failed`, `registered`)
-- Use present tense when the hook fires **before** or **during** an operation (e.g., `loading`, `processing`)
-- For compound event names, apply tense to the action verb (e.g., `boot-failed`, `theme-loaded`, `asset-processing`)
-- Avoid underscores - use dashes consistently
+- Don't use docblocks for functions and methods where parameters types and return types are already clear from type hints
