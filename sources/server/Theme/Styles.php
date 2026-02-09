@@ -22,7 +22,7 @@ final readonly class Styles
 
     private function register_styles(): void
     {
-        $is_prod_env = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'production';
+        $is_prod_env = wp_get_environment_type() === 'production';
         wp_enqueue_style(
             '@burokku/styles-atoms',
             get_theme_file_uri('dist/styles/atoms.css'),

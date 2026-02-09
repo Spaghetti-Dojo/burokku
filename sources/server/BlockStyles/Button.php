@@ -71,7 +71,7 @@ final readonly class Button
             return;
         }
 
-        $is_prod_env = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'production';
+        $is_prod_env = wp_get_environment_type() === 'production';
         wp_register_style(
             self::BLOCK_STYLES_HANDLE,
             get_theme_file_uri('/dist/styles/@block-styles/button.css'),
