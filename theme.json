@@ -223,8 +223,7 @@
 		},
 		"typography": {
 			"customFontSize": true,
-			"fontSizes": [
-			],
+			"fontSizes": [],
 			"fontFamilies": [
 				{
 					"name": "Geist",
@@ -236,7 +235,7 @@
 							"fontWeight": "300 800",
 							"fontStyle": "normal",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/geist-variable.woff2" ]
+							"src": ["file:./assets/fonts/geist-variable.woff2"]
 						}
 					]
 				}
@@ -244,16 +243,11 @@
 		},
 		"spacing": {
 			"blockGap": true,
-			"units": [
-				"px",
-				"em",
-				"rem",
-				"vh",
-				"vw",
-				"%"
-			],
+			"units": ["px", "em", "rem", "vh", "vw", "%"],
 			"padding": true,
-			"margin": true
+			"margin": true,
+			"defaultSpacingSizes": false,
+			"spacingSizes": []
 		},
 		"dimensions": {
 			"defaultAspectRatios": false,
@@ -315,7 +309,7 @@
 				"gray-100": "hsl(0 0% 96.1%)"
 			},
 			"mod": {
-				"darken-amount": "30%"
+				"darken-amount": "20%"
 			},
 			"transition": {
 				"timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -338,7 +332,7 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--geist)",
 			"fontWeight": "400",
-			"fontSize": "16px",
+			"fontSize": "1rem",
 			"lineHeight": "1.75rem"
 		},
 		"elements": {

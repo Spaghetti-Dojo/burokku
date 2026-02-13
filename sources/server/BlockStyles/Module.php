@@ -27,6 +27,7 @@ class Module implements ExecutableModule
             ['burokku-outline', __('Outline', 'burokku')],
             ['burokku-secondary', __('Secondary', 'burokku')],
             ['burokku-ghost', __('Ghost', 'burokku')],
+            ['burokku-link', __('Link', 'burokku')],
         ])->init();
 
         return true;
