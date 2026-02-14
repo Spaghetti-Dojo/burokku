@@ -478,6 +478,13 @@
 					"lineHeight": "1.125",
 					"fontStyle": "italic"
 				}
+			},
+			"cite": {
+				"typography": {
+					"fontSize": "0.875rem",
+					"lineHeight": "1.125",
+					"fontStyle": "italic"
+				}
 			}
 		},
 		"blocks": {}

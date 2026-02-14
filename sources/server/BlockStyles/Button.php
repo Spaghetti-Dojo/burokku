@@ -32,23 +32,8 @@ final readonly class Button
     public function init(): void
     {
         add_action('init', $this->register_block_styles(...));
-        add_filter('register_block_type_args', $this->unregister_default_button_styles(...), 10, 2);
         add_action('enqueue_block_assets', $this->enqueue_block_styles(...));
         add_action('enqueue_block_assets', $this->set_block_style_as_dependency(...));
-    }
-
-    /**
-     * @param array{styles: Styles} $args
-     *
-     * @return array{styles?: Styles}
-     */
-    private function unregister_default_button_styles(array $args, string $block_type_name): array
-    {
-        if ($block_type_name === 'core/button') {
-            $args['styles'] = [];
-        }
-
-        return $args;
     }
 
     private function register_block_styles(): void

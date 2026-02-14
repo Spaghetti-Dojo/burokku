@@ -23,8 +23,11 @@ function package(): Modularity\Package
         $themeFilePath = get_template_directory() . '/style.css';
         $properties = Modularity\Properties\ThemeProperties::new($themeFilePath);
         $package = Modularity\Package::new($properties);
-        $package->addModule(Theme\Module::new());
-        $package->addModule(BlockStyles\Module::new());
+
+        $package
+            ->addModule(Theme\Module::new())
+            ->addModule(CoreBlocksOverride\Module::new())
+            ->addModule(BlockStyles\Module::new());
     }
 
     return $package;
