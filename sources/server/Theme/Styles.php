@@ -13,11 +13,11 @@ final readonly class Styles
 
     final private function __construct()
     {
-        add_action('enqueue_block_assets', $this->register_styles(...));
     }
 
     public function init(): void
     {
+        add_action('enqueue_block_assets', $this->register_styles(...));
     }
 
     private function register_styles(): void
