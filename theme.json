@@ -186,6 +186,48 @@
 					"gradient": "linear-gradient(90deg, hsl(0 84.2% 60.2%) 0%, hsl(0 85.7% 97.3%) 100%)",
 					"name": "Red 500-50"
 				}
+			],
+			"duotone": [
+				{
+					"slug": "mono-contrast",
+					"name": "Mono Contrast",
+					"colors": ["hsl(0 0% 3.9%)", "hsl(0 0% 98%)"]
+				},
+				{
+					"slug": "cool-blue",
+					"name": "Cool Blue",
+					"colors": ["hsl(192.9 82.3% 31%)", "hsl(187 92.4% 69%)"]
+				},
+				{
+					"slug": "forest",
+					"name": "Forest",
+					"colors": ["hsl(142.4 71.8% 29.2%)", "hsl(141.7 76.6% 73.1%)"]
+				},
+				{
+					"slug": "sunset-orange",
+					"name": "Sunset Orange",
+					"colors": ["hsl(17.5 88.3% 40.4%)", "hsl(30.7 97.2% 72.4%)"]
+				},
+				{
+					"slug": "sunny",
+					"name": "Sunny",
+					"colors": ["hsl(35.5 91.7% 32.9%)", "hsl(50.4 97.8% 63.5%)"]
+				},
+				{
+					"slug": "rose",
+					"name": "Rose",
+					"colors": ["hsl(0 73.7% 41.8%)", "hsl(0 93.5% 81.8%)"]
+				},
+				{
+					"slug": "steel",
+					"name": "Steel",
+					"colors": ["hsl(0 0% 14.9%)", "hsl(0 0% 63.9%)"]
+				},
+				{
+					"slug": "frost",
+					"name": "Frost",
+					"colors": ["hsl(198.6 88.7% 48.4%)", "hsl(0 0% 89.8%)"]
+				}
 			]
 		},
 		"border": {
