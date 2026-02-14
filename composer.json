@@ -17,7 +17,10 @@
 	},
 	"require-dev": {
 		"bnf/phpstan-psr-container": "^1.0",
+		"brain/monkey": "^2.6",
 		"inpsyde/wp-stubs": "dev-main",
+		"mockery/mockery": "^1.6",
+		"pestphp/pest": "^v4.3.0",
 		"phpstan/phpstan": "^2.1",
 		"roots/wordpress-no-content": "6.9",
 		"syde/phpcs": "^1.0"
@@ -34,14 +37,24 @@
 		"cs": "phpcs",
 		"cs:fix": "phpcbf",
 		"analysis": "./vendor/bin/phpstan analyse",
+		"test:unit": "@php ./vendor/bin/pest --testsuite=unit",
+		"test:functional": "@php ./vendor/bin/pest --testsuite=functional",
+		"test:unit:coverage": "@php ./vendor/bin/pest --testsuite=unit --coverage --coverage-clover=coverage-unit.xml",
+		"test:functional:coverage": "@php ./vendor/bin/pest --testsuite=functional --coverage --coverage-clover=coverage-functional.xml",
+		"tests": [
+			"@test:unit",
+			"@test:functional"
+		],
 		"qa": [
 			"@cs",
-			"@analysis"
+			"@analysis",
+			"@tests"
 		]
 	},
 	"config": {
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"pestphp/pest-plugin": true
 		},
 		"sort-packages": true,
 		"optimize-autoloader": true,

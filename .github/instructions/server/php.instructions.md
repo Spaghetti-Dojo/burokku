@@ -49,6 +49,22 @@ Apply SOLID principles within WordPress conventions:
 - **Composition over Inheritance**: Favor composition and traits over deep inheritance hierarchies
 
 ## Code Comments
+
 - Avoid redundant comments that state the obvious
 - Focus comments on explaining the "why" and "how" rather than the "what"
 - Don't use docblocks for functions and methods where parameters types and return types are already clear from type hints
+
+## Namespaces
+
+When importing classes from other namespaces, group the declaration together. See following code
+sample:
+
+```php
+<?php
+
+use Vendor\Package\{
+	ClassA,
+	ClassB,
+	Namespace\SubNamespace\ClassC
+};
+```

@@ -64,7 +64,8 @@ const styles = {
 			cleanAfterEveryBuildPatterns: [
 				'**/*.js',
 				'**/*.js.map',
-				'**/*.css.map'
+				'**/*.css.map',
+				'**/*.php'
 			],
 			protectWebpackAssets: false
 		})

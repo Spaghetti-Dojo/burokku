@@ -41,6 +41,7 @@ yarn.lock
 # Testing
 /coverage/
 /.phpunit.cache/
+coverage.xml
 
 # Temporary files
 *.tmp
