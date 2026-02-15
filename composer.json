@@ -23,7 +23,8 @@
 		"pestphp/pest": "^v4.3.0",
 		"phpstan/phpstan": "^2.1",
 		"roots/wordpress-no-content": "6.9",
-		"syde/phpcs": "^1.0"
+		"syde/phpcs": "^1.0",
+		"automattic/wordbless": "^0.6.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -32,6 +33,13 @@
 		"files": [
 			"inc/package.php"
 		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"SpaghettiDojo\\Burokku\\Tests\\": "tests/",
+			"SpaghettiDojo\\Burokku\\Tests\\Unit\\": "tests/unit/server",
+			"SpaghettiDojo\\Burokku\\Tests\\Functional\\": "tests/functional/server"
+		}
 	},
 	"scripts": {
 		"cs": "phpcs",
@@ -49,12 +57,15 @@
 			"@cs",
 			"@analysis",
 			"@tests"
-		]
+		],
+		"post-install-cmd": "SpaghettiDojo\\Burokku\\Tests\\InstallWpDropIn::copy",
+		"post-update-cmd": "SpaghettiDojo\\Burokku\\Tests\\InstallWpDropIn::copy"
 	},
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
-			"pestphp/pest-plugin": true
+			"pestphp/pest-plugin": true,
+			"roots/wordpress-core-installer": false
 		},
 		"sort-packages": true,
 		"optimize-autoloader": true,

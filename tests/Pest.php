@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SpaghettiDojo\Burokku\Tests\Server;
+namespace SpaghettiDojo\Burokku\Tests;
 
 use Brain\Monkey;
 
@@ -15,3 +15,7 @@ uses()
         \Mockery::close();
     })
     ->in('unit', 'integration');
+
+pest()
+    ->extends(WpTestCase::class)
+    ->in('functional');

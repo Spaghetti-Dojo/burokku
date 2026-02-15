@@ -9,17 +9,17 @@ use ReflectionClass;
 final readonly class Orchestrator
 {
     /**
-     * @param list<Metadata> $configurations
+     * @param list<Metadata> $metadata
      */
-    public static function new(Metadata ...$configurations): self
+    public static function new(Metadata ...$metadata): self
     {
-        return new self($configurations);
+        return new self($metadata);
     }
 
     /**
-     * @param list<Metadata> $configurations
+     * @param list<Metadata> $metadata
      */
-    private function __construct(private array $configurations)
+    private function __construct(private array $metadata)
     {
     }
 
@@ -46,7 +46,7 @@ final readonly class Orchestrator
             return $metadata;
         }
 
-        $configuration = $this->configuration_for($block_name);
+        $configuration = $this->filtered_metadata_for($block_name);
 
         if (!$configuration) {
             return $metadata;
@@ -84,10 +84,10 @@ final readonly class Orchestrator
         return $metadata;
     }
 
-    private function configuration_for(string $blockName): ?Metadata
+    private function filtered_metadata_for(string $blockName): ?Metadata
     {
         return array_find(
-            $this->configurations,
+            $this->metadata,
             fn (Metadata $configuration) => $this->block_name_for($configuration) === $blockName
         );
     }

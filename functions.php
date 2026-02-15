@@ -83,11 +83,7 @@ function themeSetup(): void
 {
     // Add theme support for various features
     add_theme_support('editor-styles');
-    add_theme_support('wp-block-styles');
     add_theme_support('responsive-embeds');
-
-    // Enqueue editor styles
-    add_editor_style('style.css');
 }
 
 // Hook theme setup
