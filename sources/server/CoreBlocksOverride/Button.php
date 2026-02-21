@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SpaghettiDojo\Burokku\CoreBlocksOverride;
 
+#[BlockName('core/button')]
 class Button implements Metadata
 {
     public static function new(): Button

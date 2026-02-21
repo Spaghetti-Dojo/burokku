@@ -32,8 +32,8 @@ final readonly class Button
     public function init(): void
     {
         add_action('init', $this->register_block_styles(...));
-        add_action('enqueue_block_assets', $this->enqueue_block_styles(...));
-        add_action('enqueue_block_assets', $this->set_block_style_as_dependency(...));
+        add_action('enqueue_block_assets', $this->register_block_css_style(...));
+        add_filter('render_block_core/button', $this->enqueue_styles(...));
     }
 
     private function register_block_styles(): void
@@ -50,7 +50,7 @@ final readonly class Button
         }
     }
 
-    private function enqueue_block_styles(): void
+    private function register_block_css_style(): void
     {
         if (wp_style_is(self::BLOCK_STYLES_HANDLE, 'registered')) {
             return;
@@ -65,27 +65,12 @@ final readonly class Button
         );
     }
 
-    /**
-     * Enqueue the block styles as dependencies of the button block to be sure the styles
-     * are loaded. This is something WordPress would address, but due to a bug with the
-     * `enqueue_block_styles_assets` executed after the `render_block` hook has been dispatched, the
-     * block styles registered with a `style_handle` are not correctly enqueued.
-     *
-     * @link https://core.trac.wordpress.org/ticket/55184
-     * @link https://github.com/WordPress/wordpress-develop/pull/6628
-     */
-    private function set_block_style_as_dependency(): void
+    private function enqueue_styles(string $html): string
     {
-        $wp_styles = wp_styles();
-        $style_configuration = $wp_styles->registered['wp-block-button'] ?? null;
-
-        if (!$style_configuration) {
-            return;
-        }
-        if (!in_array(self::BLOCK_STYLES_HANDLE, $style_configuration->deps, true)) {
-            $style_configuration->deps[] = self::BLOCK_STYLES_HANDLE;
+        if ($html) {
+            wp_enqueue_style(self::BLOCK_STYLES_HANDLE);
         }
 
-        $wp_styles->registered['wp-block-button'] = $style_configuration;
+        return $html;
     }
 }

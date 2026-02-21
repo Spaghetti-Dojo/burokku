@@ -25,13 +25,7 @@ final readonly class Orchestrator
 
     public function init(): void
     {
-        add_action('after_setup_theme', $this->remove_block_theme_styles(...), 999);
         add_filter('block_type_metadata', $this->override_metadata(...), 999);
-    }
-
-    private function remove_block_theme_styles(): void
-    {
-        remove_theme_support( 'wp-block-styles' );
     }
 
     /**

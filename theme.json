@@ -487,6 +487,24 @@
 				}
 			}
 		},
-		"blocks": {}
+		"blocks": {
+			"core/quote": {
+				"border": {
+					"left": {
+						"color": "var(--wp--preset--color--gray-800)",
+						"style": "solid",
+						"width": "2px"
+					}
+				},
+				"spacing": {
+					"padding": {
+						"left": "1.5rem"
+					}
+				},
+				"typography": {
+					"fontStyle": "italic"
+				}
+			}
+		}
 	}
 }

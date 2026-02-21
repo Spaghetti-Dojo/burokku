@@ -30,20 +30,26 @@ function boot(): void
  * This function is called during the boot process to set up autoloading for the theme.
  *
  * @private
+ * @throws \RuntimeException if the autoload file is missing or the package function is not found
+ *     after including it.
  * @internal
- * @throws \RuntimeException if the autoload file is missing or the package function is not found after including it.
  */
-function autoload(): void {
+function autoload(): void
+{
     $autoloadFile = __DIR__ . '/vendor/autoload.php';
     if (!file_exists($autoloadFile)) {
-        throw new \RuntimeException('Autoload file not found. Please run "composer install" to set up dependencies.');
+        throw new \RuntimeException(
+            'Autoload file not found. Please run "composer install" to set up dependencies.'
+        );
     }
 
     if (!function_exists('\\SpaghettiDojo\\Burokku\\package')) {
         require_once $autoloadFile;
     }
     if (!function_exists('\\SpaghettiDojo\\Burokku\\package')) {
-        throw new \RuntimeException('Package function not found after including autoload. Please check your setup.');
+        throw new \RuntimeException(
+            'Package function not found after including autoload. Please check your setup.'
+        );
     }
 }
 
@@ -51,8 +57,10 @@ function autoload(): void {
  * Handle boot failure by displaying an admin notice and firing an action.
  *
  * @private
- * @internal
+ *
  * @param \Throwable $exception The exception that occurred during boot.
+ *
+ * @internal
  */
 function handleBootFailure(\Throwable $exception): void
 {
@@ -70,24 +78,6 @@ function handleBootFailure(\Throwable $exception): void
         }
     );
 }
-
-/**
- * Theme setup function.
- *
- * Configures theme supports and editor styles.
- *
- * @private
- * @internal
- */
-function themeSetup(): void
-{
-    // Add theme support for various features
-    add_theme_support('editor-styles');
-    add_theme_support('responsive-embeds');
-}
-
-// Hook theme setup
-add_action('after_setup_theme', __NAMESPACE__ . '\\themeSetup');
 
 // Boot the package
 add_action('after_setup_theme', __NAMESPACE__ . '\\boot');

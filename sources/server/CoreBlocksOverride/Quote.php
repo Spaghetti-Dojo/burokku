@@ -108,7 +108,7 @@ final readonly class Quote implements Metadata
 
     public function style(): array|string|null
     {
-        return '';
+        return null;
     }
 
     public function render(): ?string

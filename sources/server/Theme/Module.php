@@ -23,6 +23,7 @@ class Module implements ExecutableModule
 
     public function run(ContainerInterface $container): bool
     {
+        Supports::new()->init();
         ThemeJson::new()->init();
         Styles::new()->init();
 
