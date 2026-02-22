@@ -1,0 +1,8 @@
+@use "@burokku/mixins";
+
+ol,
+ul {
+	margin: mixins.rem(24px);
+	margin-block-end: 0;
+	padding-inline-start: mixins.rem(24px);
+}

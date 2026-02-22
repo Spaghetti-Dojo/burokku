@@ -242,6 +242,11 @@
 					"size": "0.3rem"
 				},
 				{
+					"name": "2x Small",
+					"slug": "xxs",
+					"size": "0.25rem"
+				},
+				{
 					"name": "Extra Small",
 					"slug": "xxs",
 					"size": "0.5rem"
@@ -265,7 +270,27 @@
 		},
 		"typography": {
 			"customFontSize": true,
-			"fontSizes": [],
+			"fluid": true,
+			"fontSizes": [
+				{
+					"name": "Small",
+					"slug": "sm",
+					"size": "0.875rem",
+					"fluid": false
+				},
+				{
+					"name": "Large",
+					"slug": "lg",
+					"size": "1.125rem",
+					"fluid": false
+				},
+				{
+					"name": "Lead",
+					"slug": "lead",
+					"size": "1.25rem",
+					"fluid": false
+				}
+			],
 			"fontFamilies": [
 				{
 					"name": "Geist",
@@ -289,7 +314,18 @@
 			"padding": true,
 			"margin": true,
 			"defaultSpacingSizes": false,
-			"spacingSizes": []
+			"spacingSizes": [
+				{
+					"name": "Small",
+					"slug": "sm",
+					"size": "0.5rem"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"size": "1rem"
+				}
+			]
 		},
 		"dimensions": {
 			"defaultAspectRatios": false,
@@ -356,6 +392,12 @@
 			"transition": {
 				"timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
 				"duration": ".15s"
+			},
+			"typography": {
+				"font-weight": {
+					"semi-bold": "600",
+					"bold": "700"
+				}
 			}
 		}
 	},

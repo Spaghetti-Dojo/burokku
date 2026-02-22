@@ -20,11 +20,19 @@ function stylesEntries() {
 		const items = fs.readdirSync(dir, { withFileTypes: true });
 
 		items.forEach((item) => {
+			const fullPath = path.join(dir, item.name);
+
+			// Add root-level style files (non-partials) as entries
+			if (prefix === '' && item.name.endsWith('.scss') && !item.name.startsWith('_')) {
+				const entryKey = path.basename(item.name, '.scss');
+				entries[entryKey] = fullPath;
+				return;
+			}
+
 			if (!item.isDirectory() || item.name.includes('mixins')) {
 				return;
 			}
 
-			const fullPath = path.join(dir, item.name);
 			const indexScss = path.join(fullPath, 'index.scss');
 
 			if (fs.existsSync(indexScss)) {
