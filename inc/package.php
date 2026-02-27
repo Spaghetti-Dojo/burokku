@@ -26,7 +26,7 @@ function package(): Modularity\Package
 
         $package
             ->addModule(Theme\Module::new())
-            ->addModule(CoreBlocksOverride\Module::new())
+            ->addModule(CoreBlocksOverrides\Module::new())
             ->addModule(BlockStyles\Module::new());
     }
 

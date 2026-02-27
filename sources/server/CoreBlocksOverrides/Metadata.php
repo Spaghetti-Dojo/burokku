@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SpaghettiDojo\Burokku\CoreBlocksOverride;
+namespace SpaghettiDojo\Burokku\CoreBlocksOverrides;
 
 interface Metadata
 {
