@@ -1,0 +1,61 @@
+@use "@burokku/mixins/button";
+
+.wp-block-accordion-item {
+
+	/*
+	 * Accordion Heading
+	 */
+	.wp-block-accordion-heading {
+		&__toggle-icon  {
+			transform: rotate(0deg);
+			transition: transform 200ms ease;
+			transform-origin: center;
+
+			& + .wp-block-accordion-heading__toggle-title {
+				margin-inline-start: var(--wp--preset--spacing--base);
+			}
+		}
+	}
+
+	/*
+	 * Accordion Panel
+	 */
+	.wp-block-accordion-panel {
+		transition-property: all;
+		transition-timing-function: var(--wp--custom--transition--timing-function);
+		transition-duration: var(--wp--custom--transition--duration);
+		transition-behavior: allow-discrete;
+
+		@supports (height: calc-size(fit-content, size)) {
+			height: 0;
+			display: block;
+			overflow: clip;
+		}
+
+		*:last-child {
+			margin-block-end: var(--wp--preset--spacing--base);
+		}
+	}
+
+	/*
+	 * Opened Accordion
+	 */
+	&.is-open {
+		// Selector necessary to override WordPress styles
+		> .wp-block-accordion-heading .wp-block-accordion-heading__toggle-icon {
+			transform: rotate(180deg);
+		}
+
+		.wp-block-accordion-panel {
+			@supports (height: calc-size(fit-content, size)) {
+				height: calc-size(fit-content, size);
+			}
+		}
+	}
+}
+
+.wp-block-accordion-heading {
+	button {
+		@include button.button-reset-appearance();
+	}
+}

@@ -81,5 +81,3 @@ function handleBootFailure(\Throwable $exception): void
 
 // Boot the package
 add_action('after_setup_theme', __NAMESPACE__ . '\\boot');
-
-define('WP_ENVIRONMENT_TYPE', 'local');

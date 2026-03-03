@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SpaghettiDojo\Burokku\CoreBlocksOverrides;
+namespace SpaghettiDojo\Burokku\BlockMarkupReplacements;
 
 use Inpsyde\Modularity\Module\ExecutableModule;
 use Inpsyde\Modularity\Module\ModuleClassNameIdTrait;
@@ -23,10 +23,7 @@ class Module implements ExecutableModule
 
     public function run(ContainerInterface $container): bool
     {
-        Orchestrator::new(
-            Button::new(),
-            Quote::new(),
-        )->init();
+        CoreAccordion::new()->init();
 
         return true;
     }
