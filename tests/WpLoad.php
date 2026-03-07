@@ -37,6 +37,8 @@ class WpLoad
 
         require_once ABSPATH . 'wp-includes/plugin.php';
 
+        defined('DISABLE_WP_CRON') or define('DISABLE_WP_CRON', true);
+
         add_filter('template', static fn () => 'burokku');
         add_filter('stylesheet_directory', static fn () => dirname(__DIR__));
         add_filter('template_directory', static fn () => dirname(__DIR__));
