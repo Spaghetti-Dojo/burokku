@@ -3,6 +3,7 @@
 /node_modules
 /dist/
 /.github/
+/.sisyphus
 *.config.js
 *.config.ts
 .prettierrc.js

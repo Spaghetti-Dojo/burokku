@@ -34,15 +34,12 @@ describe('CoreAccordion', function (): void {
 
     it('returns empty string via apply_filters', function (): void {
         $result = apply_filters('render_block_core/accordion-heading', '');
-
         expect($result)->toBe('');
     });
 
     it('returns unchanged html when toggle-icon element is missing via apply_filters', function (): void {
         $html = '<div class="wp-block-accordion-heading"><p>No icon here</p></div>';
-
         $result = apply_filters('render_block_core/accordion-heading', $html);
-
         expect($result)->toBe($html);
     });
 });
