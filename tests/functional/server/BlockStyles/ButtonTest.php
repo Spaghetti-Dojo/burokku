@@ -42,6 +42,8 @@ describe('BlockStyles Button', function (): void {
     });
 
     it('does not enqueue css when button block is rendered with empty html', function (): void {
+        do_action('enqueue_block_assets');
+        wp_dequeue_style('@burokku/block-styles-button');
         apply_filters('render_block_core/button', '');
 
         expect(wp_style_is('@burokku/block-styles-button', 'enqueued'))->toBeFalse();
