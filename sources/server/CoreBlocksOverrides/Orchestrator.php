@@ -67,6 +67,8 @@ final readonly class Orchestrator
             'editorStyle' => $configuration->editor_style(),
             'style' => $configuration->style(),
             'render' => $configuration->render(),
+            'allowedBlocks' => $configuration->allowed_blocks(),
+            'blockHooks' => $configuration->block_hooks(),
         ];
 
         foreach ($overrides as $key => $value) {
