@@ -6,6 +6,15 @@ namespace SpaghettiDojo\Burokku\Theme;
 
 final readonly class Styles
 {
+    /**
+     * @var array<string>
+     */
+    private const array ASSETS_FILE_NAMES = [
+        'dist/styles/atoms.css',
+        'dist/styles/molecules.css',
+        'dist/styles/wp-class-utils.css',
+    ];
+
     public static function new(): Styles
     {
         return new self();
@@ -17,7 +26,8 @@ final readonly class Styles
 
     public function init(): void
     {
-        add_action('enqueue_block_assets', $this->register_styles(...));
+        add_action('wp_enqueue_scripts', $this->register_styles(...));
+        add_action('admin_init', $this->register_editor_styles(...));
     }
 
     private function register_styles(): void
@@ -27,23 +37,21 @@ final readonly class Styles
             ? wp_get_theme()->get('Version')
             : null;
 
-        wp_enqueue_style(
-            '@burokku/styles-atoms',
-            get_theme_file_uri('dist/styles/atoms.css'),
-            [],
-            $version
-        );
-        wp_enqueue_style(
-            '@burokku/styles-molecules',
-            get_theme_file_uri('dist/styles/molecules.css'),
-            [],
-            $version
-        );
-        wp_enqueue_style(
-            '@burokku/wp-class-utils',
-            get_theme_file_uri('dist/styles/wp-class-utils.css'),
-            [],
-            $version
-        );
+        foreach(self::ASSETS_FILE_NAMES as $file_name) {
+            $name = basename($file_name, '.css');
+            wp_enqueue_style(
+                "@burokku/styles-{$name}",
+                get_theme_file_uri($file_name),
+                [],
+                $version
+            );
+        }
+    }
+
+    private function register_editor_styles(): void
+    {
+        foreach(self::ASSETS_FILE_NAMES as $file_name) {
+            add_editor_style($file_name);
+        }
     }
 }
