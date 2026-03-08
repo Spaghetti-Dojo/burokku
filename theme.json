@@ -123,6 +123,11 @@
 					"slug": "red-300",
 					"color": "hsl(0 93.5% 81.8%)",
 					"name": "Red 300"
+				},
+				{
+					"slug": "theme-accent",
+					"color": "hsl(0 0% 98%)",
+					"name": "Theme Accent"
 				}
 			],
 			"gradients": [
@@ -393,7 +398,7 @@
 				"gray-100": "hsl(0 0% 96.1%)"
 			},
 			"mod": {
-				"darken-amount": "20%"
+				"amount": "20%"
 			},
 			"transition": {
 				"timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -432,19 +437,19 @@
 				},
 				":hover": {
 					"color": {
-						"text": "color-mix(in hsl decreasing hue, currentColor 100%, var(--wp--preset--color--black) var(--wp--custom--mod--darken-amount))"
+						"text": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
 					}
 				}
 			},
 			"button": {
 				"color": {
 					"text": "var(--wp--custom--color--gray-900)",
-					"background": "var(--wp--preset--color--white)"
+					"background": "var(--wp--preset--color--theme-accent)"
 				},
 				":hover": {
 					"color": {
 						"text": "var(--wp--custom--color--gray-900)",
-						"background": "color-mix(in hsl decreasing hue, var(--wp--preset--color--white) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--darken-amount))"
+						"background": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
 					}
 				},
 				"border": {

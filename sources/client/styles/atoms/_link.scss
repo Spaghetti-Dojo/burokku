@@ -6,7 +6,7 @@ a {
 	color: currentColor;
 	text-underline-offset: mixins.rem(4px);
 
-	&:hover {
+	&:hover:not(.wp-block-button__link) {
 		text-underline-offset: mixins.rem(6px);
 	}
 }
