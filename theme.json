@@ -589,6 +589,9 @@
 					"semi-bold": "600",
 					"bold": "700"
 				}
+			},
+			"spacing": {
+				"block-gap": "2rem"
 			}
 		}
 	},
@@ -598,7 +601,7 @@
 			"text": "var(--wp--preset--color--white)"
 		},
 		"spacing": {
-			"blockGap": "1.5rem",
+			"blockGap": "var(--wp--custom--spacing--block-gap)",
 			"padding": {
 				"right": "1.5rem",
 				"left": "1.5rem"
