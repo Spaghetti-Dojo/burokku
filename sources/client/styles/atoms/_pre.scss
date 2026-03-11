@@ -1,0 +1,10 @@
+pre {
+	padding: var(--wp--preset--spacing--base);
+	background-color: var(--wp--custom--color--gray-900);
+	border-radius: var(--wp--preset--border-radius--sm);
+
+	code {
+		padding: 0;
+		background: none;
+	}
+}

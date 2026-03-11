@@ -1,7 +1,7 @@
 @use "@burokku/mixins";
 
 code {
-	font-weight: var(--wp--preset--font-weight--semi-bold);
+	font-weight: var(--wp--custom--font-weight--semi-bold);
 	background-color: var(--wp--preset--color--gray-800);
 	padding: mixins.rem(3px) mixins.rem(4px);
 	border-radius: var(--wp--preset--border-radius--xxs);

@@ -515,6 +515,11 @@
 					"name": "Base",
 					"slug": "base",
 					"size": "1rem"
+				},
+				{
+					"name": "Large",
+					"slug": "lg",
+					"size": "2rem"
 				}
 			]
 		},
@@ -591,7 +596,7 @@
 				}
 			},
 			"spacing": {
-				"block-gap": "2rem"
+				"block-gap": "var(--wp--preset--spacing--lg)"
 			}
 		}
 	},
