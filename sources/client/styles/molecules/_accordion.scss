@@ -6,6 +6,7 @@
 	 * Accordion Heading
 	 */
 	.wp-block-accordion-heading {
+
 		&__toggle-icon  {
 			transform: rotate(0deg);
 			transition: transform 200ms ease;
@@ -27,7 +28,7 @@
 		transition-behavior: allow-discrete;
 
 		@supports (height: calc-size(fit-content, size)) {
-			height: 0;
+			block-size: 0;
 			display: block;
 			overflow: clip;
 		}
@@ -47,15 +48,18 @@
 		}
 
 		.wp-block-accordion-panel {
+
 			@supports (height: calc-size(fit-content, size)) {
-				height: calc-size(fit-content, size);
+				block-size: calc-size(fit-content, size);
 			}
 		}
 	}
 }
 
 .wp-block-accordion-heading {
+
 	button {
+
 		@include button.button-reset-appearance();
 	}
 }

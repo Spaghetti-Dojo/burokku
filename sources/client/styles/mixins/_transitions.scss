@@ -2,6 +2,7 @@
  * Main Theme Transitions for Colors
  */
 @mixin transition-colors() {
+
 	@include property-transition('color, background-color, border-color, text-decoration-color, fill, stroke');
 }
 

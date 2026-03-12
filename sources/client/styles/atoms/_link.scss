@@ -1,9 +1,10 @@
 @use "@burokku/mixins";
 
 a {
+
 	@include mixins.transition-colors();
 	@include mixins.property-transition("text-underline-offset");
-	color: currentColor;
+	color: currentcolor;
 	text-underline-offset: mixins.rem(4px);
 
 	&:hover:not(.wp-block-button__link) {
