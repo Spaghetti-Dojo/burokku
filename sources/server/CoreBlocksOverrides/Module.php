@@ -25,6 +25,7 @@ class Module implements ExecutableModule
     {
         Orchestrator::new(
             Button::new(),
+            Image::new(),
             Quote::new(),
         )->init();
 
