@@ -1,7 +1,12 @@
-@use '@burokku/mixins';
+@use "@burokku/mixins";
 
 button,
 .wp-block-button__link {
+	@include mixins.property-transition(
+		"color, background-color, border-color, text-decoration-color, fill, stroke, translate"
+	);
 
-	@include mixins.transition-colors();
+	&:active {
+		translate: 0 2px;
+	}
 }
