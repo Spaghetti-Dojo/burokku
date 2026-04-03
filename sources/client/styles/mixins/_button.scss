@@ -2,4 +2,8 @@
 	appearance: none;
 	background: none;
 	border: none;
+
+	&:active {
+		translate: 0 0;
+	}
 }
