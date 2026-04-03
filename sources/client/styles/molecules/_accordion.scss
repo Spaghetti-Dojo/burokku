@@ -6,6 +6,7 @@
 	 * Accordion Heading
 	 */
 	.wp-block-accordion-heading {
+		font-weight: var(--wp--custom--font-weight--regular);
 
 		&__toggle-icon  {
 			transform: rotate(0deg);
@@ -26,6 +27,7 @@
 		transition-timing-function: var(--wp--custom--transition--timing-function);
 		transition-duration: var(--wp--custom--transition--duration);
 		transition-behavior: allow-discrete;
+		margin-block-start: 0;
 
 		@supports (height: calc-size(fit-content, size)) {
 			block-size: 0;

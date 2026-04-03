@@ -586,11 +586,12 @@
 				"amount": "20%"
 			},
 			"transition": {
-				"timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
+				"timing-function": "cubic-bezier(0, 0, 0, 0.35)",
 				"duration": ".15s"
 			},
 			"typography": {
 				"font-weight": {
+					"regular": "400",
 					"semi-bold": "600",
 					"bold": "700"
 				}
