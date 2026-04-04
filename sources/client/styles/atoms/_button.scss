@@ -1,8 +1,8 @@
-@use "@burokku/mixins";
+@use "@burokku/mixins/transitions";
 
 button,
 .wp-block-button__link {
-	@include mixins.property-transition(
+	@include transitions.property-transition(
 		"color, background-color, border-color, text-decoration-color, fill, stroke, translate"
 	);
 

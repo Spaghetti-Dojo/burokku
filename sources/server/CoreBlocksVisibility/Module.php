@@ -26,6 +26,8 @@ class Module implements ExecutableModule
         'core/image',
         'core/accordion',
         'core/accordion-heading',
+        'core/group',
+        'core/search'
     ];
 
     public static function new(): Module

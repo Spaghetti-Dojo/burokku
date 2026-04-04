@@ -601,6 +601,13 @@
 			}
 		}
 	},
+	"templateParts": [
+		{
+			"title": "Header",
+			"name": "header",
+			"area": "header"
+		}
+	],
 	"styles": {
 		"color": {
 			"background": "var(--wp--custom--color--gray-950)",

@@ -1,4 +1,4 @@
-@use "@burokku/mixins/button";
+@use "@burokku/mixins/buttons";
 
 .wp-block-accordion-item {
 
@@ -62,6 +62,6 @@
 
 	button {
 
-		@include button.button-reset-appearance();
+		@include buttons.reset-appearance();
 	}
 }

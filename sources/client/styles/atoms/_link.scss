@@ -1,13 +1,14 @@
-@use "@burokku/mixins";
+@use "@burokku/mixins/units";
+@use "@burokku/mixins/transitions";
 
 a {
 
-	@include mixins.transition-colors();
-	@include mixins.property-transition("text-underline-offset");
+	@include transitions.colors();
+	@include transitions.property-transition("text-underline-offset");
 	color: currentcolor;
-	text-underline-offset: mixins.rem(4px);
+	text-underline-offset: units.rem(4px);
 
 	&:hover:not(.wp-block-button__link) {
-		text-underline-offset: mixins.rem(6px);
+		text-underline-offset: units.rem(6px);
 	}
 }

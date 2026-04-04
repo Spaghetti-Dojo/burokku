@@ -24,6 +24,7 @@ class Module implements ExecutableModule
     public function run(ContainerInterface $container): bool
     {
         CoreAccordion::new()->init();
+        SiteLogo::new()->init();
 
         return true;
     }

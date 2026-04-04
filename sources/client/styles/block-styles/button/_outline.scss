@@ -1,11 +1,5 @@
-@use "@burokku/mixins";
+@use "@burokku/mixins/buttons";
 
 .wp-block-button.is-style-burokku-outline .wp-block-button__link {
-	border: mixins.rem(1px) solid var(--wp--preset--color--gray-800);
-	background-color: transparent;
-	color: var(--wp--preset--color--white);
-
-	&:hover {
-		background-color: var(--wp--preset--color--gray-800);
-	}
+	@include buttons.style-outline();
 }

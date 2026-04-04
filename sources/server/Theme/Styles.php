@@ -12,6 +12,7 @@ final readonly class Styles
     private const array ASSETS_FILE_NAMES = [
         'dist/styles/atoms.css',
         'dist/styles/molecules.css',
+        'dist/styles/organisms.css',
         'dist/styles/wp-class-utils.css',
     ];
 

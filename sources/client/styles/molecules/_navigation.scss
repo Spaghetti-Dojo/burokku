@@ -1,0 +1,13 @@
+@use "@burokku/mixins/transitions";
+
+.wp-block-navigation .wp-block-navigation-item__content {
+	@include transitions.colors();
+	border-radius: var(--wp--preset--border-radius--xxs);
+	padding: 0.25em 0.8em;
+
+	&:hover,
+	&[aria-current="page"] {
+		background-color: var(--wp--preset--color--gray-800);
+		color: var(--wp--preset--color--white);
+	}
+}

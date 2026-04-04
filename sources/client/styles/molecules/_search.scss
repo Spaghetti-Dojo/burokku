@@ -1,0 +1,86 @@
+@use "@burokku/mixins/units";
+@use "@burokku/mixins/buttons";
+@use "@burokku/mixins/breakpoints";
+
+.wp-block-search {
+	&__inside-wrapper {
+		position: relative;
+	}
+
+	&__label {
+		font-size: var(--wp--preset--font-size--sm);
+	}
+
+	&__input {
+		color: var(--wp--preset--color--white);
+		background-color: var(--wp--preset--color--gray-800);
+		border-radius: var(--wp--preset--border-radius--xxs);
+		border: units.rem(1px) solid var(--wp--preset--color--gray-600);
+		padding: 0 var(--wp--preset--spacing--sm);
+		font-size: var(--wp--preset--font-size--sm);
+
+		&::placeholder {
+			color: var(--wp--preset--color--gray-400);
+		}
+	}
+
+	&__button {
+	}
+
+	/*
+	 * Text Variation
+	 */
+	&__text-button &__inside-wrapper {
+		@include breakpoints.until("s") {
+			flex-flow: column;
+
+			.wp-block-search {
+				&__input,
+				&__button {
+					width: 100%;
+				}
+
+				&__input {
+					padding-block-start: var(--wp--preset--spacing--sm);
+					padding-block-end: var(--wp--preset--spacing--sm);
+				}
+
+				&__button {
+					margin: 0;
+					margin-block-start: var(--wp--preset--spacing--sm);
+				}
+			}
+		}
+	}
+
+	&__text-button &__button {
+		@include buttons.style-secondary();
+		border: units.rem(1px) solid var(--wp--preset--color--gray-600);
+	}
+
+	/*
+	 * Icon Variation
+	 */
+	&__icon-button &__input {
+		padding: 0 var(--wp--preset--spacing--sm) 0 calc(units.rem(24px) + var(--wp--preset--spacing--sm));
+	}
+
+	&__icon-button &__button {
+		@include buttons.reset-appearance();
+		position: absolute;
+		inset-block-start: 50%;
+		inset-inline-start: var(--wp--preset--spacing--sm);
+		translate: 0 -50%;
+		width: units.rem(24px);
+		height: units.rem(24px);
+		transform: scaleX(-1);
+		pointer-events: none;
+		color: var(--wp--preset--color--gray-400);
+		margin: 0;
+		padding: 0;
+
+		&:active {
+			translate: 0 -50%;
+		}
+	}
+}

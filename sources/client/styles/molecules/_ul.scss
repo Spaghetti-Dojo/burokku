@@ -1,8 +1,8 @@
-@use "@burokku/mixins";
+@use "@burokku/mixins/units";
 
 ol,
 ul {
-	margin: mixins.rem(24px);
+	margin: units.rem(24px);
 	margin-block-end: 0;
-	padding-inline-start: mixins.rem(24px);
+	padding-inline-start: units.rem(24px);
 }
