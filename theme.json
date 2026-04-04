@@ -480,6 +480,12 @@
 					"slug": "lead",
 					"size": "1.25rem",
 					"fluid": false
+				},
+				{
+					"name": "2x Lead",
+					"slug": "2x-lead",
+					"size": "1.5rem",
+					"fluid": false
 				}
 			],
 			"fontFamilies": [
