@@ -1,7 +1,6 @@
 @use "@burokku/mixins/units";
 
 body:not(.editor-styles-wrapper) {
-	:focus,
 	:focus-visible {
 		outline: units.rem(2px) solid var(--wp--preset--color--theme-accent) !important;
 		box-shadow: 0 0 0 units.rem(6px) oklab(from var(--wp--preset--color--theme-accent) l a b / calc(alpha * var(--wp--custom--mod--amount))) !important;
