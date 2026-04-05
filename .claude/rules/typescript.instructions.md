@@ -1,5 +1,7 @@
 ---
-applyTo: "sources/**/*.tsx, sources/**/*.ts"
+paths:
+  - "sources/client/**/*.ts"
+  - "sources/client/**/*.tsx"
 ---
 
 # TypeScript Instructions

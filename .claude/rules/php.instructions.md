@@ -1,5 +1,6 @@
 ---
-applyTo: "sources/**/*.php"
+paths:
+  - "sources/server/**/*.php"
 ---
 
 # PHP Server Instructions

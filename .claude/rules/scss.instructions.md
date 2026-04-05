@@ -1,5 +1,6 @@
 ---
-applyTo: "sources/**/*.scss"
+paths:
+  - "sources/client/**/*.scss"
 ---
 
 ## Scss Conventions

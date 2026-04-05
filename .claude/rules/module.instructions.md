@@ -1,3 +1,8 @@
+---
+paths:
+  - "sources/server/**/Module.php"
+---
+
 # Server Module Architecture
 
 The following instructions apply to all PHP code in the `sources/server/` directory that implements Inpsyde Modularity patterns.
