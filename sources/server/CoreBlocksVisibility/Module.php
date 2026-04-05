@@ -27,7 +27,11 @@ class Module implements ExecutableModule
         'core/accordion',
         'core/accordion-heading',
         'core/group',
-        'core/search'
+        'core/search',
+        'core/cover',
+        'core/columns',
+        'core/column',
+        'core/group',
     ];
 
     public static function new(): Module

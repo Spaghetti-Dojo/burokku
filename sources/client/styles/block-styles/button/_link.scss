@@ -1,9 +1,5 @@
-.wp-block-button.is-style-burokku-link .wp-block-button__link {
-	background-color: transparent;
-	color: currentcolor;
-	padding: 0;
+@use "@burokku/mixins/buttons";
 
-	&:hover {
-		text-decoration: underline;
-	}
+.wp-block-button.is-style-burokku-link .wp-block-button__link {
+	@include buttons.style-link();
 }

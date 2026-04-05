@@ -68,7 +68,10 @@ ij_javascript_use_double_quotes = false
 ij_javascript_use_semicolon_after_statement = true
 ij_javascript_enforce_trailing_comma = whenmultiline
 
-[*.{ctp,hphp,inc,module,php,php4,php5,phtml}]
+[*.{html,phtml}]
+ij_wrap_on_typing = false
+
+[*.{ctp,hphp,inc,module,php,php4,php5}]
 indent_style = space
 ij_php_lower_case_keywords = true
 ij_php_class_brace_style = next_line

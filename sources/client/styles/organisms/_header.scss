@@ -1,10 +1,48 @@
 @use "@burokku/mixins/breakpoints";
+@use "@burokku/mixins/transitions";
 
 header.wp-block-template-part {
 	/*
 	 * Navigation
 	 */
 	.burokku-header-navigation {
+		.wp-block-navigation .wp-block-navigation-item__content {
+			@include transitions.colors();
+			border-radius: var(--wp--preset--border-radius--xxs);
+			padding: 0.25em 0.8em;
+
+			&:hover,
+			&[aria-current="page"] {
+				background-color: var(--wp--preset--color--gray-800);
+				color: var(--wp--preset--color--white);
+			}
+		}
+
+		.wp-block-navigation__responsive-container.has-modal-open {
+			background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%))!important;
+			padding: var(--wp--preset--spacing--lg);
+			padding-top: 0;
+			backdrop-filter: blur(11px);
+
+			.wp-block-navigation__responsive-container-close {
+				color: var(--wp--preset--color--white);
+			}
+
+			.wp-block-navigation__container {
+				gap: var(--wp--preset--spacing--lg) !important;
+
+				a {
+					color: var(--wp--preset--color--white);
+					font-size: var(--wp--preset--font-size--2-x-lead);
+
+					&:hover {
+						background: none;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+
 		@include breakpoints.until("m") {
 			width: 100%;
 			justify-content: space-between;

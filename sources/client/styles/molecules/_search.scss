@@ -13,9 +13,9 @@
 
 	&__input {
 		color: var(--wp--preset--color--white);
-		background-color: var(--wp--preset--color--gray-800);
+		background-color: var(--wp--custom--color--gray-900);
 		border-radius: var(--wp--preset--border-radius--xxs);
-		border: units.rem(1px) solid var(--wp--preset--color--gray-600);
+		border: units.rem(1px) solid var(--wp--custom--color--gray-700);
 		padding: 0 var(--wp--preset--spacing--sm);
 		font-size: var(--wp--preset--font-size--sm);
 
@@ -55,7 +55,6 @@
 
 	&__text-button &__button {
 		@include buttons.style-secondary();
-		border: units.rem(1px) solid var(--wp--preset--color--gray-600);
 	}
 
 	/*

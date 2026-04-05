@@ -1,0 +1,21 @@
+@use "@burokku/mixins/buttons";
+@use "@burokku/mixins/units";
+
+.burokku-footer {
+	.burokku-footer-navigation {
+		gap: var(--wp--preset--spacing--base);
+
+		.wp-block-navigation-item__content.wp-block-navigation-item__content {
+			text-underline-offset: units.rem(6px);
+
+			&:hover {
+				color: var(--wp--preset--color--white);
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.burokku-footer-copyright {
+
+	}
+}

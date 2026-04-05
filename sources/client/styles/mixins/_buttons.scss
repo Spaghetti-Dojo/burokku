@@ -29,6 +29,16 @@
 	}
 }
 
+@mixin style-link() {
+	background-color: transparent;
+	color: currentcolor;
+	padding: 0;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 @mixin reset-appearance() {
 	appearance: none;
 	background: none;
