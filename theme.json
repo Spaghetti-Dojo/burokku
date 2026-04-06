@@ -12,7 +12,7 @@
 			"custom": true,
 			"background": true,
 			"text": true,
-			"link": false,
+			"link": true,
 			"customDuotone": true,
 			"customGradient": true,
 			"defaultGradients": false,
