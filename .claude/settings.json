@@ -1,23 +1,24 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(find:*)",
-      "Bash(npm run:*)",
-      "Bash(pnpm *)",
-      "Bash(composer *)"
-    ]
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "SessionEnd",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/hooks/linting.sh"
-          }
-        ]
-      }
-    ]
-  }
+	"permissions": {
+		"allow": [
+			"Bash(find:*)",
+			"Bash(npm run:*)",
+			"Bash(pnpm *)",
+			"Bash(composer *)",
+			"Bash(./vendor/bin/phpcs:*)"
+		]
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "SessionEnd",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "bash .claude/hooks/linting.sh"
+					}
+				]
+			}
+		]
+	}
 }
