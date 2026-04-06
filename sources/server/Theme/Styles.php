@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace SpaghettiDojo\Burokku\Theme;
 
+use SpaghettiDojo\Burokku\Support\ThemeVersionResolver;
+
 final readonly class Styles
 {
+    use ThemeVersionResolver;
+
     /**
      * @var array<string>
      */
@@ -33,10 +37,7 @@ final readonly class Styles
 
     private function register_styles(): void
     {
-        $is_prod_env = wp_get_environment_type() === 'production';
-        $version = $is_prod_env
-            ? wp_get_theme()->get('Version')
-            : null;
+        $version = $this->resolve_version();
 
         foreach(self::ASSETS_FILE_NAMES as $file_name) {
             $name = basename($file_name, '.css');

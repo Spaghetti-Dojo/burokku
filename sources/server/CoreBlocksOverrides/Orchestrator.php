@@ -8,16 +8,13 @@ use ReflectionClass;
 
 final readonly class Orchestrator
 {
-    /**
-     * @param list<Metadata> $metadata
-     */
     public static function new(Metadata ...$metadata): self
     {
         return new self($metadata);
     }
 
     /**
-     * @param list<Metadata> $metadata
+     * @param array<Metadata> $metadata
      */
     private function __construct(private array $metadata)
     {
