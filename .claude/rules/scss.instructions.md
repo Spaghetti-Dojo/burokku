@@ -3,6 +3,10 @@ paths:
   - "sources/client/**/*.scss"
 ---
 
+## Project Conventions
+
+- Always follow the Mobile First approach.
+
 ## Scss Conventions
 
 - Use `mixins.units.rem` or `mixins.units.em` rather than `px` for font sizes, spacing, and other properties that should scale with the user's settings.
