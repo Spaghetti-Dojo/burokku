@@ -10,4 +10,12 @@
 	<arg name="extensions" value="php"/>
 
 	<rule ref="Syde"/>
+
+	<!--
+		Syde enforces camelCase for variable names, but WordPress convention uses snake_case.
+		Prefer WordPress naming conventions for variables.
+	-->
+	<rule ref="Syde.NamingConventions.VariableName">
+		<exclude name="Syde.NamingConventions.VariableName.SnakeCaseVar"/>
+	</rule>
 </ruleset>

@@ -44,7 +44,7 @@
 	"scripts": {
 		"cs": "phpcs",
 		"cs:fix": "phpcbf",
-		"analysis": "./vendor/bin/phpstan analyse",
+		"analysis": "./vendor/bin/phpstan analyse --memory-limit=512M",
 		"test:unit": "@php ./vendor/bin/pest --testsuite=unit",
 		"test:functional": "@php ./vendor/bin/pest --testsuite=functional",
 		"test:unit:coverage": "@php ./vendor/bin/pest --testsuite=unit --coverage --coverage-clover=coverage-unit.xml",
