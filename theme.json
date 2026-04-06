@@ -586,7 +586,10 @@
 				"gray-700": "hsl(0 0% 25.1%)",
 				"gray-500": "hsl(0 0% 45.1%)",
 				"gray-300": "hsl(0 0% 83.1%)",
-				"gray-100": "hsl(0 0% 96.1%)"
+				"gray-100": "hsl(0 0% 96.1%)",
+				"link": {
+					"hover": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
+				}
 			},
 			"mod": {
 				"amount": "20%"
@@ -642,7 +645,7 @@
 				},
 				":hover": {
 					"color": {
-						"text": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
+						"text": "var(--wp--custom--color--link--hover)"
 					}
 				}
 			},

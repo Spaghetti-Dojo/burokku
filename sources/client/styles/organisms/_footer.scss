@@ -9,7 +9,7 @@
 		.wp-block-navigation-item__content.wp-block-navigation-item__content {
 
 			&:hover {
-				color: var(--wp--preset--color--white);
+				color: var(--wp--custom--color--link--hover);
 				text-decoration: underline;
 			}
 		}
@@ -21,6 +21,7 @@
 			text-decoration: none;
 
 			&:hover {
+				color: var(--wp--custom--color--link--hover);
 				text-decoration: underline;
 			}
 		}
