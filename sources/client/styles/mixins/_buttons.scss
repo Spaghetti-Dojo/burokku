@@ -16,7 +16,7 @@
 	color: var(--wp--preset--color--white);
 
 	&:hover {
-		background-color: colors.darken(var(--wp--preset--color--gray-800));
+		background-color: colors.darker(var(--wp--preset--color--gray-800));
 	}
 }
 

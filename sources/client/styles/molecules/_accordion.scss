@@ -13,7 +13,7 @@
 			transition: transform 200ms ease;
 			transform-origin: center;
 
-			& + .wp-block-accordion-heading__toggle-title {
+			+ .wp-block-accordion-heading__toggle-title {
 				margin-inline-start: var(--wp--preset--spacing--base);
 			}
 		}

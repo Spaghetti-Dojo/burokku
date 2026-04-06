@@ -1,5 +1,6 @@
 @use "@burokku/mixins/buttons";
 
 .wp-block-button.is-style-burokku-link .wp-block-button__link {
+
 	@include buttons.style-link();
 }

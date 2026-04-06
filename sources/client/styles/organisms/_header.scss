@@ -2,11 +2,14 @@
 @use "@burokku/mixins/transitions";
 
 header.wp-block-template-part {
+
 	/*
 	 * Navigation
 	 */
 	.burokku-header-navigation {
+
 		.wp-block-navigation .wp-block-navigation-item__content {
+
 			@include transitions.colors();
 			border-radius: var(--wp--preset--border-radius--xxs);
 			padding: 0.25em 0.8em;
@@ -21,7 +24,7 @@ header.wp-block-template-part {
 		.wp-block-navigation__responsive-container.has-modal-open {
 			background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%))!important;
 			padding: var(--wp--preset--spacing--lg);
-			padding-top: 0;
+			padding-block-start: 0;
 			backdrop-filter: blur(11px);
 
 			.wp-block-navigation__responsive-container-close {
@@ -44,7 +47,7 @@ header.wp-block-template-part {
 		}
 
 		@include breakpoints.until("m") {
-			width: 100%;
+			inline-size: 100%;
 			justify-content: space-between;
 		}
 	}

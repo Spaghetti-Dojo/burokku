@@ -1,7 +1,7 @@
 /*
  * Darken a color by mixing a bit of black
  */
-@function darken($first-color) {
+@function darker($first-color) {
 
 	@return color-mix(in hsl decreasing hue, #{$first-color} 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount));
 }

@@ -3,6 +3,7 @@
 @use "@burokku/mixins/breakpoints";
 
 .wp-block-search {
+
 	&__inside-wrapper {
 		position: relative;
 	}
@@ -24,20 +25,19 @@
 		}
 	}
 
-	&__button {
-	}
-
 	/*
 	 * Text Variation
 	 */
 	&__text-button &__inside-wrapper {
+
 		@include breakpoints.until("s") {
 			flex-flow: column;
 
 			.wp-block-search {
+
 				&__input,
 				&__button {
-					width: 100%;
+					inline-size: 100%;
 				}
 
 				&__input {
@@ -54,6 +54,7 @@
 	}
 
 	&__text-button &__button {
+
 		@include buttons.style-secondary();
 	}
 
@@ -65,13 +66,14 @@
 	}
 
 	&__icon-button &__button {
+
 		@include buttons.reset-appearance();
 		position: absolute;
 		inset-block-start: 50%;
 		inset-inline-start: var(--wp--preset--spacing--sm);
 		translate: 0 -50%;
-		width: units.rem(24px);
-		height: units.rem(24px);
+		inline-size: units.rem(24px);
+		block-size: units.rem(24px);
 		transform: scaleX(-1);
 		pointer-events: none;
 		color: var(--wp--preset--color--gray-400);
