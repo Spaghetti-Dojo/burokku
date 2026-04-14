@@ -1,11 +1,7 @@
 {
 	"permissions": {
 		"allow": [
-			"Bash(find:*)",
-			"Bash(npm run:*)",
-			"Bash(pnpm *)",
-			"Bash(composer *)",
-			"Bash(./vendor/bin/phpcs:*)"
+			"Bash(*)"
 		]
 	},
 	"hooks": {
