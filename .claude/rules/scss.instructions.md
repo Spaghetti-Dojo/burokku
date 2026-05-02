@@ -1,7 +1,19 @@
 ---
 paths:
-  - "sources/client/**/*.scss"
+    - 'sources/client/**/*.scss'
 ---
+
+## Styling Architecture (`/sources/client/`)
+
+SCSS is organized atomically:
+
+- `atoms/` — basic elements
+- `molecules/` — component combinations
+- `organisms/` — complex compositions
+- `block-styles/` — block-specific overrides
+- `mixins/` — reusable SCSS mixins
+
+Webpack scans `/sources/client/styles/` for SCSS entry points and compiles them to `/dist/styles/`. Config extends `@wordpress/scripts`.
 
 ## Project Conventions
 
