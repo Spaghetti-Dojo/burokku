@@ -1,17 +1,16 @@
 {
 	"permissions": {
 		"allow": [
-			"Bash(*)"
+			"Bash"
 		]
 	},
 	"hooks": {
-		"PostToolUse": [
+		"Stop": [
 			{
-				"matcher": "SessionEnd",
 				"hooks": [
 					{
 						"type": "command",
-						"command": "bash .claude/hooks/linting.sh"
+						"command": "bash .claude/hooks/qa.sh"
 					}
 				]
 			}
