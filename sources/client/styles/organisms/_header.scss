@@ -1,5 +1,6 @@
 @use "@burokku/mixins/breakpoints";
 @use "@burokku/mixins/transitions";
+@use "@burokku/mixins/units";
 
 header.wp-block-template-part {
 
@@ -8,24 +9,39 @@ header.wp-block-template-part {
 	 */
 	.burokku-header-navigation {
 
-		.wp-block-navigation .wp-block-navigation-item__content {
+		// 600px is the WordPress breakpoint used to distinguish between mobile and desktop navigation.
+		@media (min-width: #{units.em(600)}) {
+			.wp-block-navigation {
+				position: relative;
 
-			@include transitions.colors();
-			border-radius: var(--wp--preset--border-radius--xxs);
-			padding: 0.25em 0.8em;
+				&::before {
+					background-color: var(--wp--preset--color--gray-800);
+					border-radius: var(--wp--preset--border-radius--xxs);
+					color: var(--wp--preset--color--white);
+					content: '';
+					inset: anchor(inside);
+					position: absolute;
+					position-anchor: --navigation-item;
+					transition: inset var(--wp--custom--transition--timing-function) 50ms;
+				}
+			}
 
-			&:hover,
-			&[aria-current="page"] {
-				background-color: var(--wp--preset--color--gray-800);
-				color: var(--wp--preset--color--white);
+			.wp-block-navigation-item:has(a:is(:hover, :focus-visible)) {
+				anchor-name: --navigation-item;
 			}
 		}
 
+		.wp-block-navigation .wp-block-navigation-item__content {
+
+			@include transitions.colors();
+			padding: 0.25em 0.8em;
+		}
+
 		.wp-block-navigation__responsive-container.has-modal-open {
-			background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%))!important;
+			backdrop-filter: blur(11px);
+			background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
 			padding: var(--wp--preset--spacing--lg);
 			padding-block-start: 0;
-			backdrop-filter: blur(11px);
 
 			.wp-block-navigation__responsive-container-close {
 				color: var(--wp--preset--color--white);
