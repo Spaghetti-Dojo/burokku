@@ -22,9 +22,9 @@
 		"mockery/mockery": "^1.6",
 		"pestphp/pest": "^v4.3.0",
 		"phpstan/phpstan": "^2.1",
-		"roots/wordpress-no-content": "6.9",
+		"roots/wordpress-no-content": "7.0",
 		"syde/phpcs": "^1.0",
-		"automattic/wordbless": "^0.6.0"
+		"automattic/wordbless": "dev-trunk"
 	},
 	"autoload": {
 		"psr-4": {
