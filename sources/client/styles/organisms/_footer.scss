@@ -1,5 +1,6 @@
 @use "@burokku/mixins/buttons";
 @use "@burokku/mixins/units";
+@use "@burokku/mixins/links";
 
 .burokku-footer {
 
@@ -7,10 +8,10 @@
 		gap: var(--wp--preset--spacing--base);
 
 		.wp-block-navigation-item__content.wp-block-navigation-item__content {
+			@include links.decoration-ghost();
 
 			&:hover {
 				color: var(--wp--custom--color--link--hover);
-				text-decoration: underline;
 			}
 		}
 	}
@@ -18,11 +19,10 @@
 	.burokku-footer-copyright {
 
 		a {
-			text-decoration: none;
+			@include links.decoration-ghost();
 
 			&:hover {
 				color: var(--wp--custom--color--link--hover);
-				text-decoration: underline;
 			}
 		}
 	}

@@ -3,7 +3,14 @@
  */
 @mixin colors() {
 
-	@include property-transition('color, background-color, border-color, text-decoration-color, fill, stroke');
+	@include property-transition('color, background-color, border-color, fill, stroke');
+}
+
+/**
+ * Text Decoration Transitions
+ */
+@mixin text-decoration() {
+	@include property-transition('color, border-color, text-decoration-color, text-underline-offset');
 }
 
 /*

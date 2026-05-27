@@ -433,7 +433,7 @@
 				},
 				{
 					"name": "Extra Small",
-					"slug": "xxs",
+					"slug": "xs",
 					"size": "0.5rem"
 				},
 				{
@@ -700,13 +700,6 @@
 				"spacing": {
 					"padding": {
 						"bottom": "8px"
-					}
-				},
-				"border": {
-					"bottom": {
-						"width": "1px",
-						"color": "var(--wp--preset--color--gray-800)",
-						"style": "solid"
 					}
 				}
 			},

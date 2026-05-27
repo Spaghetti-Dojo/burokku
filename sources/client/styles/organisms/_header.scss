@@ -35,6 +35,10 @@ header.wp-block-template-part {
 
 			@include transitions.colors();
 			padding: 0.25em 0.8em;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 
 		.wp-block-navigation__responsive-container.has-modal-open {

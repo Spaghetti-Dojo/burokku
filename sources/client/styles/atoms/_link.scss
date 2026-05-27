@@ -1,14 +1,9 @@
 @use "@burokku/mixins/units";
+@use "@burokku/mixins/links";
 @use "@burokku/mixins/transitions";
 
-a {
+a:where(:not(.wp-block-button__link)) {
 
-	@include transitions.colors();
-	@include transitions.property-transition("text-underline-offset");
+	@include links.decoration();
 	color: currentcolor;
-	text-underline-offset: units.rem(4px);
-
-	&:hover:not(.wp-block-button__link) {
-		text-underline-offset: units.rem(6px);
-	}
 }
