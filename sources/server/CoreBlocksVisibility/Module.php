@@ -32,6 +32,15 @@ class Module implements ExecutableModule
         'core/columns',
         'core/column',
         'core/group',
+        'core/embed',
+        'core/pullquote',
+        'core/video',
+        'core/file',
+        'core/audio',
+        'core/media-text',
+        'core/icons',
+        'core/space',
+        'core/separator'
     ];
 
     public static function new(): Module

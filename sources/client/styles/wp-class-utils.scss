@@ -1,3 +1,5 @@
+@use "@burokku/mixins/breakpoints";
+
 /*
  * Typography
  */
@@ -7,4 +9,21 @@
 
 .has-lead-font-size {
 	color: var(--wp--preset--color--gray-400);
+}
+
+/*
+ * Group Flex Layout
+ */
+.flow--vertical--mobile.is-layout-flex.wp-block-group {
+
+	@include breakpoints.until('m') {
+		flex-flow: column;
+	}
+}
+
+.flow--vertical--tablet.is-layout-flex.wp-block-group {
+
+	@include breakpoints.until('sm') {
+		flex-flow: column;
+	}
 }

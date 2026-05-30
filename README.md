@@ -9,6 +9,10 @@
 
 **Burokku** is a WordPress Block Theme bringing the elegant design principles of [shadcn/ui](https://ui.shadcn.com/) to WordPress. Built with performance, accessibility, and modern development practices in mind.
 
+## Documentation
+
+- [WordPress CSS](./docs/wordpress-css.md)
+
 ## 📋 Requirements
 
 ### Production

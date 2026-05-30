@@ -1,3 +1,7 @@
-.wp-block-image:not(.alignfull) img {
+img {
 	border-radius: var(--wp--preset--border-radius--sm);
+}
+
+.wp-block-image.alignfull img {
+	border-radius: 0;
 }
