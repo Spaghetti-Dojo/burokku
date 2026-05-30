@@ -4,9 +4,11 @@
 
 @keyframes -sticky-header {
 	to {
-		inset-block-start: 30px;
+		inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)});
 		width: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
 		max-width: calc(100% - calc(var(--wp--style--root--padding-left) * 4));
+		border-radius: var(--wp--preset--border-radius--sm);
+		border-width: 1px solid var(--wp--custom--color--gray-900);
 	}
 }
 
@@ -15,10 +17,15 @@
 	background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
 }
 
+@mixin -with-adminbar() {
+	--header-inset-block-start: #{units.rem(32px)};
+	--header-inset-block-start--stuck: #{units.rem(62px)};
+}
+
 header.wp-block-template-part {
 	margin: 0 auto;
-	width: 100%;
 	max-width: 100%;
+	width: 100%;
 
 	/*
 	 * Navigation
@@ -93,37 +100,30 @@ header.wp-block-template-part {
 	.wp-block-search {
 		display: none;
 
+		&__input {
+			border: none;
+		}
+
 		@include breakpoints.screen("m") {
 			display: block;
 		}
 	}
 
 	@supports (container-type: scroll-state) {
+		@include -header-backdrop();
+		@include -with-adminbar();
 		container-type: scroll-state;
-		inset-block-start: 0;
+		inset-block-start: var(--header-inset-block-start, 0);
 		z-index: 999999;
 		animation: -sticky-header linear both;
 		animation-timeline: scroll(root);
-		animation-range: 0 150px;
+		animation-range: 10vh 50vw;
 		position: sticky;
+		border: 0 solid transparent;
 
 		html.has-modal-open & {
 			position: fixed;
 			inset: 0;
-		}
-
-		@container scroll-state(stuck: top) {
-			> .wp-block-group {
-				@include -header-backdrop();
-				border: 1px solid var(--wp--custom--color--gray-900);
-				border-radius: var(--wp--preset--border-radius--sm);
-			}
-
-			.wp-block-search {
-				&__input {
-					background-color: transparent;
-				}
-			}
 		}
 	}
 }
