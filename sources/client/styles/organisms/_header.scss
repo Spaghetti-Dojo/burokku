@@ -126,6 +126,7 @@ header.wp-block-template-part {
 		html.has-modal-open & {
 			position: fixed;
 			inset: 0;
+			// Override the `-sticky-header` animation.
 			width: 100% !important;
 			max-width: 100% !important;
 			inset-block-start: 0 !important;
