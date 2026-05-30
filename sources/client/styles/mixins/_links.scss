@@ -2,6 +2,7 @@
 @use "./transitions";
 
 @mixin decoration() {
+
 	@include transitions.text-decoration();
 	text-decoration: underline;
 	text-underline-offset: units.rem(4px);
@@ -9,11 +10,12 @@
 	&:hover {
 		text-decoration: underline;
 		text-underline-offset: units.rem(7px);
-		text-decoration-color: currentColor;
+		text-decoration-color: currentcolor;
 	}
 }
 
 @mixin decoration-ghost() {
+
 	@include decoration();
 	text-decoration-color: transparent;
 }

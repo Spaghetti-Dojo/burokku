@@ -32,9 +32,10 @@
 }
 
 @mixin style-link() {
+
 	@include links.decoration-ghost();
 	background-color: transparent;
-	color: currentColor;
+	color: currentcolor;
 	padding: 0;
 }
 

@@ -8,6 +8,7 @@
 		gap: var(--wp--preset--spacing--base);
 
 		.wp-block-navigation-item__content.wp-block-navigation-item__content {
+
 			@include links.decoration-ghost();
 
 			&:hover {
@@ -19,6 +20,7 @@
 	.burokku-footer-copyright {
 
 		a {
+
 			@include links.decoration-ghost();
 
 			&:hover {

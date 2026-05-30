@@ -3,10 +3,11 @@
 @use "@burokku/mixins/units";
 
 @keyframes -sticky-header {
+
 	to {
 		inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)});
-		width: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
-		max-width: calc(100% - calc(var(--wp--style--root--padding-left) * 4));
+		inline-size: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
+		max-inline-size: calc(100% - calc(var(--wp--style--root--padding-left) * 4));
 		border-radius: var(--wp--preset--border-radius--sm);
 		border-width: 1px solid var(--wp--custom--color--gray-900);
 	}
@@ -18,6 +19,7 @@
 }
 
 @mixin -with-adminbar() {
+
 	.admin-bar & {
 		--header-inset-block-start: #{units.rem(32px)};
 		--header-inset-block-start--stuck: #{units.rem(62px)};
@@ -26,8 +28,8 @@
 
 header.wp-block-template-part {
 	margin: 0 auto;
-	max-width: 100%;
-	width: 100%;
+	max-inline-size: 100%;
+	inline-size: 100%;
 
 	/*
 	 * Navigation
@@ -36,6 +38,7 @@ header.wp-block-template-part {
 
 		// 600px is the WordPress breakpoint used to distinguish between mobile and desktop navigation.
 		@media (min-width: #{units.em(600)}) {
+
 			.wp-block-navigation {
 				position: relative;
 
@@ -67,6 +70,7 @@ header.wp-block-template-part {
 		}
 
 		.wp-block-navigation__responsive-container.has-modal-open {
+
 			@include -header-backdrop();
 			padding: var(--wp--preset--spacing--lg);
 			padding-block-start: 0;
@@ -112,6 +116,7 @@ header.wp-block-template-part {
 	}
 
 	@supports (container-type: scroll-state) {
+
 		@include -header-backdrop();
 		@include -with-adminbar();
 		container-type: scroll-state;
@@ -119,7 +124,7 @@ header.wp-block-template-part {
 		z-index: 999999;
 		animation: -sticky-header linear both;
 		animation-timeline: scroll(root);
-		animation-range: 0 5vw;
+		animation-range: 0 5vi;
 		position: sticky;
 		border: 0 solid transparent;
 
@@ -127,8 +132,8 @@ header.wp-block-template-part {
 			position: fixed;
 			inset: 0;
 			// Override the `-sticky-header` animation.
-			width: 100% !important;
-			max-width: 100% !important;
+			inline-size: 100% !important;
+			max-inline-size: 100% !important;
 			inset-block-start: 0 !important;
 		}
 	}

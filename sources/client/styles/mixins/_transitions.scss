@@ -10,6 +10,7 @@
  * Text Decoration Transitions
  */
 @mixin text-decoration() {
+
 	@include property-transition('color, border-color, text-decoration-color, text-underline-offset');
 }
 
