@@ -18,8 +18,10 @@
 }
 
 @mixin -with-adminbar() {
-	--header-inset-block-start: #{units.rem(32px)};
-	--header-inset-block-start--stuck: #{units.rem(62px)};
+	.admin-bar & {
+		--header-inset-block-start: #{units.rem(32px)};
+		--header-inset-block-start--stuck: #{units.rem(62px)};
+	}
 }
 
 header.wp-block-template-part {
@@ -117,13 +119,16 @@ header.wp-block-template-part {
 		z-index: 999999;
 		animation: -sticky-header linear both;
 		animation-timeline: scroll(root);
-		animation-range: 10vh 50vw;
+		animation-range: 0 5vw;
 		position: sticky;
 		border: 0 solid transparent;
 
 		html.has-modal-open & {
 			position: fixed;
 			inset: 0;
+			width: 100% !important;
+			max-width: 100% !important;
+			inset-block-start: 0 !important;
 		}
 	}
 }
