@@ -11,6 +11,8 @@
 
 ## Documentation
 
+📖 Published docs: <https://spaghetti-dojo.github.io/burokku/>
+
 - [WordPress CSS](./docs/wordpress-css.md)
 
 ## 📋 Requirements

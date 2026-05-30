@@ -46,6 +46,10 @@ yarn.lock
 /.phpunit.cache/
 coverage.xml
 
+# Docusaurus (website/)
+/website/build/
+/website/.docusaurus/
+
 # Temporary files
 *.tmp
 *.swp

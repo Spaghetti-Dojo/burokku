@@ -1,3 +1,8 @@
+---
+title: WordPress CSS
+sidebar_position: 2
+---
+
 # WordPress Css
 
 ## Css Blocks Utilities
