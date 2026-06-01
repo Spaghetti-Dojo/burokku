@@ -1,3 +1,7 @@
 .wp-site-blocks main:has(.wp-block-post-content > .wp-block-image:first-child) {
 	margin-block-start: 0;
 }
+
+.wp-site-blocks main:has(.wp-block-post-content > .wp-block-cover:first-child) {
+	margin-block-start: 0;
+}
