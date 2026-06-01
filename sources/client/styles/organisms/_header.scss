@@ -2,17 +2,12 @@
 @use "@burokku/mixins/transitions";
 @use "@burokku/mixins/units";
 
-@keyframes -sticky-header {
-
-	to {
-		backdrop-filter: blur(11px);
-		background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
-		inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)});
-		inline-size: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
-		max-inline-size: calc(100% - calc(var(--wp--style--root--padding-left) * 4));
-		border-radius: var(--wp--preset--border-radius--sm);
-		border-width: 1px solid var(--wp--custom--color--gray-900);
-	}
+@mixin -default-style() {
+	backdrop-filter: blur(11px);
+	background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
+	inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)}) !important;
+	border-radius: var(--wp--preset--border-radius--sm);
+	border-width: 1px solid var(--wp--custom--color--gray-900);
 }
 
 @mixin -header-backdrop() {
@@ -28,21 +23,27 @@
 	}
 }
 
-header.wp-block-template-part {
-	inline-size: 100%;
+@keyframes -sticky-header {
+	to {
+		@include -default-style();
+	}
+}
+
+header.burokku-header {
+	@include -with-adminbar();
+	inline-size: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
 	margin: 0 auto;
 	max-inline-size: 100%;
 	z-index: 999999;
 
 	@supports (container-type: scroll-state) {
-		@include -with-adminbar();
 
 		html:not(.has-modal-open) & {
 			container-type: scroll-state;
 			inset-block-start: var(--header-inset-block-start, 0);
-			animation: -sticky-header linear both;
+			animation: -sticky-header var(--wp--custom--transition--timing-function) both;
 			animation-timeline: scroll(root);
-			animation-range: 0 5vi;
+			animation-range: 0 10vb;
 			position: sticky;
 			border: 0 solid transparent;
 		}
@@ -56,9 +57,18 @@ header.wp-block-template-part {
 			inset-block-start: 0 !important;
 		}
 	}
+
+	&--fixed {
+		inset-inline: 0;
+		position: fixed !important;
+
+		html:not(.has-modal-open) & {
+			@include -default-style();
+		}
+	}
 }
 
-.burokku-header {
+.burokku-header-content {
 	/*
 	 * Navigation
 	 */
