@@ -78,7 +78,7 @@ header.wp-block-template-part {
 					inset: anchor(inside);
 					position: absolute;
 					position-anchor: --navigation-item;
-					transition: inset var(--wp--custom--transition--timing-function) 50ms;
+					transition: inset var(--wp--custom--transition--timing-function) 100ms;
 				}
 			}
 
