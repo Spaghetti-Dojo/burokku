@@ -1,0 +1,10 @@
+@keyframes parallax {
+	to {
+		background-position: bottom -100% center;
+	}
+}
+
+.wp-block-cover__image-background.has-parallax {
+	animation: parallax linear;
+	animation-timeline: view(0%);
+}
