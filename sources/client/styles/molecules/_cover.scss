@@ -7,4 +7,5 @@
 .wp-block-cover__image-background.has-parallax {
 	animation: parallax linear;
 	animation-timeline: view(0%);
+	background-size: auto;
 }
