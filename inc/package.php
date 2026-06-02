@@ -29,7 +29,8 @@ function package(): Modularity\Package
             ->addModule(CoreBlocksVisibility\Module::new())
             ->addModule(CoreBlocksOverrides\Module::new())
             ->addModule(BlockMarkupReplacements\Module::new())
-            ->addModule(BlockStyles\Module::new());
+            ->addModule(BlockStyles\Module::new())
+            ->addModule(ThemeToggle\Module::new());
     }
 
     return $package;

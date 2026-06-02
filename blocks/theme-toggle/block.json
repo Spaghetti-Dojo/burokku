@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "burokku/theme-toggle",
+	"title": "Theme Toggle",
+	"category": "design",
+	"icon": "visibility",
+	"description": "Light/dark color scheme toggle for the header.",
+	"textdomain": "burokku",
+	"keywords": ["dark", "light", "theme", "toggle", "color scheme"],
+	"supports": {
+		"html": false,
+		"interactivity": true,
+		"align": false,
+		"customClassName": false
+	},
+	"render": "file:./render.php"
+}

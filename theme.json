@@ -823,6 +823,11 @@
 			"title": "Header",
 			"name": "header",
 			"area": "header"
+		},
+		{
+			"title": "Footer",
+			"name": "footer",
+			"area": "footer"
 		}
 	]
 }

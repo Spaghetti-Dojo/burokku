@@ -1,0 +1,60 @@
+@use "@burokku/mixins/transitions";
+@use "@burokku/mixins/units";
+
+.theme-toggle {
+
+	@include transitions.colors();
+	align-items: center;
+	background: none;
+	border: 0;
+	color: currentcolor;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	padding: units.rem(6px);
+
+	&:hover {
+		opacity: 0.7;
+	}
+
+	&__moon,
+	&__sun {
+		block-size: units.rem(20px);
+		inline-size: units.rem(20px);
+	}
+
+	// Default (dark) shows the moon.
+	&__sun {
+		display: none;
+	}
+
+	&__moon {
+		display: block;
+	}
+}
+
+// Light scheme shows the sun. Mirrors _color-scheme.scss selectors.
+:root[data-theme="light"] .theme-toggle {
+
+	&__sun {
+		display: block;
+	}
+
+	&__moon {
+		display: none;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+
+	:root:not([data-theme="dark"]) .theme-toggle {
+
+		&__sun {
+			display: block;
+		}
+
+		&__moon {
+			display: none;
+		}
+	}
+}

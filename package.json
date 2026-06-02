@@ -48,12 +48,15 @@
 	"scripts": {
 		"env": "wp-env",
 		"start": "wp-scripts start",
-		"build": "wp-scripts build",
+		"build": "wp-scripts build && pnpm build:color-scheme",
+		"build:color-scheme": "node tools/color-scheme/build.mjs",
+		"build:color-scheme:check": "node tools/color-scheme/build.mjs --check",
 		"build:dev": "wp-scripts start",
-		"lint:css": "wp-scripts lint-style",
-		"lint:css:fix": "wp-scripts lint-style --fix",
-		"lint:js": "wp-scripts lint-js",
-		"lint:js:fix": "wp-scripts lint-js --fix",
+		"lint:styles": "wp-scripts lint-style",
+		"lint:styles:fix": "wp-scripts lint-style --fix",
+		"lint:scripts": "wp-scripts lint-js",
+		"lint:scripts:fix": "wp-scripts lint-js --fix",
+		"test:color-scheme": "node --test tools/color-scheme/*.test.mjs",
 		"format": "wp-scripts format"
 	}
 }

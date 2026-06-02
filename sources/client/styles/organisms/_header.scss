@@ -4,7 +4,10 @@
 
 @mixin -default-style() {
 	backdrop-filter: blur(11px);
-	background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
+	background-color: light-dark(
+		oklab(from var(--wp--custom--color--gray-950) l a b / 40%),
+		oklab(from var(--wp--custom--color--gray-950) l a b / 80%)
+	) !important;
 	inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)}) !important;
 	border-radius: var(--wp--preset--border-radius--sm);
 	border-width: 1px solid var(--wp--custom--color--gray-900);
@@ -12,7 +15,10 @@
 
 @mixin -header-backdrop() {
 	backdrop-filter: blur(11px);
-	background-color: oklab(from var(--wp--custom--color--gray-950) l a b / calc(alpha * 80%)) !important;
+	background-color: light-dark(
+		oklab(from var(--wp--custom--color--gray-950) l a b / 40%),
+		oklab(from var(--wp--custom--color--gray-950) l a b / 80%)
+	) !important;
 }
 
 @mixin -with-adminbar() {
@@ -24,12 +30,15 @@
 }
 
 @keyframes -sticky-header {
+
 	to {
+
 		@include -default-style();
 	}
 }
 
 header.burokku-header {
+
 	@include -with-adminbar();
 	inline-size: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
 	margin: 0 auto;
@@ -63,12 +72,14 @@ header.burokku-header {
 		position: fixed !important;
 
 		html:not(.has-modal-open) & {
+
 			@include -default-style();
 		}
 	}
 }
 
 .burokku-header-content {
+
 	/*
 	 * Navigation
 	 */
