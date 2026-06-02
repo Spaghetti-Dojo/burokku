@@ -32,3 +32,7 @@ apply_filters('burokku.blocks.custom-block-registered', $block);
 - Use present tense when the hook fires **before** or **during** an operation (e.g., `loading`, `processing`)
 - For compound event names, apply tense to the action verb (e.g., `boot-failed`, `theme-loaded`, `asset-processing`)
 - Avoid underscores - use dashes consistently
+
+## WordPress Attributes Sanitization
+
+- Use `wp_kses_data` when rendering a php variable in a template, e.g. `echo wp_kses_data(get_block_wrapper_attributes([...]));`
