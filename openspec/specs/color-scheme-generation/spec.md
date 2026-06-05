@@ -31,6 +31,15 @@ For every transformed literal color, the generator SHALL preserve the hue, satur
 - **WHEN** a token carries an alpha component (e.g. a `*-500-50` tint)
 - **THEN** the derived value retains the same alpha
 
+### Requirement: Exclude fixed/brand colors from the derived light scheme
+The generator SHALL omit any token whose slug/key is listed in the exclude config from the derived light scheme entirely, emitting no declaration for it in `styles/light.json` or the scoped `[data-theme="light"]` CSS. The light layer is a delta over the base (`:root`) scheme, so an omitted token inherits its base value in both schemes. This keeps fixed/brand colors identical across schemes AND lets WordPress Global Styles user customizations (which land on `:root`) take effect — a redeclared value in the light layer would otherwise shadow them. The exclude list is declarative config (a top-level `exclude` array in `overrides.json`).
+
+#### Scenario: Excluded brand color is omitted and stays customizable
+- **WHEN** `theme-accent` is in the exclude list and the generator runs
+- **THEN** `styles/light.json` contains no `theme-accent` palette entry
+- **AND** the scoped light CSS emits no `--wp--preset--color--theme-accent` declaration
+- **AND** in light mode `theme-accent` resolves to the base `:root` value, including any Global Styles user customization
+
 ### Requirement: Resolve each token by precedence — expression, curated step-swap, formula mirror
 For each literal token the generator SHALL apply, in order: (1) if the value is a `var()` or `color-mix()` expression, emit it unchanged; (2) else if the token is a chromatic ramp member with a sibling `-700`/`-300` in the palette, swap the step (`-700`↔`-300`, `-500` maps to itself) using the sibling's curated value; (3) else mirror lightness as `L' = 100 − L`.
 
@@ -70,7 +79,7 @@ The generator SHALL write the derived values to `styles/light.json` in a structu
 - **THEN** the produced `styles/light.json` is byte-identical between runs
 
 #### Scenario: Overrides take precedence over computed values
-- **WHEN** an override is provided for a specific token (e.g. `theme-accent`)
+- **WHEN** an override is provided for a specific token (e.g. `gray-500`)
 - **AND** the generator runs
 - **THEN** `styles/light.json` contains the override value for that token
 - **AND** all non-overridden tokens retain their computed values

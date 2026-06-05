@@ -63,8 +63,6 @@ test( 'deriveToken: chromatic ramp reuses curated sibling', () => {
 test( 'deriveToken: orphan literal mirrors lightness', () => {
 	// gray-950 has no -700/-300 sibling -> 100 - 3.9 = 96.1
 	assert.equal( deriveToken( 'hsl(0 0% 3.9%)', 'gray-950', palette ), 'hsl(0 0% 96.1%)' );
-	// theme-accent (white literal, no ramp sibling) -> near-black
-	assert.equal( deriveToken( 'hsl(0 0% 98%)', 'theme-accent', palette ), 'hsl(0 0% 2%)' );
 } );
 
 test( 'transformGradient mirrors each stop, keeps positions/direction', () => {

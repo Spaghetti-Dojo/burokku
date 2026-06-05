@@ -38,21 +38,30 @@ function paletteMap( palette = [] ) {
 /**
  * Derive the light color settings from base theme.json color settings.
  *
+ * Slugs/keys listed in `exclude` are dropped from the derived light scheme
+ * entirely, so the light layer carries no declaration for them and they inherit
+ * the base (`:root`) value — which is also where WordPress Global Styles user
+ * customizations land. Use this for fixed/brand colors that must stay identical
+ * in both schemes AND remain customizable by the user.
+ *
  * @param {object} themeColor `settings.color` from theme.json.
  * @param {object} themeCustomColor `settings.custom.color` from theme.json.
+ * @param {Set<string>} [exclude] Slugs/keys to omit from the derived scheme.
  * @return {{color:object, custom:{color:object}}}
  */
-export function deriveColor( themeColor = {}, themeCustomColor = {} ) {
+export function deriveColor( themeColor = {}, themeCustomColor = {}, exclude = new Set() ) {
 	const palette = themeColor.palette ?? [];
 	const map = paletteMap( palette );
 
 	const color = {};
 
 	if ( themeColor.palette ) {
-		color.palette = palette.map( ( token ) => ( {
-			...token,
-			color: deriveToken( token.color, token.slug, map ),
-		} ) );
+		color.palette = palette
+			.filter( ( token ) => ! exclude.has( token.slug ) )
+			.map( ( token ) => ( {
+				...token,
+				color: deriveToken( token.color, token.slug, map ),
+			} ) );
 	}
 
 	if ( themeColor.gradients ) {
@@ -69,7 +78,7 @@ export function deriveColor( themeColor = {}, themeCustomColor = {} ) {
 		} ) );
 	}
 
-	return { color, custom: { color: deriveCustomColor( themeCustomColor, map ) } };
+	return { color, custom: { color: deriveCustomColor( themeCustomColor, map, exclude ) } };
 }
 
 /**
@@ -78,14 +87,19 @@ export function deriveColor( themeColor = {}, themeCustomColor = {} ) {
  *
  * @param {object} node
  * @param {Map<string,string>} map
+ * @param {Set<string>} [exclude] Keys to omit from the derived scheme.
  * @return {object}
  */
-function deriveCustomColor( node, map ) {
+function deriveCustomColor( node, map, exclude = new Set() ) {
 	const out = {};
 
 	for ( const [ key, value ] of Object.entries( node ) ) {
+		if ( exclude.has( key ) ) {
+			continue; // inherits base (:root) value, stays user-customizable
+		}
+
 		if ( typeof value === 'object' && value !== null ) {
-			out[ key ] = deriveCustomColor( value, map );
+			out[ key ] = deriveCustomColor( value, map, exclude );
 		} else if ( isExpression( value ) ) {
 			out[ key ] = value; // inherits flipped referents
 		} else {
@@ -142,7 +156,8 @@ export function applyOverrides( derived, overrides = {} ) {
  * @return {object}
  */
 export function buildLightJson( theme, overrides = {} ) {
-	const derived = deriveColor( theme.settings?.color, theme.settings?.custom?.color );
+	const exclude = new Set( overrides.exclude ?? [] );
+	const derived = deriveColor( theme.settings?.color, theme.settings?.custom?.color, exclude );
 	const settings = applyOverrides( derived, overrides );
 
 	return {

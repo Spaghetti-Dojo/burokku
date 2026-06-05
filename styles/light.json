@@ -289,11 +289,6 @@
 					"slug": "rose-300",
 					"color": "hsl(345.3 82.7% 40.8%)",
 					"name": "Rose 300"
-				},
-				{
-					"slug": "theme-accent",
-					"color": "hsl(0 0% 2%)",
-					"name": "Theme Accent"
 				}
 			],
 			"gradients": [
