@@ -625,7 +625,7 @@
 				}
 			},
 			"mod": {
-				"amount": "20%"
+				"amount": "30%"
 			},
 			"transition": {
 				"timing-function": "cubic-bezier(0, 0, 0, 0.35)",

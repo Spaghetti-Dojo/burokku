@@ -11,6 +11,7 @@
 	inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)}) !important;
 	border-radius: var(--wp--preset--border-radius--sm);
 	border-width: 1px solid var(--wp--custom--color--gray-900);
+	max-inline-size: 90%;
 }
 
 @mixin -header-backdrop() {
