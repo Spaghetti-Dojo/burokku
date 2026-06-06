@@ -6,6 +6,9 @@ paths:
 
 # TypeScript Instructions
 
+- Always write TypeScript code.
+- Always import `@wordpress/*` packages never rely on `window` or `document`.
+
 ## Naming Conventions
 
 ### Methods and Functions

@@ -28,6 +28,7 @@
 		"@wordpress/blocks": "^15.12.0",
 		"@wordpress/components": "^32.1.0",
 		"@wordpress/i18n": "^6.12.0",
+		"@wordpress/server-side-render": "^6.24.0",
 		"aos": "^2.3.4"
 	},
 	"devDependencies": {
@@ -40,6 +41,7 @@
 		"@wordpress/prettier-config": "^4.39.0",
 		"@wordpress/scripts": "^31.4.0",
 		"clean-webpack-plugin": "^4.0.0",
+		"dotenv-cli": "^8.0.0",
 		"sass": "^1.83.0",
 		"stylelint-plugin-logical-css": "^2.0.2",
 		"ts-node": "^10.9.2",
@@ -47,11 +49,14 @@
 	},
 	"scripts": {
 		"env": "wp-env",
-		"start": "wp-scripts start",
-		"build": "wp-scripts build && pnpm build:color-scheme",
+		"shell": "wp-env run cli wp shell",
+		"start": "dotenv -- wp-scripts start",
+		"build": "dotenv -- wp-scripts build && pnpm build:color-scheme",
 		"build:color-scheme": "node tools/color-scheme/build.mjs",
 		"build:color-scheme:check": "node tools/color-scheme/build.mjs --check",
-		"build:dev": "wp-scripts start",
+		"build:dev:scripts": "wp-scripts start --webpack--devtool=inline-source-map",
+		"build:dev:modules": "dotenv -- wp-scripts start --config webpack.modules.config.js --webpack--devtool=inline-source-map",
+		"build:manifest": "wp-scripts build-blocks-manifest --input=sources/blocks --output=dist/modules/blocks/blocks-manifest.php",
 		"lint:styles": "wp-scripts lint-style",
 		"lint:styles:fix": "wp-scripts lint-style --fix",
 		"lint:scripts": "wp-scripts lint-js",

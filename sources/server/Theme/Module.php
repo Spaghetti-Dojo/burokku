@@ -6,9 +6,10 @@ namespace SpaghettiDojo\Burokku\Theme;
 
 use Inpsyde\Modularity\Module\ExecutableModule;
 use Inpsyde\Modularity\Module\ModuleClassNameIdTrait;
+use Inpsyde\Modularity\Properties\Properties;
 use Psr\Container\ContainerInterface;
 
-class Module implements ExecutableModule
+final readonly class Module implements ExecutableModule
 {
     use ModuleClassNameIdTrait;
 
@@ -23,6 +24,10 @@ class Module implements ExecutableModule
 
     public function run(ContainerInterface $container): bool
     {
+        /** @var Properties $properties */
+        $properties = $container->get('properties');
+
+        Blocks::new($properties)->init();
         Supports::new()->init();
         ThemeJson::new()->init();
         Styles::new()->init();

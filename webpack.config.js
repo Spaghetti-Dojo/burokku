@@ -1,10 +1,3 @@
-/**
- * WordPress Webpack Config Extension
- *
- * Extends the default @wordpress/scripts webpack configuration
- * to support the monorepo structure under /sources/.
- */
-
 const path = require('path');
 const fs = require('fs');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -80,4 +73,4 @@ const styles = {
 	]
 };
 
-module.exports = styles;
+module.exports = [styles];

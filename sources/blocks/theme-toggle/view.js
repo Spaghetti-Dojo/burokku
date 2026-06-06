@@ -51,6 +51,13 @@ const { state } = store( 'burokku/theme-toggle', {
 			const theme = currentTheme();
 			state.theme = theme;
 			state.isDark = theme === 'dark';
+
+			try {
+				var storedTheme = localStorage.getItem( 'burokku-theme' );
+				if ( storedTheme === 'light' || storedTheme === 'dark' ) {
+					document.documentElement.dataset.theme = storedTheme;
+				}
+			} catch ( e ) {}
 		},
 	},
 } );

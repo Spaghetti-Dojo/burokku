@@ -20,17 +20,15 @@ function package(): Modularity\Package
     static $package = null;
 
     if (null === $package) {
-        $themeFilePath = get_template_directory() . '/style.css';
-        $properties = Modularity\Properties\ThemeProperties::new($themeFilePath);
-        $package = Modularity\Package::new($properties);
+        $properties = Modularity\Properties\ThemeProperties::new('burokku');
+            $package = Modularity\Package::new($properties);
 
         $package
             ->addModule(Theme\Module::new())
             ->addModule(CoreBlocksVisibility\Module::new())
             ->addModule(CoreBlocksOverrides\Module::new())
             ->addModule(BlockMarkupReplacements\Module::new())
-            ->addModule(BlockStyles\Module::new())
-            ->addModule(ThemeToggle\Module::new());
+            ->addModule(BlockStyles\Module::new());
     }
 
     return $package;

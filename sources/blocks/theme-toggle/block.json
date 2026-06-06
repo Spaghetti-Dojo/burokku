@@ -14,5 +14,8 @@
 		"align": false,
 		"customClassName": false
 	},
+	"editorScript": "file:./index.js",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css",
 	"render": "file:./render.php"
 }

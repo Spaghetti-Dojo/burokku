@@ -1,7 +1,7 @@
 @use "@burokku/mixins/transitions";
 @use "@burokku/mixins/units";
 
-.theme-toggle {
+.wp-block-burokku-theme-toggle {
 
 	@include transitions.colors();
 	align-items: center;
@@ -34,7 +34,7 @@
 }
 
 // Light scheme shows the sun. Mirrors _color-scheme.scss selectors.
-:root[data-theme="light"] .theme-toggle {
+:root[data-theme="light"] .wp-block-burokku-theme-toggle {
 
 	&__sun {
 		display: block;
@@ -47,7 +47,7 @@
 
 @media (prefers-color-scheme: light) {
 
-	:root:not([data-theme="dark"]) .theme-toggle {
+	:root:not([data-theme="dark"]) .wp-block-burokku-theme-toggle {
 
 		&__sun {
 			display: block;
