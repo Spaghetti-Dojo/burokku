@@ -4,7 +4,7 @@ paths:
   - "sources/client/**/*.tsx"
 ---
 
-# TypeScript Instructions
+# Global Instructions
 
 - Always write TypeScript code.
 - Always import `@wordpress/*` packages never rely on `window` or `document`.

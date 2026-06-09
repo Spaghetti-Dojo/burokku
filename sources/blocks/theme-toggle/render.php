@@ -1,13 +1,5 @@
 <?php
 
-/**
- * Server render for the burokku/theme-toggle block.
- *
- * Dynamic block: WordPress runs wp_interactivity_process_directives() on this
- * markup automatically because of supports.interactivity. The view module is a
- * hand-written native ES module enqueued here (see ThemeToggle\Module).
- */
-
 declare(strict_types=1);
 
 if (! defined('ABSPATH')) {

@@ -1,19 +1,8 @@
-/**
- * Theme toggle — WordPress Interactivity API store.
- *
- * Hand-written native ES module (not built by the CSS-only webpack pipeline).
- * Registered as the `@burokku/theme-toggle` script module with a dependency on
- * `@wordpress/interactivity`, which WordPress core serves via its import map.
- */
-
 import { store } from '@wordpress/interactivity';
 
 const STORAGE_KEY = 'burokku-theme';
 
 /**
- * The scheme currently shown: an explicit `data-theme` on <html>, otherwise the
- * operating system preference. Mirrors the no-flash inline head script.
- *
  * @return {'light'|'dark'} Active scheme.
  */
 function currentTheme() {
@@ -23,9 +12,9 @@ function currentTheme() {
 		return explicit;
 	}
 
-	return window.matchMedia( '(prefers-color-scheme: dark)' ).matches
-		? 'dark'
-		: 'light';
+	return window.matchMedia( '(prefers-color-scheme: light)' ).matches
+		? 'light'
+		: 'dark';
 }
 
 const { state } = store( 'burokku/theme-toggle', {
