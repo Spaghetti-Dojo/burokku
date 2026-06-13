@@ -7,11 +7,11 @@ button,
 		"color, background-color, border-color, fill, stroke, translate, transform"
 	);
 
-	&:active {
+	.wp-block-button:not(.is-style-burokku-link) &:active {
 		translate: 0 2px;
 	}
 
-	&:hover {
+	.wp-block-button:not(.is-style-burokku-link) &:hover {
 		transform: scale(1.1);
 	}
 }
