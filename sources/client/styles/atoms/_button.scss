@@ -3,13 +3,16 @@
 
 button,
 .wp-block-button__link {
-
 	@include transitions.property-transition(
-		"color, background-color, border-color, fill, stroke, translate"
+		"color, background-color, border-color, fill, stroke, translate, transform"
 	);
 
-	&:active {
+	.wp-block-button:not(.is-style-burokku-link) &:active {
 		translate: 0 2px;
+	}
+
+	.wp-block-button:not(.is-style-burokku-link) &:hover {
+		transform: scale(1.1);
 	}
 }
 
