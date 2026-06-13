@@ -31,6 +31,7 @@ final readonly class Module implements ExecutableModule
         Supports::new()->init();
         ThemeJson::new()->init();
         Styles::new()->init();
+        EditorScripts::new()->init();
 
         return true;
     }
