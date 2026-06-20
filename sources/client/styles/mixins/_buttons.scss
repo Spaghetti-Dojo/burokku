@@ -48,3 +48,9 @@
 		translate: 0 0;
 	}
 }
+
+@mixin reset-btn-behavior() {
+	&:hover {
+		transform: scale(1);
+	}
+}
