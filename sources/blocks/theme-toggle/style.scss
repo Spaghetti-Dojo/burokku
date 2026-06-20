@@ -1,0 +1,47 @@
+@use "@burokku/mixins/transitions";
+@use "@burokku/mixins/units";
+
+.wp-block-burokku-theme-toggle {
+
+	@include transitions.colors();
+	align-items: center;
+	background: none;
+	border: 0;
+	color: currentcolor;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	padding: units.rem(6px);
+
+	&:hover {
+		opacity: 0.7;
+	}
+
+	&__moon,
+	&__sun {
+		block-size: units.rem(20px);
+		inline-size: units.rem(20px);
+	}
+
+	// Default (dark) shows the moon.
+	&__sun {
+		display: none;
+	}
+
+	&__moon {
+		display: block;
+	}
+}
+
+// Light scheme shows the sun. The head script always sets a concrete
+// [data-theme], so selection is attribute-driven with no media-query fallback.
+[data-theme="light"] .wp-block-burokku-theme-toggle {
+
+	&__sun {
+		display: block;
+	}
+
+	&__moon {
+		display: none;
+	}
+}

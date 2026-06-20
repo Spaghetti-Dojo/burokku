@@ -8,14 +8,19 @@
 	.wp-block-accordion-heading {
 		font-weight: var(--wp--custom--font-weight--regular);
 
-		&__toggle-icon  {
+		&__toggle-icon {
 			transform: rotate(0deg);
-			transition: transform 200ms ease;
 			transform-origin: center;
+			transition: transform 200ms ease;
 
 			+ .wp-block-accordion-heading__toggle-title {
 				margin-inline-start: var(--wp--preset--spacing--base);
 			}
+		}
+
+		&__toggle {
+
+			@include buttons.reset-btn-behavior();
 		}
 	}
 
@@ -23,15 +28,19 @@
 	 * Accordion Panel
 	 */
 	.wp-block-accordion-panel {
+		margin-block-start: 0;
+		transition-behavior: allow-discrete;
+		transition-duration: var(--wp--custom--transition--duration);
 		transition-property: all;
 		transition-timing-function: var(--wp--custom--transition--timing-function);
-		transition-duration: var(--wp--custom--transition--duration);
-		transition-behavior: allow-discrete;
-		margin-block-start: 0;
 
-		@supports (height: calc-size(fit-content, size)) {
+		// `interpolate-size: allow-keywords` lets block-size transition to the
+		// intrinsic `fit-content` keyword (the high-level equivalent of
+		// `calc-size()`, and free of any `calc()` for postcss-calc to choke on).
+		@supports (interpolate-size: allow-keywords) {
 			block-size: 0;
 			display: block;
+			interpolate-size: allow-keywords;
 			overflow: clip;
 		}
 
@@ -51,8 +60,8 @@
 
 		.wp-block-accordion-panel {
 
-			@supports (height: calc-size(fit-content, size)) {
-				block-size: calc-size(fit-content, size);
+			@supports (interpolate-size: allow-keywords) {
+				block-size: fit-content;
 			}
 		}
 	}

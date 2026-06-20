@@ -622,10 +622,15 @@
 				"gray-100": "hsl(0 0% 96.1%)",
 				"link": {
 					"hover": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
+				},
+				"footer": {
+					"copyright": "var(--brk-color-on-surface-muted)",
+					"link": "var(--brk-color-on-surface)",
+					"border": "var(--brk-color-border)"
 				}
 			},
 			"mod": {
-				"amount": "20%"
+				"amount": "30%"
 			},
 			"transition": {
 				"timing-function": "cubic-bezier(0, 0, 0, 0.35)",
@@ -648,8 +653,8 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--custom--color--gray-950)",
-			"text": "var(--wp--preset--color--white)"
+			"background": "var(--brk-color-surface)",
+			"text": "var(--brk-color-on-surface)"
 		},
 		"spacing": {
 			"blockGap": "var(--wp--custom--spacing--block-gap)",
@@ -671,19 +676,19 @@
 				},
 				":hover": {
 					"color": {
-						"text": "var(--wp--custom--color--link--hover)"
+						"text": "var(--brk-color-link-hover)"
 					}
 				}
 			},
 			"button": {
 				"color": {
-					"text": "var(--wp--custom--color--gray-900)",
-					"background": "var(--wp--preset--color--theme-accent)"
+					"text": "var(--brk-color-on-accent)",
+					"background": "var(--brk-color-accent)"
 				},
 				":hover": {
 					"color": {
-						"text": "var(--wp--custom--color--gray-900)",
-						"background": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
+						"text": "var(--brk-color-on-accent)",
+						"background": "var(--brk-color-accent-hover)"
 					}
 				},
 				"border": {
@@ -776,7 +781,7 @@
 			"core/quote": {
 				"border": {
 					"left": {
-						"color": "var(--wp--preset--color--gray-800)",
+						"color": "var(--brk-color-border)",
 						"style": "solid",
 						"width": "2px"
 					}
@@ -804,7 +809,7 @@
 				},
 				"border": {
 					"bottom": {
-						"color": "var(--wp--preset--color--gray-800)",
+						"color": "var(--brk-color-border)",
 						"style": "solid",
 						"width": "1px"
 					}
@@ -823,6 +828,11 @@
 			"title": "Header",
 			"name": "header",
 			"area": "header"
+		},
+		{
+			"title": "Footer",
+			"name": "footer",
+			"area": "footer"
 		}
 	]
 }

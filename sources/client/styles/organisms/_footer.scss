@@ -12,7 +12,7 @@
 			@include links.decoration-ghost();
 
 			&:hover {
-				color: var(--wp--custom--color--link--hover);
+				color: var(--brk-color-link-hover);
 			}
 		}
 	}
@@ -22,9 +22,10 @@
 		a {
 
 			@include links.decoration-ghost();
+			color: var(--wp--custom--color--footer--link);
 
 			&:hover {
-				color: var(--wp--custom--color--link--hover);
+				color: var(--brk-color-link-hover);
 			}
 		}
 	}

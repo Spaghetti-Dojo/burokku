@@ -1,0 +1,67 @@
+name: Color Scheme Audit
+
+# Two gates:
+#  - unit: deterministic contrast + policy round-trip tests (no site needed).
+#  - audit: full rendered WCAG audit of both schemes via headless Chromium against
+#    a wp-env instance (heavier; boots Docker + the theme).
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'theme.json'
+      - 'parts/**'
+      - 'sources/client/styles/**'
+      - 'tools/color-scheme-audit/**'
+      - '.github/workflows/color-scheme-audit.yml'
+  pull_request:
+    paths:
+      - 'theme.json'
+      - 'parts/**'
+      - 'sources/client/styles/**'
+      - 'tools/color-scheme-audit/**'
+      - '.github/workflows/color-scheme-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Contrast + policy unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run audit-tool unit tests
+        run: node --test tools/color-scheme-audit/*.test.mjs
+
+  audit:
+    name: Rendered WCAG audit (both schemes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install headless Chromium
+        run: pnpm exec playwright install --with-deps chromium-headless-shell
+      - name: Build styles
+        run: pnpm build
+      - name: Start wp-env and activate the theme
+        run: |
+          pnpm env start
+          pnpm env run cli wp theme activate burokku
+      - name: Audit both schemes (fails on contrast regression)
+        run: pnpm audit:color-scheme --pages /,/blocks/ --threshold 4.5
+      - name: Stop wp-env
+        if: always()
+        run: pnpm env stop

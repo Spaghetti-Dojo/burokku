@@ -4,30 +4,30 @@
 @use "@burokku/mixins/transitions";
 
 @mixin style-outline() {
-	border: units.rem(1px) solid var(--wp--preset--color--gray-800);
+	border: units.rem(1px) solid var(--brk-color-border);
 	background-color: transparent;
-	color: var(--wp--preset--color--white);
+	color: var(--brk-color-on-surface);
 
 	&:hover {
-		background-color: var(--wp--preset--color--gray-800);
+		background-color: var(--brk-color-muted);
 	}
 }
 
 @mixin style-secondary() {
-	background-color: var(--wp--preset--color--gray-800);
-	color: var(--wp--preset--color--white);
+	background-color: var(--brk-color-muted);
+	color: var(--brk-color-on-surface);
 
 	&:hover {
-		background-color: colors.darker(var(--wp--preset--color--gray-800));
+		background-color: colors.state-layer(var(--brk-color-muted));
 	}
 }
 
 @mixin style-ghost() {
 	background-color: transparent;
-	color: var(--wp--preset--color--white);
+	color: var(--brk-color-on-surface);
 
 	&:hover {
-		background-color: var(--wp--preset--color--gray-800);
+		background-color: var(--brk-color-muted);
 	}
 }
 
@@ -46,5 +46,12 @@
 
 	&:active {
 		translate: 0 0;
+	}
+}
+
+@mixin reset-btn-behavior() {
+
+	&:hover {
+		transform: scale(1);
 	}
 }

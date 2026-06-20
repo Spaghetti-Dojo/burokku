@@ -1,0 +1,432 @@
+{
+  "/Volumes/Dev/mine/burokku/.eslintrc.json": {
+    "mtime": 1774652177.8158827,
+    "ast_hash": "284453cee43262017d4918607f8ec9bb",
+    "semantic_hash": "284453cee43262017d4918607f8ec9bb"
+  },
+  "/Volumes/Dev/mine/burokku/.phpstorm.meta.php": {
+    "mtime": 1774652177.8276813,
+    "ast_hash": "562a86962be89344acd43891d7ccffe3",
+    "semantic_hash": "562a86962be89344acd43891d7ccffe3"
+  },
+  "/Volumes/Dev/mine/burokku/.prettierrc.js": {
+    "mtime": 1774652177.8278387,
+    "ast_hash": "93978836b0e4d2e640ac6dbe4df0f4a5",
+    "semantic_hash": "93978836b0e4d2e640ac6dbe4df0f4a5"
+  },
+  "/Volumes/Dev/mine/burokku/.stylelintrc.json": {
+    "mtime": 1775472505.6827984,
+    "ast_hash": "b2abf5b3e82bab33c7f5bba690291e23",
+    "semantic_hash": "b2abf5b3e82bab33c7f5bba690291e23"
+  },
+  "/Volumes/Dev/mine/burokku/.wp-env.json": {
+    "mtime": 1774652177.8280733,
+    "ast_hash": "aa129dd332887b5c521c7a78b73fe497",
+    "semantic_hash": "aa129dd332887b5c521c7a78b73fe497"
+  },
+  "/Volumes/Dev/mine/burokku/babel.config.js": {
+    "mtime": 1774652177.8287516,
+    "ast_hash": "20281684aeace7acfbd22e72090d9929",
+    "semantic_hash": "20281684aeace7acfbd22e72090d9929"
+  },
+  "/Volumes/Dev/mine/burokku/composer.json": {
+    "mtime": 1779562432.5922766,
+    "ast_hash": "b252e3e3705c4ac69865c3e1268d41bc",
+    "semantic_hash": "b252e3e3705c4ac69865c3e1268d41bc"
+  },
+  "/Volumes/Dev/mine/burokku/functions.php": {
+    "mtime": 1774857985.5974865,
+    "ast_hash": "8470df32fce3336b6883a0c895e67b25",
+    "semantic_hash": "8470df32fce3336b6883a0c895e67b25"
+  },
+  "/Volumes/Dev/mine/burokku/inc/package.php": {
+    "mtime": 1781378767.6557078,
+    "ast_hash": "822e927cdc7729b98b7d76dd55dd4e64",
+    "semantic_hash": "822e927cdc7729b98b7d76dd55dd4e64"
+  },
+  "/Volumes/Dev/mine/burokku/package.json": {
+    "mtime": 1781378767.657881,
+    "ast_hash": "d0c2df6678ff469bba42e22ed0fda5eb",
+    "semantic_hash": "d0c2df6678ff469bba42e22ed0fda5eb"
+  },
+  "/Volumes/Dev/mine/burokku/sources/blocks/theme-toggle/block.json": {
+    "mtime": 1781378767.6599984,
+    "ast_hash": "69d057edb4579839013b89d3990ccb08",
+    "semantic_hash": "69d057edb4579839013b89d3990ccb08"
+  },
+  "/Volumes/Dev/mine/burokku/sources/blocks/theme-toggle/index.tsx": {
+    "mtime": 1781378767.6601236,
+    "ast_hash": "e5c105dd77f02ba45722a8a21c5f2cb5",
+    "semantic_hash": "e5c105dd77f02ba45722a8a21c5f2cb5"
+  },
+  "/Volumes/Dev/mine/burokku/sources/blocks/theme-toggle/render.php": {
+    "mtime": 1781378767.660256,
+    "ast_hash": "aa76feabaaba549e6334825fdf12911c",
+    "semantic_hash": "aa76feabaaba549e6334825fdf12911c"
+  },
+  "/Volumes/Dev/mine/burokku/sources/blocks/theme-toggle/view.js": {
+    "mtime": 1781378767.6606257,
+    "ast_hash": "58886719e0c2bb8b5076ff4d8933613f",
+    "semantic_hash": "58886719e0c2bb8b5076ff4d8933613f"
+  },
+  "/Volumes/Dev/mine/burokku/sources/editor/scheme-preview/index.tsx": {
+    "mtime": 1781378767.6617315,
+    "ast_hash": "0aececb1a95622f6ef992515fa54463b",
+    "semantic_hash": "0aececb1a95622f6ef992515fa54463b"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/BlockMarkupReplacements/CoreAccordion.php": {
+    "mtime": 1774652177.83362,
+    "ast_hash": "a8257d305e92b9b09095ff8bd6aee060",
+    "semantic_hash": "a8257d305e92b9b09095ff8bd6aee060"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/BlockMarkupReplacements/Module.php": {
+    "mtime": 1775244713.9752624,
+    "ast_hash": "08427b10f4c310d0db7604aec321f7e6",
+    "semantic_hash": "08427b10f4c310d0db7604aec321f7e6"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/BlockMarkupReplacements/SiteLogo.php": {
+    "mtime": 1775245117.4886944,
+    "ast_hash": "8c02470d5181de722b594d4a3e90ece3",
+    "semantic_hash": "8c02470d5181de722b594d4a3e90ece3"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/BlockStyles/Button.php": {
+    "mtime": 1775467337.3251133,
+    "ast_hash": "d1c2965b7cba82f5406444d5ee2b0c12",
+    "semantic_hash": "d1c2965b7cba82f5406444d5ee2b0c12"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/BlockStyles/Module.php": {
+    "mtime": 1774652177.8339913,
+    "ast_hash": "9ff6ab4d1eb7c83bd1fc6e2ebbd71f69",
+    "semantic_hash": "9ff6ab4d1eb7c83bd1fc6e2ebbd71f69"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/BlockName.php": {
+    "mtime": 1774652177.8341424,
+    "ast_hash": "d4843f9469c804b4df7f48be748e5c25",
+    "semantic_hash": "d4843f9469c804b4df7f48be748e5c25"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Button.php": {
+    "mtime": 1775465705.8364627,
+    "ast_hash": "837d6cb98d19b38c7cc021f2b7893824",
+    "semantic_hash": "837d6cb98d19b38c7cc021f2b7893824"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Image.php": {
+    "mtime": 1775465708.4774153,
+    "ast_hash": "7f3d76882224ea3f5140cf6297f5ff08",
+    "semantic_hash": "7f3d76882224ea3f5140cf6297f5ff08"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Metadata.php": {
+    "mtime": 1775465610.9682856,
+    "ast_hash": "e0568a5b76cdfaa93564302cc43a10a2",
+    "semantic_hash": "e0568a5b76cdfaa93564302cc43a10a2"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Module.php": {
+    "mtime": 1774983422.1835175,
+    "ast_hash": "811829cf1d91f54a5607ddb670b8f8e1",
+    "semantic_hash": "811829cf1d91f54a5607ddb670b8f8e1"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Orchestrator.php": {
+    "mtime": 1775467737.0216968,
+    "ast_hash": "6216188804282c44092b1320f81dfc45",
+    "semantic_hash": "6216188804282c44092b1320f81dfc45"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksOverrides/Quote.php": {
+    "mtime": 1775465702.7930894,
+    "ast_hash": "2f09d93b025bf9d3fb82eed4bd5b891c",
+    "semantic_hash": "2f09d93b025bf9d3fb82eed4bd5b891c"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/CoreBlocksVisibility/Module.php": {
+    "mtime": 1780390692.9279008,
+    "ast_hash": "767012fd4ce6db5cb539e8d14bcb7373",
+    "semantic_hash": "767012fd4ce6db5cb539e8d14bcb7373"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Support/ThemeVersionResolver.php": {
+    "mtime": 1780390692.928057,
+    "ast_hash": "883e68ae83b11bff5600494cd4a30227",
+    "semantic_hash": "883e68ae83b11bff5600494cd4a30227"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/Blocks.php": {
+    "mtime": 1781378767.661863,
+    "ast_hash": "82e7f98afb9948e79fd9d53569cbe2c1",
+    "semantic_hash": "82e7f98afb9948e79fd9d53569cbe2c1"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/EditorScripts.php": {
+    "mtime": 1781378767.6619859,
+    "ast_hash": "9b4db39297b7432327bd5de74c6565af",
+    "semantic_hash": "9b4db39297b7432327bd5de74c6565af"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/Module.php": {
+    "mtime": 1781378767.662177,
+    "ast_hash": "8e8631407012b9fe4a21851f95daa3a1",
+    "semantic_hash": "8e8631407012b9fe4a21851f95daa3a1"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/Styles.php": {
+    "mtime": 1781378767.6623693,
+    "ast_hash": "db08eeab117b222fc8acf5ef73027b2a",
+    "semantic_hash": "db08eeab117b222fc8acf5ef73027b2a"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/Supports.php": {
+    "mtime": 1774652177.834996,
+    "ast_hash": "4b8821c24db73fc58d8dcbcf351dd154",
+    "semantic_hash": "4b8821c24db73fc58d8dcbcf351dd154"
+  },
+  "/Volumes/Dev/mine/burokku/sources/server/Theme/ThemeJson.php": {
+    "mtime": 1774652177.8350916,
+    "ast_hash": "9188ec4958d0b862afafc45ffd0fc5e2",
+    "semantic_hash": "9188ec4958d0b862afafc45ffd0fc5e2"
+  },
+  "/Volumes/Dev/mine/burokku/styles/light.json": {
+    "mtime": 1781378767.6625657,
+    "ast_hash": "c9e4c34e9405a151a9402f350d9264df",
+    "semantic_hash": "c9e4c34e9405a151a9402f350d9264df"
+  },
+  "/Volumes/Dev/mine/burokku/tests/InstallWpDropIn.php": {
+    "mtime": 1774652177.835534,
+    "ast_hash": "ed5d62db1c09bf9650f0404e6107c067",
+    "semantic_hash": "ed5d62db1c09bf9650f0404e6107c067"
+  },
+  "/Volumes/Dev/mine/burokku/tests/Pest.php": {
+    "mtime": 1774652177.835627,
+    "ast_hash": "2eb2b46e0bb6142ca5edc2ab099e99aa",
+    "semantic_hash": "2eb2b46e0bb6142ca5edc2ab099e99aa"
+  },
+  "/Volumes/Dev/mine/burokku/tests/WpLoad.php": {
+    "mtime": 1774652177.8357177,
+    "ast_hash": "eb2326c935ef1c261fbde4562835d02d",
+    "semantic_hash": "eb2326c935ef1c261fbde4562835d02d"
+  },
+  "/Volumes/Dev/mine/burokku/tests/WpTestCase.php": {
+    "mtime": 1774652177.835815,
+    "ast_hash": "3bf87fe675835a2b6f67f43da4544032",
+    "semantic_hash": "3bf87fe675835a2b6f67f43da4544032"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/BlockMarkupReplacements/CoreAccordionTest.php": {
+    "mtime": 1774652177.8361144,
+    "ast_hash": "09a154b3a06273552aad0270c513c730",
+    "semantic_hash": "09a154b3a06273552aad0270c513c730"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/BlockStyles/ButtonTest.php": {
+    "mtime": 1774652177.8362699,
+    "ast_hash": "03d359380b0aa85d2605464d9308bc2f",
+    "semantic_hash": "03d359380b0aa85d2605464d9308bc2f"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/CoreBlocksOverrides/ButtonTest.php": {
+    "mtime": 1774652177.8364236,
+    "ast_hash": "82303fbb75db56baf6ff45c0720df2e3",
+    "semantic_hash": "82303fbb75db56baf6ff45c0720df2e3"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/CoreBlocksOverrides/QuoteTest.php": {
+    "mtime": 1774652177.8365114,
+    "ast_hash": "f85c7eb9339cf1bf1b1be83c6af5863b",
+    "semantic_hash": "f85c7eb9339cf1bf1b1be83c6af5863b"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/Theme/StylesTest.php": {
+    "mtime": 1781378767.6627939,
+    "ast_hash": "cc6d602a9dd1b53db39556912306b7d4",
+    "semantic_hash": "cc6d602a9dd1b53db39556912306b7d4"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/Theme/SupportsTest.php": {
+    "mtime": 1774652177.836752,
+    "ast_hash": "dce59dbfaa0f46f6739a1df36ce8afd3",
+    "semantic_hash": "dce59dbfaa0f46f6739a1df36ce8afd3"
+  },
+  "/Volumes/Dev/mine/burokku/tests/functional/server/ThemeTest.php": {
+    "mtime": 1774652177.8368406,
+    "ast_hash": "e800f988e317eb6b1712b24c9d22762e",
+    "semantic_hash": "e800f988e317eb6b1712b24c9d22762e"
+  },
+  "/Volumes/Dev/mine/burokku/theme.json": {
+    "mtime": 1781378767.662971,
+    "ast_hash": "5843fb7093e59d07c96f93bd9315f713",
+    "semantic_hash": "5843fb7093e59d07c96f93bd9315f713"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/build.mjs": {
+    "mtime": 1781378767.6631546,
+    "ast_hash": "e50d9cd856ff6d5a063f717d82a8ff76",
+    "semantic_hash": "e50d9cd856ff6d5a063f717d82a8ff76"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/derive.mjs": {
+    "mtime": 1781378767.6632876,
+    "ast_hash": "9f3ab8e54dec2c43ae4c01d9897b1e3c",
+    "semantic_hash": "9f3ab8e54dec2c43ae4c01d9897b1e3c"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/derive.test.mjs": {
+    "mtime": 1781378767.6633918,
+    "ast_hash": "738cc8e08e7e55b013b2d23da27f4bbb",
+    "semantic_hash": "738cc8e08e7e55b013b2d23da27f4bbb"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/flatten.mjs": {
+    "mtime": 1781378767.6634974,
+    "ast_hash": "d9fa1bf43f22d052c873bb9cf5ffe59d",
+    "semantic_hash": "d9fa1bf43f22d052c873bb9cf5ffe59d"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/generate.mjs": {
+    "mtime": 1781378767.6636164,
+    "ast_hash": "b19c71f7e36ae04ffe4d8f1dfd368ad9",
+    "semantic_hash": "b19c71f7e36ae04ffe4d8f1dfd368ad9"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/generate.test.mjs": {
+    "mtime": 1781378767.663714,
+    "ast_hash": "a4595f4cc05d844b6d22dce4ec59e445",
+    "semantic_hash": "a4595f4cc05d844b6d22dce4ec59e445"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/hsl.mjs": {
+    "mtime": 1781378767.6638029,
+    "ast_hash": "db68786c6fe2e552c07c94d0123a2882",
+    "semantic_hash": "db68786c6fe2e552c07c94d0123a2882"
+  },
+  "/Volumes/Dev/mine/burokku/tools/color-scheme/overrides.json": {
+    "mtime": 1781378767.663883,
+    "ast_hash": "ee4700f5ee7574de762e42c09c092871",
+    "semantic_hash": "ee4700f5ee7574de762e42c09c092871"
+  },
+  "/Volumes/Dev/mine/burokku/tsconfig.json": {
+    "mtime": 1780727074.8562965,
+    "ast_hash": "db4ca48d4aa0cd15c58a3bb17de382b5",
+    "semantic_hash": "db4ca48d4aa0cd15c58a3bb17de382b5"
+  },
+  "/Volumes/Dev/mine/burokku/webpack.config.js": {
+    "mtime": 1781378767.664097,
+    "ast_hash": "daf8fcf69a5164eb84f1165172b2ef28",
+    "semantic_hash": "daf8fcf69a5164eb84f1165172b2ef28"
+  },
+  "/Volumes/Dev/mine/burokku/webpack.modules.config.js": {
+    "mtime": 1781378767.6642172,
+    "ast_hash": "f87bc6f5726ee663f00c695635245051",
+    "semantic_hash": "f87bc6f5726ee663f00c695635245051"
+  },
+  "/Volumes/Dev/mine/burokku/website/docusaurus.config.ts": {
+    "mtime": 1780151953.7303176,
+    "ast_hash": "05039b253958661cdf2a3cd27f4e78d3",
+    "semantic_hash": "05039b253958661cdf2a3cd27f4e78d3"
+  },
+  "/Volumes/Dev/mine/burokku/website/package.json": {
+    "mtime": 1780152499.9440057,
+    "ast_hash": "eb4538e28ef0d950eb38fe079167210e",
+    "semantic_hash": "eb4538e28ef0d950eb38fe079167210e"
+  },
+  "/Volumes/Dev/mine/burokku/website/sidebars.ts": {
+    "mtime": 1780151956.0872273,
+    "ast_hash": "8a9b3e625ba161a528fc15dd65dec4a1",
+    "semantic_hash": "8a9b3e625ba161a528fc15dd65dec4a1"
+  },
+  "/Volumes/Dev/mine/burokku/website/tsconfig.json": {
+    "mtime": 1780151957.5202718,
+    "ast_hash": "a9d3041bdad261402e6ec07369b2c442",
+    "semantic_hash": "a9d3041bdad261402e6ec07369b2c442"
+  },
+  "/Volumes/Dev/mine/burokku/.github/git-commit-instructions.md": {
+    "mtime": 1774652177.8161983,
+    "ast_hash": "dd3646fc7c02c63cddd9977df3490fbd",
+    "semantic_hash": "dd3646fc7c02c63cddd9977df3490fbd"
+  },
+  "/Volumes/Dev/mine/burokku/.github/workflows/color-scheme.yml": {
+    "mtime": 1781378767.6553347,
+    "ast_hash": "033ba8d397c13c7c6830722ba1fa5813",
+    "semantic_hash": "033ba8d397c13c7c6830722ba1fa5813"
+  },
+  "/Volumes/Dev/mine/burokku/.github/workflows/deploy-docs.yml": {
+    "mtime": 1780153110.0581567,
+    "ast_hash": "6839a56bc01f5e703ae8e4f31077e817",
+    "semantic_hash": "6839a56bc01f5e703ae8e4f31077e817"
+  },
+  "/Volumes/Dev/mine/burokku/README.md": {
+    "mtime": 1780152336.229759,
+    "ast_hash": "a6f45a0f7d37b5024f0a6cbafdcb027b",
+    "semantic_hash": "a6f45a0f7d37b5024f0a6cbafdcb027b"
+  },
+  "/Volumes/Dev/mine/burokku/docs/intro.md": {
+    "mtime": 1781028704.210947,
+    "ast_hash": "4449f9b8da26c9630169af1bb4a47074",
+    "semantic_hash": "4449f9b8da26c9630169af1bb4a47074"
+  },
+  "/Volumes/Dev/mine/burokku/docs/wordpress-css.md": {
+    "mtime": 1780152141.893486,
+    "ast_hash": "7960beec86f63731a494679cfb8f6019",
+    "semantic_hash": "7960beec86f63731a494679cfb8f6019"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/changes/archive/2026-06-13-editor-scheme-preview/.openspec.yaml": {
+    "mtime": 1781378767.6559303,
+    "ast_hash": "aaba5678cd6ab062ca2787f2e47c0c08",
+    "semantic_hash": "aaba5678cd6ab062ca2787f2e47c0c08"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/changes/archive/2026-06-13-editor-scheme-preview/design.md": {
+    "mtime": 1781378767.6561146,
+    "ast_hash": "610c0c89211ed75ac1a5ef57d39ef924",
+    "semantic_hash": "610c0c89211ed75ac1a5ef57d39ef924"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/changes/archive/2026-06-13-editor-scheme-preview/proposal.md": {
+    "mtime": 1781378767.6562674,
+    "ast_hash": "56c0b0ea2add4aeb152223690803e0be",
+    "semantic_hash": "56c0b0ea2add4aeb152223690803e0be"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/changes/archive/2026-06-13-editor-scheme-preview/specs/editor-scheme-preview/spec.md": {
+    "mtime": 1781378767.6565392,
+    "ast_hash": "db982b140261ffd813ce5aef7dc73a29",
+    "semantic_hash": "db982b140261ffd813ce5aef7dc73a29"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/changes/archive/2026-06-13-editor-scheme-preview/tasks.md": {
+    "mtime": 1781378767.656688,
+    "ast_hash": "2c8c549a9748128d71ceb9ffd0ca707e",
+    "semantic_hash": "2c8c549a9748128d71ceb9ffd0ca707e"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/config.yaml": {
+    "mtime": 1781377897.6867068,
+    "ast_hash": "9e3e7672b387a282583011181ab35f9a",
+    "semantic_hash": "9e3e7672b387a282583011181ab35f9a"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/specs/color-scheme-delivery/spec.md": {
+    "mtime": 1781378767.656971,
+    "ast_hash": "fe42e105bebec0fb754232f7baafe6c6",
+    "semantic_hash": "fe42e105bebec0fb754232f7baafe6c6"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/specs/color-scheme-generation/spec.md": {
+    "mtime": 1781378767.657152,
+    "ast_hash": "35e9b4e227cc170d2cdeabaea4d61612",
+    "semantic_hash": "35e9b4e227cc170d2cdeabaea4d61612"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/specs/editor-scheme-preview/spec.md": {
+    "mtime": 1781378767.657326,
+    "ast_hash": "dd412bf14778bb7c2641a2fcb4f382f2",
+    "semantic_hash": "dd412bf14778bb7c2641a2fcb4f382f2"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/specs/theme-state/spec.md": {
+    "mtime": 1781378767.6575072,
+    "ast_hash": "b1a213b97dd6bbb39778a15c9fc8a973",
+    "semantic_hash": "b1a213b97dd6bbb39778a15c9fc8a973"
+  },
+  "/Volumes/Dev/mine/burokku/openspec/specs/theme-toggle-block/spec.md": {
+    "mtime": 1781378767.657675,
+    "ast_hash": "80f182e3fe8e03c0c4081d09cd0dbcf5",
+    "semantic_hash": "80f182e3fe8e03c0c4081d09cd0dbcf5"
+  },
+  "/Volumes/Dev/mine/burokku/parts/footer.html": {
+    "mtime": 1781377897.686831,
+    "ast_hash": "19ec4b12001fbe03d3481ed2c8b007e5",
+    "semantic_hash": "19ec4b12001fbe03d3481ed2c8b007e5"
+  },
+  "/Volumes/Dev/mine/burokku/parts/header.html": {
+    "mtime": 1781378767.658064,
+    "ast_hash": "c37fb7918f6ee6d631ab084036907e3f",
+    "semantic_hash": "c37fb7918f6ee6d631ab084036907e3f"
+  },
+  "/Volumes/Dev/mine/burokku/templates/header-cover.html": {
+    "mtime": 1780345445.8127441,
+    "ast_hash": "4e91e348d6dbace36c23b29375280c03",
+    "semantic_hash": "4e91e348d6dbace36c23b29375280c03"
+  },
+  "/Volumes/Dev/mine/burokku/templates/index.html": {
+    "mtime": 1780351816.4852688,
+    "ast_hash": "f8f699d4dec60cf4d33d8fc4f794676a",
+    "semantic_hash": "f8f699d4dec60cf4d33d8fc4f794676a"
+  },
+  "/Volumes/Dev/mine/burokku/assets/icons/arrow-down.svg": {
+    "mtime": 1774652177.8286793,
+    "ast_hash": "5543dc0a1a2f76842218b161bb8ba25d",
+    "semantic_hash": "5543dc0a1a2f76842218b161bb8ba25d"
+  },
+  "/Volumes/Dev/mine/burokku/assets/icons/site-logo.svg": {
+    "mtime": 1775244701.5332546,
+    "ast_hash": "9a74a8066cc6aaf0e1efa716a2e53965",
+    "semantic_hash": "9a74a8066cc6aaf0e1efa716a2e53965"
+  }
+}

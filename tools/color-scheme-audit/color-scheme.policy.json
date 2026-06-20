@@ -1,0 +1,66 @@
+{
+  "base": "dark",
+  "counterpart": "light",
+  "roles": {
+    "surface": {
+      "dark": "var(--wp--custom--color--gray-950)",
+      "light": "var(--wp--preset--color--white)",
+      "rationale": "Page background; opposite lightness pole per scheme.",
+      "contrast": null
+    },
+    "on-surface": {
+      "dark": "var(--wp--preset--color--white)",
+      "light": "var(--wp--custom--color--gray-950)",
+      "rationale": "Body text; maximal contrast against the surface.",
+      "contrast": null
+    },
+    "on-surface-muted": {
+      "dark": "var(--wp--preset--color--gray-400)",
+      "light": "var(--wp--preset--color--gray-600)",
+      "rationale": "Secondary/placeholder text; readable but de-emphasized.",
+      "contrast": null
+    },
+    "accent": {
+      "dark": "var(--wp--preset--color--theme-accent)",
+      "light": "var(--wp--preset--color--theme-accent)",
+      "rationale": "Primary button background and focus ring; flips with on-accent to keep contrast.",
+      "contrast": null
+    },
+    "on-accent": {
+      "dark": "var(--wp--custom--color--gray-900)",
+      "light": "var(--wp--custom--color--gray-900)",
+      "rationale": "Text on the accent surface.",
+      "contrast": null
+    },
+    "accent-hover": {
+      "dark": "color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--white) var(--wp--custom--mod--amount))",
+      "light": "color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--black) var(--wp--custom--mod--amount))",
+      "rationale": "Primary button hover background.",
+      "contrast": null
+    },
+    "muted": {
+      "dark": "var(--wp--preset--color--gray-800)",
+      "light": "var(--wp--preset--color--gray-200)",
+      "rationale": "Secondary surfaces (secondary button, inline code, nav pill).",
+      "contrast": null
+    },
+    "field": {
+      "dark": "var(--wp--custom--color--gray-900)",
+      "light": "var(--wp--custom--color--gray-100)",
+      "rationale": "Input / preformatted / striped-row surfaces.",
+      "contrast": null
+    },
+    "border": {
+      "dark": "var(--wp--preset--color--gray-800)",
+      "light": "var(--wp--preset--color--gray-200)",
+      "rationale": "Hairline borders; intentionally low contrast.",
+      "contrast": null
+    },
+    "link-hover": {
+      "dark": "color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--white) var(--wp--custom--mod--amount))",
+      "light": "color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--black) var(--wp--custom--mod--amount))",
+      "rationale": "Link hover text.",
+      "contrast": null
+    }
+  }
+}

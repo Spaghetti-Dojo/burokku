@@ -3,8 +3,10 @@
 body:not(.editor-styles-wrapper) {
 
 	:focus-visible {
-		outline: units.rem(2px) solid var(--wp--preset--color--theme-accent) !important;
-		box-shadow: 0 0 0 units.rem(6px) oklab(from var(--wp--preset--color--theme-accent) l a b / calc(alpha * var(--wp--custom--mod--amount))) !important;
+		outline: units.rem(2px) solid var(--brk-color-accent) !important;
+		// `--brk-color-accent` is opaque, so the ring alpha is simply mod-amount
+		// (avoids a `calc(alpha * …)` that postcss-calc cannot parse).
+		box-shadow: 0 0 0 units.rem(6px) oklab(from var(--brk-color-accent) l a b / var(--wp--custom--mod--amount)) !important;
 		border-radius: var(--wp--preset--border-radius--xxxs) !important;
 	}
 }

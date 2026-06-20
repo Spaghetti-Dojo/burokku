@@ -1,7 +1,4 @@
-/*
- * Darken a color by mixing a bit of black
- */
-@function darker($first-color) {
+@function state-layer($surface) {
 
-	@return color-mix(in hsl decreasing hue, #{$first-color} 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount));
+	@return color-mix(in oklab, #{$surface}, light-dark(black, white) var(--wp--custom--mod--amount));
 }
