@@ -8,6 +8,7 @@ use Inpsyde\Modularity\Module\ExecutableModule;
 use Inpsyde\Modularity\Module\ModuleClassNameIdTrait;
 use Inpsyde\Modularity\Properties\Properties;
 use Psr\Container\ContainerInterface;
+use SpaghettiDojo\Burokku\Theme\ColorScheme\HeadScript;
 
 final readonly class Module implements ExecutableModule
 {
@@ -30,6 +31,7 @@ final readonly class Module implements ExecutableModule
         Blocks::new($properties)->init();
         Supports::new()->init();
         ThemeJson::new()->init();
+        HeadScript::new()->init();
         Styles::new()->init();
         EditorScripts::new()->init();
 

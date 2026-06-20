@@ -27,11 +27,14 @@
 		"max-depth": [ "error", 2 ],
 		"max-lines": [
 			"error",
-			{ "max": 300, "skipBlankLines": false, "skipComments": false }
+			{ "max": 300, "skipBlankLines": true, "skipComments": true }
 		],
 		"max-statements-per-line": [ "error", { "max": 1 } ],
 		"complexity": [ "error", 5 ],
-		"max-lines-per-function": [ "error", 25 ],
+		"max-lines-per-function": [
+			"error",
+			{ "max": 40, "skipBlankLines": true, "skipComments": true }
+		],
 		"max-nested-callbacks": [ "error", 2 ],
 		"no-multiple-empty-lines": [
 			"error",
@@ -119,5 +122,16 @@
 				"allowedTextDomain": "burokku"
 			}
 		]
-	}
+	},
+	"overrides": [
+		{
+			"files": [ "**/*.js", "**/*.jsx", "**/*.mjs", "**/*.cjs" ],
+			"extends": [ "plugin:@typescript-eslint/disable-type-checked" ],
+			"rules": {
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/explicit-module-boundary-types": "off",
+				"import/no-extraneous-dependencies": "off"
+			}
+		}
+	]
 }

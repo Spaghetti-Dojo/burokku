@@ -56,9 +56,7 @@
 		"env": "wp-env",
 		"shell": "wp-env run cli wp shell",
 		"start": "dotenv -- wp-scripts start",
-		"build": "dotenv -- wp-scripts build && pnpm build:color-scheme",
-		"build:color-scheme": "node tools/color-scheme/build.mjs",
-		"build:color-scheme:check": "node tools/color-scheme/build.mjs --check",
+		"build": "dotenv -- wp-scripts build",
 		"build:dev:scripts": "wp-scripts start --webpack--devtool=inline-source-map",
 		"build:dev:modules": "dotenv -- wp-scripts start --config webpack.modules.config.js --webpack--devtool=inline-source-map",
 		"build:manifest": "wp-scripts build-blocks-manifest --input=sources/blocks --output=dist/modules/blocks/blocks-manifest.php",
@@ -66,7 +64,9 @@
 		"lint:styles:fix": "wp-scripts lint-style --fix",
 		"lint:scripts": "wp-scripts lint-js",
 		"lint:scripts:fix": "wp-scripts lint-js --fix",
-		"test:color-scheme": "node --test tools/color-scheme/*.test.mjs",
+		"audit:color-scheme": "NODE_PATH=node_modules/.pnpm/node_modules node tools/color-scheme-audit/cli.mjs",
+		"color-scheme:policy": "node tools/color-scheme-audit/build-policy.mjs",
+		"test:color-scheme-audit": "node --test tools/color-scheme-audit/*.test.mjs",
 		"format": "wp-scripts format"
 	}
 }

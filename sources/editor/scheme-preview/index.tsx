@@ -41,28 +41,16 @@ function canvasDocument(): Document {
 /**
  * Apply the active scheme to the canvas via the `data-theme` signal owned by the
  * `theme-state` contract; `color-scheme.css` keys its `[data-theme="light"]`
- * token overrides off it.
+ * `--brk-color-*` overrides off it.
  *
- * Two targets are needed in the editor: the document root (front-end parity,
- * and the toggle block's `:root[data-theme]` icon rules) and the
- * `.editor-styles-wrapper`, because WordPress re-emits the theme.json preset
- * custom properties on that wrapper — an override on the ancestor `<html>` is
- * shadowed for everything inside it.
+ * Setting it on the canvas document root suffices: the scheme swaps only the
+ * theme's own `--brk-color-*` variables, which WordPress does not re-emit on
+ * `.editor-styles-wrapper` (unlike palette preset variables), so a wrapper-level
+ * override is not needed for the light tokens to resolve inside the wrapper.
+ * @param scheme
  */
 function applyScheme( scheme: Scheme ): void {
-	const doc = canvasDocument();
-	const targets: HTMLElement[] = [ doc.documentElement ];
-	const wrapper = doc.querySelector< HTMLElement >(
-		'.editor-styles-wrapper'
-	);
-
-	if ( wrapper ) {
-		targets.push( wrapper );
-	}
-
-	for ( const target of targets ) {
-		target.dataset[ 'theme' ] = scheme;
-	}
+	canvasDocument().documentElement.dataset[ 'theme' ] = scheme;
 }
 
 /**
@@ -79,8 +67,18 @@ function storedScheme(): Scheme | null {
 }
 
 /**
+ * Server-detected base polarity, published on `<html>` by the no-FOUC head
+ * script (`data-theme-base`). Defaults to `dark` when the signal is absent.
+ */
+function baseScheme(): Scheme {
+	return document.documentElement.dataset[ 'themeBase' ] === 'light'
+		? 'light'
+		: 'dark';
+}
+
+/**
  * `theme-state` resolution precedence: explicit stored choice →
- * `prefers-color-scheme` → `dark`.
+ * `prefers-color-scheme` → base polarity.
  */
 function resolveScheme(): Scheme {
 	const stored = storedScheme();
@@ -89,14 +87,21 @@ function resolveScheme(): Scheme {
 		return stored;
 	}
 
-	return window.matchMedia( '(prefers-color-scheme: light)' ).matches
-		? 'light'
-		: 'dark';
+	if ( window.matchMedia( '(prefers-color-scheme: light)' ).matches ) {
+		return 'light';
+	}
+
+	if ( window.matchMedia( '(prefers-color-scheme: dark)' ).matches ) {
+		return 'dark';
+	}
+
+	return baseScheme();
 }
 
 /**
  * Persist only explicit toggles, mirroring the front end (system-derived
  * defaults are never written).
+ * @param scheme
  */
 function persistScheme( scheme: Scheme ): void {
 	try {
@@ -109,9 +114,7 @@ function persistScheme( scheme: Scheme ): void {
 type EditorSelectors = { getDeviceType?: () => string };
 
 function deviceType(): string {
-	const editor = select(
-		'core/editor'
-	) as unknown as EditorSelectors | null;
+	const editor = select( 'core/editor' ) as unknown as EditorSelectors | null;
 
 	return editor?.getDeviceType?.() ?? '';
 }
@@ -125,17 +128,27 @@ function deviceType(): string {
  * express (⌘+⌃ is not a named modifier), so it is handled with a custom listener
  * here. The canonical, help-listed binding is `access+m` (⌃⌥M on macOS), bound
  * through `useShortcut`.
+ * @param event
  */
 function isMetaCtrlM( event: KeyboardEvent ): boolean {
 	return event.metaKey && event.ctrlKey && event.code === 'KeyM';
 }
 
-function SchemePreview() {
-	const [ scheme, setScheme ] = useState< Scheme >( resolveScheme );
-	const target = otherScheme( scheme );
+type ToggleRef = { current: () => void };
 
-	const toggle = useCallback( () => {
-		setScheme( ( current ) => {
+/**
+ * Owns the previewed scheme state and a stable toggle, plus a ref to the latest
+ * toggle for the non-React keyboard listeners.
+ */
+function useSchemeToggle(): {
+	scheme: Scheme;
+	toggle: () => void;
+	toggleRef: ToggleRef;
+} {
+	const [ scheme, setScheme ] = useState< Scheme >( resolveScheme );
+
+	const toggle = useCallback( (): void => {
+		setScheme( ( current: Scheme ): Scheme => {
 			const next = otherScheme( current );
 
 			applyScheme( next );
@@ -145,102 +158,150 @@ function SchemePreview() {
 		} );
 	}, [] );
 
-	// A stable handle to the latest toggle for non-React event listeners.
 	const toggleRef = useRef( toggle );
 	toggleRef.current = toggle;
 
+	return { scheme, toggle, toggleRef };
+}
+
+/**
+ * Registers the canonical, shortcuts-help-listed binding (`access+m`, ⌃⌥M) and
+ * returns its display representation.
+ * @param toggleRef
+ */
+function useAccessShortcut( toggleRef: ToggleRef ): string | null {
 	const { registerShortcut } = useDispatch( keyboardShortcutsStore );
 	const shortcut = useSelect(
-		( selectStore ) =>
+		( selectStore ): string | null =>
 			selectStore( keyboardShortcutsStore ).getShortcutRepresentation(
 				SHORTCUT_NAME
 			),
 		[]
 	);
 
-	useEffect( () => {
+	useEffect( (): void => {
 		registerShortcut( {
 			name: SHORTCUT_NAME,
 			category: 'global',
-			description: __(
-				'Toggle the previewed color scheme.',
-				'burokku'
-			),
+			description: __( 'Toggle the previewed color scheme.', 'burokku' ),
 			keyCombination: { modifier: 'access', character: 'm' },
 		} );
 	}, [ registerShortcut ] );
 
-	// Canonical, shortcuts-help-listed binding.
-	useShortcut( SHORTCUT_NAME, () => toggleRef.current() );
+	useShortcut( SHORTCUT_NAME, (): void => {
+		toggleRef.current();
+	} );
 
-	// Best-effort ⌘⌃M: bound on the top document and on the canvas document so it
-	// fires whether focus is in the editor chrome or inside the canvas iframe.
-	useEffect( () => {
-		const handler = ( event: KeyboardEvent ) => {
-			if ( isMetaCtrlM( event ) ) {
-				event.preventDefault();
-				toggleRef.current();
-			}
-		};
+	return shortcut;
+}
 
-		const bound = new Set< Document >();
-		const bind = ( doc: Document ) => {
-			if ( ! bound.has( doc ) ) {
-				bound.add( doc );
-				doc.addEventListener( 'keydown', handler );
-			}
-		};
+/**
+ * Binds the best-effort ⌘⌃M listener on the top document and the canvas
+ * document, watching for canvas (re)mounts. Returns a teardown.
+ * @param toggleRef
+ */
+function bindMetaCtrlM( toggleRef: ToggleRef ): () => void {
+	const handler = ( event: KeyboardEvent ): void => {
+		if ( isMetaCtrlM( event ) ) {
+			event.preventDefault();
+			toggleRef.current();
+		}
+	};
 
-		bind( document );
+	const bound: Set< Document > = new Set();
+	const bind = ( doc: Document ): void => {
+		if ( bound.has( doc ) ) {
+			return;
+		}
+		bound.add( doc );
+		doc.addEventListener( 'keydown', handler );
+	};
+
+	bind( document );
+	bind( canvasDocument() );
+
+	const observer = new MutationObserver( (): void => {
 		bind( canvasDocument() );
+	} );
+	observer.observe( document.body, { childList: true, subtree: true } );
 
-		const observer = new MutationObserver( () => bind( canvasDocument() ) );
-		observer.observe( document.body, { childList: true, subtree: true } );
+	return (): void => {
+		observer.disconnect();
+		bound.forEach( ( doc: Document ): void => {
+			doc.removeEventListener( 'keydown', handler );
+		} );
+	};
+}
 
-		return () => {
-			observer.disconnect();
-			bound.forEach( ( doc ) =>
-				doc.removeEventListener( 'keydown', handler )
-			);
-		};
-	}, [] );
+/**
+ * ⌘⌃M fires whether focus is in the editor chrome or inside the canvas iframe.
+ * @param toggleRef
+ */
+function useMetaCtrlMShortcut( toggleRef: ToggleRef ): void {
+	useEffect(
+		(): ( () => void ) => bindMetaCtrlM( toggleRef ),
+		[ toggleRef ]
+	);
+}
 
-	useEffect( () => {
+/**
+ * Applies the scheme to the canvas now and re-applies it when a device/zoom
+ * change or remount recreates the canvas iframe. Returns a teardown.
+ * @param scheme
+ */
+function syncCanvasScheme( scheme: Scheme ): () => void {
+	const reapply = (): void => {
 		applyScheme( scheme );
+	};
+	reapply();
 
-		const reapply = () => applyScheme( scheme );
+	// A device-preview/zoom change recreates the canvas iframe, dropping the
+	// attribute previously set on its `contentDocument`.
+	let lastDevice = deviceType();
+	const unsubscribe = subscribe( (): void => {
+		const current = deviceType();
 
-		// A device-preview/zoom change recreates the canvas iframe, dropping the
-		// attribute previously set on its `contentDocument`.
-		let lastDevice = deviceType();
-		const unsubscribe = subscribe( () => {
-			const current = deviceType();
+		if ( current !== lastDevice ) {
+			lastDevice = current;
+			reapply();
+		}
+	} );
 
-			if ( current !== lastDevice ) {
-				lastDevice = current;
-				reapply();
-			}
-		} );
+	// A freshly mounted canvas iframe needs the attribute (re-)applied, on both
+	// insertion and document `load`.
+	const observer = new MutationObserver( (): void => {
+		const iframe = document.querySelector< HTMLIFrameElement >(
+			'iframe[name="editor-canvas"]'
+		);
 
-		// A freshly mounted canvas iframe (initial mount or remount) needs the
-		// attribute (re-)applied, on both insertion and document `load`.
-		const observer = new MutationObserver( () => {
-			const iframe = document.querySelector< HTMLIFrameElement >(
-				'iframe[name="editor-canvas"]'
-			);
+		if ( iframe ) {
+			reapply();
+			iframe.addEventListener( 'load', reapply, { once: true } );
+		}
+	} );
+	observer.observe( document.body, { childList: true, subtree: true } );
 
-			if ( iframe ) {
-				reapply();
-				iframe.addEventListener( 'load', reapply, { once: true } );
-			}
-		} );
-		observer.observe( document.body, { childList: true, subtree: true } );
+	return (): void => {
+		unsubscribe();
+		observer.disconnect();
+	};
+}
 
-		return () => {
-			unsubscribe();
-			observer.disconnect();
-		};
-	}, [ scheme ] );
+/**
+ * Keeps the canvas `data-theme` in sync with the previewed scheme.
+ * @param scheme
+ */
+function useCanvasSchemeSync( scheme: Scheme ): void {
+	useEffect( (): ( () => void ) => syncCanvasScheme( scheme ), [ scheme ] );
+}
+
+function SchemePreview(): JSX.Element {
+	const { scheme, toggle, toggleRef } = useSchemeToggle();
+	const target = otherScheme( scheme );
+	const shortcut = useAccessShortcut( toggleRef );
+
+	useMetaCtrlMShortcut( toggleRef );
+	useCanvasSchemeSync( scheme );
 
 	return (
 		<MoreMenuItem onClick={ toggle } shortcut={ shortcut }>

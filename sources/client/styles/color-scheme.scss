@@ -1,0 +1,53 @@
+/*
+ * Semantic color-scheme token layer (`--brk-color-*`).
+ *
+ * The palette (`--wp--preset--color--*` / `--wp--custom--color--*`) is
+ * scheme-invariant — the global, editor-selectable colors. What flips between
+ * dark and light is only the role→palette mapping below: the dark base lives on
+ * `:root`, the light counterpart under `[data-theme="light"]`. The head script
+ * sets `html[data-theme]` before paint, so the active scheme is selected by
+ * attribute alone.
+ *
+ * Each token maps a role to a palette variable — never a literal — so the
+ * palette stays the single source of color values. theme.json `styles` and the
+ * client SCSS reference only these `--brk-color-*` tokens.
+ *
+ * Roles:
+ *   surface / on-surface          page background and its text
+ *   on-surface-muted              secondary/placeholder text on the surface
+ *   accent / on-accent            primary button (and focus ring) and its text
+ *   accent-hover                  primary button hover background
+ *   muted                         secondary surfaces (secondary button, inline code, nav pill)
+ *   field                         input / preformatted / striped-row surfaces
+ *   border                        hairline borders
+ *   link-hover                    link hover text
+ */
+:root {
+	--brk-color-surface: var(--wp--custom--color--gray-950);
+	--brk-color-on-surface: var(--wp--preset--color--white);
+	--brk-color-on-surface-muted: var(--wp--preset--color--gray-400);
+	// Brand accent persists across schemes (same button color in light and dark);
+	// on-accent and the hover darken are therefore scheme-invariant too.
+	--brk-color-accent: var(--wp--preset--color--theme-accent);
+	--brk-color-on-accent: var(--wp--custom--color--gray-900);
+	--brk-color-accent-hover: color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--white) var(--wp--custom--mod--amount));
+	--brk-color-muted: var(--wp--preset--color--gray-800);
+	--brk-color-field: var(--wp--custom--color--gray-900);
+	--brk-color-border: var(--wp--preset--color--gray-800);
+	--brk-color-link-hover: color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--white) var(--wp--custom--mod--amount));
+}
+
+[data-theme="light"] {
+	--brk-color-surface: var(--wp--preset--color--white);
+	--brk-color-on-surface: var(--wp--custom--color--gray-950);
+	--brk-color-on-surface-muted: var(--wp--preset--color--gray-600);
+	// Brand accent persists (see :root); the hover modifier darkens (toward black)
+	// on the light surface so the lightened-toward-white dark variant stays readable.
+	--brk-color-accent: var(--wp--preset--color--theme-accent);
+	--brk-color-on-accent: var(--wp--custom--color--gray-900);
+	--brk-color-accent-hover: color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--black) var(--wp--custom--mod--amount));
+	--brk-color-muted: var(--wp--preset--color--gray-200);
+	--brk-color-field: var(--wp--custom--color--gray-100);
+	--brk-color-border: var(--wp--preset--color--gray-200);
+	--brk-color-link-hover: color-mix(in oklab, var(--wp--preset--color--theme-accent), var(--wp--preset--color--black) var(--wp--custom--mod--amount));
+}

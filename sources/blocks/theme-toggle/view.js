@@ -3,6 +3,18 @@ import { store } from '@wordpress/interactivity';
 const STORAGE_KEY = 'burokku-theme';
 
 /**
+ * The server-detected base polarity, published on `<html>` by the no-FOUC head
+ * script. Defaults to `dark` when the signal is absent.
+ *
+ * @return {'light'|'dark'} Base scheme.
+ */
+function baseScheme() {
+	return document.documentElement.dataset.themeBase === 'light'
+		? 'light'
+		: 'dark';
+}
+
+/**
  * @return {'light'|'dark'} Active scheme.
  */
 function currentTheme() {
@@ -12,9 +24,15 @@ function currentTheme() {
 		return explicit;
 	}
 
-	return window.matchMedia( '(prefers-color-scheme: light)' ).matches
-		? 'light'
-		: 'dark';
+	if ( window.matchMedia( '(prefers-color-scheme: light)' ).matches ) {
+		return 'light';
+	}
+
+	if ( window.matchMedia( '(prefers-color-scheme: dark)' ).matches ) {
+		return 'dark';
+	}
+
+	return baseScheme();
 }
 
 const { state } = store( 'burokku/theme-toggle', {
@@ -42,7 +60,7 @@ const { state } = store( 'burokku/theme-toggle', {
 			state.isDark = theme === 'dark';
 
 			try {
-				var storedTheme = localStorage.getItem( 'burokku-theme' );
+				const storedTheme = localStorage.getItem( 'burokku-theme' );
 				if ( storedTheme === 'light' || storedTheme === 'dark' ) {
 					document.documentElement.dataset.theme = storedTheme;
 				}

@@ -4,6 +4,9 @@
 /dist/
 /.github/
 /.sisyphus
+/website/
+/graphify-out/
+/tools/
 *.config.js
 *.config.ts
 .prettierrc.js

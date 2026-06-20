@@ -2,7 +2,7 @@
 
 	td,
 	th {
-		border: 1px solid var(--wp--preset--color--gray-800);
+		border: 1px solid var(--brk-color-border);
 		padding: var(--wp--preset--spacing--sm) var(--wp--preset--spacing--base);
 	}
 
@@ -25,7 +25,7 @@
 
 		th,
 		td {
-			border-color: var(--wp--preset--color--gray-800);
+			border-color: var(--brk-color-border);
 		}
 
 		tbody tr {
@@ -36,7 +36,7 @@
 			}
 
 			&:nth-child(even) {
-				background-color: var(--wp--custom--color--gray-900);
+				background-color: var(--brk-color-field);
 			}
 		}
 	}

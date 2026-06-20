@@ -3,7 +3,9 @@ const fs = require('fs');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
-const defaultConfig = require('@wordpress/scripts/config/webpack.config');
+const rawDefaultConfig = require('@wordpress/scripts/config/webpack.config');
+// @wordpress/scripts may export an array (script + module configs); use the first.
+const defaultConfig = Array.isArray(rawDefaultConfig) ? rawDefaultConfig[0] : rawDefaultConfig;
 
 function stylesEntries() {
 	const entries = {};

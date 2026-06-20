@@ -3,6 +3,7 @@
 
 button,
 .wp-block-button__link {
+
 	@include transitions.property-transition(
 		"color, background-color, border-color, fill, stroke, translate, transform"
 	);

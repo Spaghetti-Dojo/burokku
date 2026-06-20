@@ -2,22 +2,15 @@
  * Document color-scheme flag.
  *
  * Sets the CSS `color-scheme` property so `light-dark()` (and UA-rendered
- * controls) resolve to the active scheme. Mirrors the data-theme / system
- * fallback selectors that drive the color tokens in
- * dist/styles/color-scheme.css and the toggle icon in
- * molecules/_theme-toggle.scss.
+ * controls) resolve to the active scheme. Purely attribute-driven and
+ * base-agnostic: the synchronous head script always sets a concrete
+ * `[data-theme]` before paint, so no `:root` default or media-query fallback
+ * is needed.
  */
-:root {
+[data-theme="dark"] {
 	color-scheme: dark;
 }
 
-:root[data-theme="light"] {
+[data-theme="light"] {
 	color-scheme: light;
-}
-
-@media (prefers-color-scheme: light) {
-
-	:root:not([data-theme="dark"]) {
-		color-scheme: light;
-	}
 }

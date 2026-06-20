@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-//@ts-ignore
+//@ts-expect-error
 import ServerSideRender from '@wordpress/server-side-render';
 
 import metadata from './block.json';
