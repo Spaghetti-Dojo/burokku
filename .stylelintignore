@@ -2,5 +2,7 @@
 node_modules
 vendor
 dist
+website/build
+graphify-out
 *.config.js
 *.config.ts

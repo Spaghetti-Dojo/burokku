@@ -4,7 +4,7 @@ body:not(.editor-styles-wrapper) {
 
 	:focus-visible {
 		outline: units.rem(2px) solid var(--wp--preset--color--theme-accent) !important;
-		box-shadow: 0 0 0 units.rem(6px) oklab(from var(--wp--preset--color--theme-accent) l a b / calc(alpha * var(--wp--custom--mod--amount))) !important;
+		box-shadow: 0 0 0 units.rem(6px) oklab(from var(--wp--preset--color--theme-accent) l a b / var(--wp--custom--mod--amount)) !important;
 		border-radius: var(--wp--preset--border-radius--xxxs) !important;
 	}
 }

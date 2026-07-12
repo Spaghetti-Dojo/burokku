@@ -50,10 +50,10 @@
 		"start": "wp-scripts start",
 		"build": "wp-scripts build",
 		"build:dev": "wp-scripts start",
-		"lint:css": "wp-scripts lint-style",
-		"lint:css:fix": "wp-scripts lint-style --fix",
-		"lint:js": "wp-scripts lint-js",
-		"lint:js:fix": "wp-scripts lint-js --fix",
+		"lint:styles": "wp-scripts lint-style",
+		"lint:styles:fix": "wp-scripts lint-style --fix",
+		"lint:scripts": "wp-scripts lint-js",
+		"lint:scripts:fix": "wp-scripts lint-js --fix",
 		"format": "wp-scripts format"
 	}
 }

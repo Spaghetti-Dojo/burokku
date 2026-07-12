@@ -19,6 +19,7 @@
 		}
 
 		&__toggle {
+
 			@include buttons.reset-btn-behavior();
 		}
 	}
@@ -33,9 +34,13 @@
 		transition-property: all;
 		transition-timing-function: var(--wp--custom--transition--timing-function);
 
-		@supports (height: calc-size(fit-content, size)) {
+		// `interpolate-size: allow-keywords` lets block-size transition to the
+		// intrinsic `fit-content` keyword (the high-level equivalent of
+		// `calc-size()`, and free of any `calc()` for postcss-calc to choke on).
+		@supports (interpolate-size: allow-keywords) {
 			block-size: 0;
 			display: block;
+			interpolate-size: allow-keywords;
 			overflow: clip;
 		}
 
@@ -55,8 +60,8 @@
 
 		.wp-block-accordion-panel {
 
-			@supports (height: calc-size(fit-content, size)) {
-				block-size: calc-size(fit-content, size);
+			@supports (interpolate-size: allow-keywords) {
+				block-size: fit-content;
 			}
 		}
 	}
