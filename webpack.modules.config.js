@@ -6,18 +6,18 @@ const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 // Merge explicit, non-block script entries with the auto-discovered block
 // entries (the original `entry` is a function that scans for `block.json`).
 const baseEntry = scriptsConfig.entry;
-const scriptEntry = () => ({
+const moduleEntries = () => ({
 	...(typeof baseEntry === 'function' ? baseEntry() : baseEntry),
-	'editor/scheme-preview/index': path.resolve(
+	'@editor/scheme-preview': path.resolve(
 		__dirname,
-		'sources/editor/scheme-preview/index.tsx'
+		'sources/client/modules/editor/scheme-preview/index.tsx'
 	),
 });
 
 module.exports = [
 	{
 		...scriptsConfig,
-		entry: scriptEntry,
+		entry: moduleEntries,
 		resolve: {
 			...(scriptsConfig.resolve || {}),
 			alias: {
