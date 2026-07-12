@@ -2,12 +2,15 @@
 @use "@burokku/mixins/transitions";
 @use "@burokku/mixins/units";
 
-@mixin -default-style() {
-	backdrop-filter: blur(11px);
-	background-color: oklab(from var(--wp--custom--color--gray-950) l a b / 0.8) !important;
-	inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)}) !important;
+$header-off-viewport-position: translateY(calc(var(--header-scroll-away-distance) * -1));
+$header-off-viewport-distance: calc(var(--header-inset-block-start, 0px) + var(--wp--custom--header--block-size));
+
+@mixin -sticky-style() {
+
+	@include -header-backdrop();
+	border: 1px solid var(--wp--custom--color--gray-900);
 	border-radius: var(--wp--preset--border-radius--sm);
-	border-width: 1px solid var(--wp--custom--color--gray-900);
+	inset-block-start: var(--header-inset-block-start--stuck, #{units.rem(30px)});
 	max-inline-size: 90%;
 }
 
@@ -24,11 +27,30 @@
 	}
 }
 
-@keyframes -sticky-header {
+/*
+ * The header stays sticky at all times (`position` cannot be animated), so the scroll-away phase is
+ * faked: translating it up by exactly the distance the page scrolls keeps it in lockstep with the
+ * flow and reads as a plain, non-sticky header leaving the viewport.
+ */
+@keyframes -header-scroll-away {
+
+	to {
+		transform: #{$header-off-viewport-position};
+	}
+}
+
+@keyframes -header-sticky {
+
+	from {
+		opacity: 0;
+		transform: #{$header-off-viewport-position};
+	}
 
 	to {
 
-		@include -default-style();
+		@include -sticky-style();
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
@@ -38,27 +60,28 @@ header.burokku-header {
 	inline-size: calc(var(--wp--style--global--content-size) - calc(var(--wp--style--root--padding-right) * 2));
 	margin: 0 auto;
 	max-inline-size: 100%;
-	z-index: 999999;
+	--header-scroll-away-distance: #{$header-off-viewport-distance};
+	z-index: 9999;
 
-	@supports (container-type: scroll-state) {
+	@supports (animation-timeline: scroll(root)) {
 
 		html:not(.has-modal-open) & {
+			animation: -header-scroll-away linear both,
+			-header-sticky var(--wp--custom--transition--timing-function) forwards;
+			animation-range: 0 var(--header-scroll-away-distance),
+			var(--header-scroll-away-distance) calc(var(--header-scroll-away-distance) * 5);
+			animation-timeline: scroll(root);
+			border: 0 solid transparent;
 			container-type: scroll-state;
 			inset-block-start: var(--header-inset-block-start, 0);
-			animation: -sticky-header var(--wp--custom--transition--timing-function) both;
-			animation-timeline: scroll(root);
-			animation-range: 0 10vb;
 			position: sticky;
-			border: 0 solid transparent;
 		}
 
 		html.has-modal-open & {
-			position: fixed;
 			inset: 0;
-			// Override the `-sticky-header` animation.
-			inline-size: 100% !important;
-			max-inline-size: 100% !important;
-			inset-block-start: 0 !important;
+			inline-size: 100%;
+			max-inline-size: 100%;
+			position: fixed;
 		}
 	}
 
@@ -68,7 +91,9 @@ header.burokku-header {
 
 		html:not(.has-modal-open) & {
 
-			@include -default-style();
+			@include -sticky-style();
+			animation: none;
+			transform: none;
 		}
 	}
 }

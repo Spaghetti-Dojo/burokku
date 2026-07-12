@@ -624,6 +624,9 @@
 					"hover": "color-mix(in oklab, var(--wp--preset--color--theme-accent) 100%, var(--wp--preset--color--black) var(--wp--custom--mod--amount))"
 				}
 			},
+			"header": {
+				"block-size": "5rem"
+			},
 			"mod": {
 				"amount": "30%"
 			},
