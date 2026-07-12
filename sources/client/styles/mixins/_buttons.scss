@@ -50,6 +50,7 @@
 }
 
 @mixin reset-btn-behavior() {
+
 	&:hover {
 		transform: scale(1);
 	}
