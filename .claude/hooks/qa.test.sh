@@ -91,6 +91,16 @@ t_php_fail() {
   assert_contains "$out" "php:cs" "reason names failing php step"
 }
 
+# --- REGRESSION: a fixer exit code must not block (phpcbf exits 1 when it fixes) ---
+t_fixer_code_ignored() {
+  local dir; dir="$(make_repo)"
+  : > "$dir/a.php"
+  : > "$dir/a.ts"
+  : > "$dir/a.scss"
+  local out; out="$(run_qa "$dir" "cs:fix lint:scripts:fix lint:styles:fix")"
+  assert_empty "$out" "non-zero fixer exit code does not block"
+}
+
 # --- only style changed -> only style steps run ---
 t_style_only() {
   local dir; dir="$(make_repo)"
@@ -125,6 +135,7 @@ t_rename_buckets() {
 t_not_git
 t_php_pass
 t_php_fail
+t_fixer_code_ignored
 t_style_only
 t_delete_only
 t_rename_buckets
