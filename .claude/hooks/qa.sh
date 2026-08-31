@@ -6,6 +6,9 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 0
 fi
 
+# The linters must run from the repo root, where composer.json and package.json are.
+cd "$(git rev-parse --show-toplevel)" || exit 0
+
 if ! command -v jq >/dev/null 2>&1; then
   echo "qa.sh: jq not found, skipping." >&2
   exit 0
@@ -41,6 +44,12 @@ done < <(git status --porcelain -z -uall)
 
 failures=()
 
+# A fixer reports a non-zero code when it changes a file, so its code means
+# nothing here. Only the verify step that follows it decides.
+run_fix() {
+  "$@" >/dev/null 2>&1 || true
+}
+
 run_step() {
   local label="$1"
   shift
@@ -57,19 +66,21 @@ run_step() {
   fi
 }
 
+# This hook runs the linters only. It leaves the test suites of `composer qa`
+# and the `pnpm lint:types` check to CI, to keep the Stop hook fast.
 if [[ $has_php -eq 1 ]]; then
-  run_step "php:cs:fix"   composer cs:fix
+  run_fix                 composer cs:fix
   run_step "php:cs"       composer cs
   run_step "php:analysis" composer analysis
 fi
 
 if [[ $has_js -eq 1 ]]; then
-  run_step "scripts:fix"  pnpm lint:scripts:fix
+  run_fix                 pnpm lint:scripts:fix
   run_step "scripts"      pnpm lint:scripts
 fi
 
 if [[ $has_style -eq 1 ]]; then
-  run_step "styles:fix"   pnpm lint:styles:fix
+  run_fix                 pnpm lint:styles:fix
   run_step "styles"       pnpm lint:styles
 fi
 
